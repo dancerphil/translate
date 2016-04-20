@@ -126,7 +126,7 @@
       count += 1;
     }
 
-    // 好评, use the let.
+    // 好评，使用 let
     let count = 1;
     if (true) {
       count += 1;
@@ -137,13 +137,13 @@
   - [2.3](#references--block-scope) 提醒你一下： `let` 和 `const` 都是块级作用域
 
     ```javascript
-    // const and let only exist in the blocks they are defined in.
+    // const 和 let 只在它们定义的'代码块'里才存在
     {
       let a = 1;
       const b = 1;
     }
-    console.log(a); // ReferenceError
-    console.log(b); // ReferenceError
+    console.log(a); // 出现 ReferenceError
+    console.log(b); // 出现 ReferenceError
     ```
 
 **[↑ 回到最上方](#table-of-contents)**
@@ -179,7 +179,7 @@
     ```
 
   <a name="objects--reserved-words-2"></a><a name="3.3"></a>
-  - [3.3](#objects--reserved-words-2) Use readable synonyms in place of reserved words. jscs: [`disallowIdentifierNames`](http://jscs.info/rule/disallowIdentifierNames)
+  - [3.3](#objects--reserved-words-2) 用一些可读性强的同义词来代替你想要使用的保留字。 jscs: [`disallowIdentifierNames`](http://jscs.info/rule/disallowIdentifierNames)
 
     ```javascript
     // 差评
@@ -199,9 +199,9 @@
     ```
 
   <a name="es6-computed-properties"></a><a name="3.4"></a>
-  - [3.4](#es6-computed-properties) Use computed property names when creating objects with dynamic property names.
+  - [3.4](#es6-computed-properties) 创建有动态属性名的对象时，使用特性：可被计算属性名称（注：代码中方括号部分）
 
-    > Why? They allow you to define all the properties of an object in one place.
+    > 什么鬼？这样的话，你可以在一个地方定义所有的对象属性
 
     ```javascript
 
@@ -225,7 +225,7 @@
     ```
 
   <a name="es6-object-shorthand"></a><a name="3.5"></a>
-  - [3.5](#es6-object-shorthand) Use object method shorthand. eslint: [`object-shorthand`](http://eslint.org/docs/rules/object-shorthand.html) jscs: [`requireEnhancedObjectLiterals`](http://jscs.info/rule/requireEnhancedObjectLiterals)
+  - [3.5](#es6-object-shorthand) 使用对象方法的简写写法。 eslint: [`object-shorthand`](http://eslint.org/docs/rules/object-shorthand.html) jscs: [`requireEnhancedObjectLiterals`](http://jscs.info/rule/requireEnhancedObjectLiterals)
 
     ```javascript
     // 差评
@@ -248,9 +248,9 @@
     ```
 
   <a name="es6-object-concise"></a><a name="3.6"></a>
-  - [3.6](#es6-object-concise) Use property value shorthand. eslint: [`object-shorthand`](http://eslint.org/docs/rules/object-shorthand.html) jscs: [`requireEnhancedObjectLiterals`](http://jscs.info/rule/requireEnhancedObjectLiterals)
+  - [3.6](#es6-object-concise) 使用对象属性值的简写写法。 eslint: [`object-shorthand`](http://eslint.org/docs/rules/object-shorthand.html) jscs: [`requireEnhancedObjectLiterals`](http://jscs.info/rule/requireEnhancedObjectLiterals)
 
-    > Why? It is shorter to write and descriptive.
+    > 为什么？这样写更短更有力！（原话好像不是这么说的吧）
 
     ```javascript
     const lukeSkywalker = 'Luke Skywalker';
@@ -267,9 +267,9 @@
     ```
 
   <a name="objects--grouped-shorthand"></a><a name="3.7"></a>
-  - [3.7](#objects--grouped-shorthand) Group your shorthand properties at the beginning of your object declaration.
+  - [3.7](#objects--grouped-shorthand) 把简写的属性放在一起，然后写在对象的开头处。
 
-    > Why? It's easier to tell which properties are using the shorthand.
+    > 为毛？这样能清楚地分辨哪些属性使用了简写。
 
     ```javascript
     const anakinSkywalker = 'Anakin Skywalker';
@@ -297,7 +297,7 @@
     ```
 
   <a name="objects-quoted-props"></a><a name="3.8"></a>
-  - [3.8](#objects-quoted-props) Only quote properties that are invalid identifiers. eslint: [`quote-props`](http://eslint.org/docs/rules/quote-props.html) jscs: [`disallowQuotedKeysInObjects`](http://jscs.info/rule/disallowQuotedKeysInObjects)
+  - [3.8](#objects-quoted-props) 只有不合法标识符Only quote properties that are invalid identifiers. eslint: [`quote-props`](http://eslint.org/docs/rules/quote-props.html) jscs: [`disallowQuotedKeysInObjects`](http://jscs.info/rule/disallowQuotedKeysInObjects)
 
   > Why? In general we consider it subjectively easier to read. It improves syntax highlighting, and is also more easily optimized by many JS engines.
 
