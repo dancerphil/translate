@@ -105,11 +105,11 @@
     > 为毛？ 这就确保了你不会对引用(reference)重新赋值，否则一旦出现 bug ，你根本不知道哪里有错，半天也 de 不出来
 
     ```javascript
-    // 差评 bad
+    // 差评
     var a = 1;
     var b = 2;
 
-    // 好评 good
+    // 好评
     const a = 1;
     const b = 2;
     ```
@@ -120,13 +120,13 @@
     > 为毛？ `let` 是块级作用域变量，而 `var` 是函数作用域变量，那你还不快用 `let` ？ // TODO for循环函数注册bug
 
     ```javascript
-    // 差评 bad
+    // 差评
     var count = 1;
     if (true) {
       count += 1;
     }
 
-    // 好评 good, use the let.
+    // 好评, use the let.
     let count = 1;
     if (true) {
       count += 1;
@@ -154,10 +154,10 @@
   - [3.1](#objects--no-new) 使用能让人看懂的，字面的，自解释的语法来创建对象。 eslint: [`no-new-object`](http://eslint.org/docs/rules/no-new-object.html)
 
     ```javascript
-    // 差评 bad
+    // 差评
     const item = new Object();
 
-    // 好评 good
+    // 好评
     const item = {};
     ```
 
@@ -165,13 +165,13 @@
   - [3.2](#objects--reserved-words) 如果你的代码在浏览器环境下执行，别使用 [保留字 reserved words](http://es5.github.io/#x7.6.1) 作为键值。随便来个 IE8 ，它就爆炸了。 [更多信息](https://github.com/airbnb/javascript/issues/61)。而在ES6模块中使用或者在服务器端使用时，毛事没有。 jscs: [`disallowIdentifierNames`](http://jscs.info/rule/disallowIdentifierNames)
 
     ```javascript
-    // 差评 bad
+    // 差评
     const superman = {
       default: { clark: 'kent' },
       private: true,
     };
 
-    // 好评 good
+    // 好评
     const superman = {
       defaults: { clark: 'kent' },
       hidden: true,
@@ -182,17 +182,17 @@
   - [3.3](#objects--reserved-words-2) Use readable synonyms in place of reserved words. jscs: [`disallowIdentifierNames`](http://jscs.info/rule/disallowIdentifierNames)
 
     ```javascript
-    // 差评 bad
+    // 差评
     const superman = {
       class: 'alien',
     };
 
-    // 差评 bad
+    // 差评
     const superman = {
       klass: 'alien',
     };
 
-    // 好评 good
+    // 好评
     const superman = {
       type: 'alien',
     };
@@ -209,14 +209,14 @@
       return `a key named ${k}`;
     }
 
-    // 差评 bad
+    // 差评
     const obj = {
       id: 5,
       name: 'San Francisco',
     };
     obj[getKey('enabled')] = true;
 
-    // 好评 good
+    // 好评
     const obj = {
       id: 5,
       name: 'San Francisco',
@@ -228,7 +228,7 @@
   - [3.5](#es6-object-shorthand) Use object method shorthand. eslint: [`object-shorthand`](http://eslint.org/docs/rules/object-shorthand.html) jscs: [`requireEnhancedObjectLiterals`](http://jscs.info/rule/requireEnhancedObjectLiterals)
 
     ```javascript
-    // 差评 bad
+    // 差评
     const atom = {
       value: 1,
 
@@ -237,7 +237,7 @@
       },
     };
 
-    // 好评 good
+    // 好评
     const atom = {
       value: 1,
 
@@ -255,12 +255,12 @@
     ```javascript
     const lukeSkywalker = 'Luke Skywalker';
 
-    // 差评 bad
+    // 差评
     const obj = {
       lukeSkywalker: lukeSkywalker,
     };
 
-    // 好评 good
+    // 好评
     const obj = {
       lukeSkywalker,
     };
@@ -275,7 +275,7 @@
     const anakinSkywalker = 'Anakin Skywalker';
     const lukeSkywalker = 'Luke Skywalker';
 
-    // 差评 bad
+    // 差评
     const obj = {
       episodeOne: 1,
       twoJediWalkIntoACantina: 2,
@@ -285,7 +285,7 @@
       anakinSkywalker,
     };
 
-    // 好评 good
+    // 好评
     const obj = {
       lukeSkywalker,
       anakinSkywalker,
@@ -302,14 +302,14 @@
   > Why? In general we consider it subjectively easier to read. It improves syntax highlighting, and is also more easily optimized by many JS engines.
 
   ```javascript
-  // 差评 bad
+  // 差评
   const bad = {
     'foo': 3,
     'bar': 4,
     'data-blah': 5,
   };
 
-  // 好评 good
+  // 好评
   const good = {
     foo: 3,
     bar: 4,
@@ -325,10 +325,10 @@
   - [4.1](#arrays--literals) Use the literal syntax for array creation. eslint: [`no-array-constructor`](http://eslint.org/docs/rules/no-array-constructor.html)
 
     ```javascript
-    // 差评 bad
+    // 差评
     const items = new Array();
 
-    // 好评 good
+    // 好评
     const items = [];
     ```
 
@@ -338,10 +338,10 @@
     ```javascript
     const someStack = [];
 
-    // 差评 bad
+    // 差评
     someStack[someStack.length] = 'abracadabra';
 
-    // 好评 good
+    // 好评
     someStack.push('abracadabra');
     ```
 
@@ -349,7 +349,7 @@
   - [4.3](#es6-array-spreads) Use array spreads `...` to copy arrays.
 
     ```javascript
-    // 差评 bad
+    // 差评
     const len = items.length;
     const itemsCopy = [];
     let i;
@@ -358,7 +358,7 @@
       itemsCopy[i] = items[i];
     }
 
-    // 好评 good
+    // 好评
     const itemsCopy = [...items];
     ```
 
@@ -374,23 +374,23 @@
   - [4.5](#arrays--callback-return) Use return statements in array method callbacks. It's ok to omit the return if the function body consists of a single statement following [8.2](#8.2). eslint: [`array-callback-return`](http://eslint.org/docs/rules/array-callback-return)
 
     ```javascript
-    // 好评 good
+    // 好评
     [1, 2, 3].map((x) => {
       const y = x + 1;
       return x * y;
     });
 
-    // 好评 good
+    // 好评
     [1, 2, 3].map(x => x + 1);
 
-    // 差评 bad
+    // 差评
     const flat = {};
     [[0, 1], [2, 3], [4, 5]].reduce((memo, item, index) => {
       const flatten = memo.concat(item);
       flat[index] = memo.concat(item);
     });
 
-    // 好评 good
+    // 好评
     const flat = {};
     [[0, 1], [2, 3], [4, 5]].reduce((memo, item, index) => {
       const flatten = memo.concat(item);
@@ -398,7 +398,7 @@
       return flatten;
     });
 
-    // 差评 bad
+    // 差评
     inbox.filter((msg) => {
       const { subject, author } = msg;
       if (subject === 'Mockingbird') {
@@ -408,7 +408,7 @@
       }
     });
 
-    // 好评 good
+    // 好评
     inbox.filter((msg) => {
       const { subject, author } = msg;
       if (subject === 'Mockingbird') {
@@ -429,7 +429,7 @@
     > Why? Destructuring saves you from creating temporary references for those properties.
 
     ```javascript
-    // 差评 bad
+    // 差评
     function getFullName(user) {
       const firstName = user.firstName;
       const lastName = user.lastName;
@@ -437,13 +437,13 @@
       return `${firstName} ${lastName}`;
     }
 
-    // 好评 good
+    // 好评
     function getFullName(user) {
       const { firstName, lastName } = user;
       return `${firstName} ${lastName}`;
     }
 
-    // 好评如潮 best
+    // 好评如潮
     function getFullName({ firstName, lastName }) {
       return `${firstName} ${lastName}`;
     }
@@ -455,11 +455,11 @@
     ```javascript
     const arr = [1, 2, 3, 4];
 
-    // 差评 bad
+    // 差评
     const first = arr[0];
     const second = arr[1];
 
-    // 好评 good
+    // 好评
     const [first, second] = arr;
     ```
 
@@ -469,7 +469,7 @@
     > Why? You can add new properties over time or change the order of things without breaking call sites.
 
     ```javascript
-    // 差评 bad
+    // 差评
     function processInput(input) {
       // then a miracle occurs
       return [left, right, top, bottom];
@@ -478,7 +478,7 @@
     // the caller needs to think about the order of return data
     const [left, __, top] = processInput(input);
 
-    // 好评 good
+    // 好评
     function processInput(input) {
       // then a miracle occurs
       return { left, right, top, bottom };
@@ -497,10 +497,10 @@
   - [6.1](#strings--quotes) Use single quotes `''` for strings. eslint: [`quotes`](http://eslint.org/docs/rules/quotes.html) jscs: [`validateQuoteMarks`](http://jscs.info/rule/validateQuoteMarks)
 
     ```javascript
-    // 差评 bad
+    // 差评
     const name = "Capt. Janeway";
 
-    // 好评 good
+    // 好评
     const name = 'Capt. Janeway';
     ```
 
@@ -511,16 +511,16 @@
   - [6.3](#strings--concat-perf) Note: If overused, long strings with concatenation could impact performance. [jsPerf](http://jsperf.com/ya-string-concat) & [Discussion](https://github.com/airbnb/javascript/issues/40).
 
     ```javascript
-    // 差评 bad
+    // 差评
     const errorMessage = 'This is a super long error that was thrown because of Batman. When you stop to think about how Batman had anything to do with this, you would get nowhere fast.';
 
-    // 差评 bad
+    // 差评
     const errorMessage = 'This is a super long error that was thrown because \
     of Batman. When you stop to think about how Batman had anything to do \
     with this, you would get nowhere \
     fast.';
 
-    // 好评 good
+    // 好评
     const errorMessage = 'This is a super long error that was thrown because ' +
       'of Batman. When you stop to think about how Batman had anything to do ' +
       'with this, you would get nowhere fast.';
@@ -532,22 +532,22 @@
     > Why? Template strings give you a readable, concise syntax with proper newlines and string interpolation features.
 
     ```javascript
-    // 差评 bad
+    // 差评
     function sayHi(name) {
       return 'How are you, ' + name + '?';
     }
 
-    // 差评 bad
+    // 差评
     function sayHi(name) {
       return ['How are you, ', name, '?'].join();
     }
 
-    // 差评 bad
+    // 差评
     function sayHi(name) {
       return `How are you, ${ name }?`;
     }
 
-    // 好评 good
+    // 好评
     function sayHi(name) {
       return `How are you, ${name}?`;
     }
@@ -562,10 +562,10 @@
     > Why? Backslashes harm readability, thus they should only be present when necessary.
 
     ```javascript
-    // 差评 bad
+    // 差评
     const foo = '\'this\' \i\s \"quoted\"';
 
-    // 好评 good
+    // 好评
     const foo = '\'this\' is "quoted"';
     const foo = `'this' is "quoted"`;
     ```
@@ -581,11 +581,11 @@
     > Why? Function declarations are named, so they're easier to identify in call stacks. Also, the whole body of a function declaration is hoisted, whereas only the reference of a function expression is hoisted. This rule makes it possible to always use [Arrow Functions](#arrow-functions) in place of function expressions.
 
     ```javascript
-    // 差评 bad
+    // 差评
     const foo = function () {
     };
 
-    // 好评 good
+    // 好评
     function foo() {
     }
     ```
@@ -609,14 +609,14 @@
   - [7.4](#functions--note-on-blocks) **Note:** ECMA-262 defines a `block` as a list of statements. A function declaration is not a statement. [Read ECMA-262's note on this issue](http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf#page=97).
 
     ```javascript
-    // 差评 bad
+    // 差评
     if (currentUser) {
       function test() {
         console.log('Nope.');
       }
     }
 
-    // 好评 good
+    // 好评
     let test;
     if (currentUser) {
       test = () => {
@@ -629,12 +629,12 @@
   - [7.5](#functions--arguments-shadow) Never name a parameter `arguments`. This will take precedence over the `arguments` object that is given to every function scope.
 
     ```javascript
-    // 差评 bad
+    // 差评
     function nope(name, options, arguments) {
       // ...stuff...
     }
 
-    // 好评 good
+    // 好评
     function yup(name, options, args) {
       // ...stuff...
     }
@@ -646,13 +646,13 @@
     > Why? `...` is explicit about which arguments you want pulled. Plus, rest arguments are a real Array, and not merely Array-like like `arguments`.
 
     ```javascript
-    // 差评 bad
+    // 差评
     function concatenateAll() {
       const args = Array.prototype.slice.call(arguments);
       return args.join('');
     }
 
-    // 好评 good
+    // 好评
     function concatenateAll(...args) {
       return args.join('');
     }
@@ -679,7 +679,7 @@
       // ...
     }
 
-    // 好评 good
+    // 好评
     function handleThings(opts = {}) {
       // ...
     }
@@ -692,7 +692,7 @@
 
     ```javascript
     var b = 1;
-    // 差评 bad
+    // 差评
     function count(a = b++) {
       console.log(a);
     }
@@ -706,12 +706,12 @@
   - [7.9](#functions--defaults-last) Always put default parameters last.
 
     ```javascript
-    // 差评 bad
+    // 差评
     function handleThings(opts = {}, name) {
       // ...
     }
 
-    // 好评 good
+    // 好评
     function handleThings(name, opts = {}) {
       // ...
     }
@@ -723,7 +723,7 @@
     > Why? Creating a function in this way evaluates a string similarly to eval(), which opens vulnerabilities.
 
     ```javascript
-    // 差评 bad
+    // 差评
     var add = new Function('a', 'b', 'return a + b');
 
     // still bad
@@ -736,12 +736,12 @@
     > Why? Consistency is good, and you shouldn’t have to add or remove a space when adding or removing a name.
 
     ```javascript
-    // 差评 bad
+    // 差评
     const f = function(){};
     const g = function (){};
     const h = function() {};
 
-    // 好评 good
+    // 好评
     const x = function () {};
     const y = function a() {};
     ```
@@ -752,12 +752,12 @@
     > Why? Manipulating objects passed in as parameters can cause unwanted variable side effects in the original caller.
 
     ```javascript
-    // 差评 bad
+    // 差评
     function f1(obj) {
       obj.key = 1;
     };
 
-    // 好评 good
+    // 好评
     function f2(obj) {
       const key = Object.prototype.hasOwnProperty.call(obj, 'key') ? obj.key : 1;
     };
@@ -769,7 +769,7 @@
     > Why? Reassigning parameters can lead to unexpected behavior, especially when accessing the `arguments` object. It can also cause optimization issues, especially in V8.
 
     ```javascript
-    // 差评 bad
+    // 差评
     function f1(a) {
       a = 1;
     }
@@ -778,7 +778,7 @@
       if (!a) { a = 1; }
     }
 
-    // 好评 good
+    // 好评
     function f3(a) {
       const b = a || 1;
     }
@@ -799,13 +799,13 @@
     > Why not? If you have a fairly complicated function, you might move that logic out into its own function declaration.
 
     ```javascript
-    // 差评 bad
+    // 差评
     [1, 2, 3].map(function (x) {
       const y = x + 1;
       return x * y;
     });
 
-    // 好评 good
+    // 好评
     [1, 2, 3].map((x) => {
       const y = x + 1;
       return x * y;
@@ -820,16 +820,16 @@
     > Why not? If you plan on returning an object.
 
     ```javascript
-    // 差评 bad
+    // 差评
     [1, 2, 3].map(number => {
       const nextNumber = number + 1;
       `A string containing the ${nextNumber}.`;
     });
 
-    // 好评 good
+    // 好评
     [1, 2, 3].map(number => `A string containing the ${number}.`);
 
-    // 好评 good
+    // 好评
     [1, 2, 3].map((number) => {
       const nextNumber = number + 1;
       return `A string containing the ${nextNumber}.`;
@@ -842,13 +842,13 @@
     > Why? It shows clearly where the function starts and ends.
 
     ```js
-    // 差评 bad
+    // 差评
     [1, 2, 3].map(number => 'As time went by, the string containing the ' +
       `${number} became much longer. So we needed to break it over multiple ` +
       'lines.'
     );
 
-    // 好评 good
+    // 好评
     [1, 2, 3].map(number => (
       `As time went by, the string containing the ${number} became much ` +
       'longer. So we needed to break it over multiple lines.'
@@ -861,25 +861,25 @@
     > Why? Less visual clutter.
 
     ```js
-    // 差评 bad
+    // 差评
     [1, 2, 3].map((x) => x * x);
 
-    // 好评 good
+    // 好评
     [1, 2, 3].map(x => x * x);
 
-    // 好评 good
+    // 好评
     [1, 2, 3].map(number => (
       `A long string with the ${number}. It’s so long that we’ve broken it ` +
       'over multiple lines!'
     ));
 
-    // 差评 bad
+    // 差评
     [1, 2, 3].map(x => {
       const y = x + 1;
       return x * y;
     });
 
-    // 好评 good
+    // 好评
     [1, 2, 3].map((x) => {
       const y = x + 1;
       return x * y;
@@ -890,13 +890,13 @@
   - [8.5](#arrows--confusing) Avoid confusing arrow function syntax (`=>`) with comparison operators (`<=`, `>=`). eslint: [`no-confusing-arrow`](http://eslint.org/docs/rules/no-confusing-arrow)
 
     ```js
-    // 差评 bad
+    // 差评
     const itemHeight = item => item.height > 256 ? item.largeSize : item.smallSize;
 
-    // 差评 bad
+    // 差评
     const itemHeight = (item) => item.height > 256 ? item.largeSize : item.smallSize;
 
-    // 好评 good
+    // 好评
     const itemHeight = (item) => { return item.height > 256 ? item.largeSize : item.smallSize; }
     ```
 
@@ -911,7 +911,7 @@
     > Why? `class` syntax is more concise and easier to reason about.
 
     ```javascript
-    // 差评 bad
+    // 差评
     function Queue(contents = []) {
       this.queue = [...contents];
     }
@@ -922,7 +922,7 @@
     };
 
 
-    // 好评 good
+    // 好评
     class Queue {
       constructor(contents = []) {
         this.queue = [...contents];
@@ -941,7 +941,7 @@
     > Why? It is a built-in way to inherit prototype functionality without breaking `instanceof`.
 
     ```javascript
-    // 差评 bad
+    // 差评
     const inherits = require('inherits');
     function PeekableQueue(contents) {
       Queue.apply(this, contents);
@@ -951,7 +951,7 @@
       return this._queue[0];
     }
 
-    // 好评 good
+    // 好评
     class PeekableQueue extends Queue {
       peek() {
         return this._queue[0];
@@ -963,7 +963,7 @@
   - [9.3](#constructors--chaining) Methods can return `this` to help with method chaining.
 
     ```javascript
-    // 差评 bad
+    // 差评
     Jedi.prototype.jump = function () {
       this.jumping = true;
       return true;
@@ -977,7 +977,7 @@
     luke.jump(); // => true
     luke.setHeight(20); // => undefined
 
-    // 好评 good
+    // 好评
     class Jedi {
       jump() {
         this.jumping = true;
@@ -1020,7 +1020,7 @@
   - [9.5](#constructors--no-useless) Classes have a default constructor if one is not specified. An empty constructor function or one that just delegates to a parent class is unnecessary. eslint: [`no-useless-constructor`](http://eslint.org/docs/rules/no-useless-constructor)
 
     ```javascript
-    // 差评 bad
+    // 差评
     class Jedi {
       constructor() {}
 
@@ -1029,14 +1029,14 @@
       }
     }
 
-    // 差评 bad
+    // 差评
     class Rey extends Jedi {
       constructor(...args) {
         super(...args);
       }
     }
 
-    // 好评 good
+    // 好评
     class Rey extends Jedi {
       constructor(...args) {
         super(...args);
@@ -1051,18 +1051,18 @@
     > Why? Duplicate class member declarations will silently prefer the last one - having duplicates is almost certainly a bug.
 
     ```javascript
-    // 差评 bad
+    // 差评
     class Foo {
       bar() { return 1; }
       bar() { return 2; }
     }
 
-    // 好评 good
+    // 好评
     class Foo {
       bar() { return 1; }
     }
 
-    // 好评 good
+    // 好评
     class Foo {
       bar() { return 2; }
     }
@@ -1080,7 +1080,7 @@
     > Why? Modules are the future, let's start using the future now.
 
     ```javascript
-    // 差评 bad
+    // 差评
     const AirbnbStyleGuide = require('./AirbnbStyleGuide');
     module.exports = AirbnbStyleGuide.es6;
 
@@ -1088,7 +1088,7 @@
     import AirbnbStyleGuide from './AirbnbStyleGuide';
     export default AirbnbStyleGuide.es6;
 
-    // 好评如潮 best
+    // 好评如潮
     import { es6 } from './AirbnbStyleGuide';
     export default es6;
     ```
@@ -1099,10 +1099,10 @@
     > Why? This makes sure you have a single default export.
 
     ```javascript
-    // 差评 bad
+    // 差评
     import * as AirbnbStyleGuide from './AirbnbStyleGuide';
 
-    // 好评 good
+    // 好评
     import AirbnbStyleGuide from './AirbnbStyleGuide';
     ```
 
@@ -1112,11 +1112,11 @@
     > Why? Although the one-liner is concise, having one clear way to import and one clear way to export makes things consistent.
 
     ```javascript
-    // 差评 bad
+    // 差评
     // filename es6.js
     export { es6 as default } from './airbnbStyleGuide';
 
-    // 好评 good
+    // 好评
     // filename es6.js
     import { es6 } from './AirbnbStyleGuide';
     export default es6;
@@ -1128,15 +1128,15 @@
     > Why? Having multiple lines that import from the same path can make code harder to maintain.
 
     ```javascript
-    // 差评 bad
+    // 差评
     import foo from 'foo';
     // … some other imports … //
     import { named1, named2 } from 'foo';
 
-    // 好评 good
+    // 好评
     import foo, { named1, named2 } from 'foo';
 
-    // 好评 good
+    // 好评
     import foo, {
       named1,
       named2,
@@ -1155,7 +1155,7 @@
     ```javascript
     const numbers = [1, 2, 3, 4, 5];
 
-    // 差评 bad
+    // 差评
     let sum = 0;
     for (let num of numbers) {
       sum += num;
@@ -1163,12 +1163,12 @@
 
     sum === 15;
 
-    // 好评 good
+    // 好评
     let sum = 0;
     numbers.forEach(num => sum += num);
     sum === 15;
 
-    // 好评如潮 best (use the functional force)
+    // 好评如潮 (use the functional force)
     const sum = numbers.reduce((total, num) => total + num, 0);
     sum === 15;
     ```
@@ -1192,10 +1192,10 @@
       age: 28,
     };
 
-    // 差评 bad
+    // 差评
     const isJedi = luke['jedi'];
 
-    // 好评 good
+    // 好评
     const isJedi = luke.jedi;
     ```
 
@@ -1224,10 +1224,10 @@
   - [13.1](#variables--const) Always use `const` to declare variables. Not doing so will result in global variables. We want to avoid polluting the global namespace. Captain Planet warned us of that.
 
     ```javascript
-    // 差评 bad
+    // 差评
     superPower = new SuperPower();
 
-    // 好评 good
+    // 好评
     const superPower = new SuperPower();
     ```
 
@@ -1237,18 +1237,18 @@
     > Why? It's easier to add new variable declarations this way, and you never have to worry about swapping out a `;` for a `,` or introducing punctuation-only diffs. You can also step through each declaration with the debugger, instead of jumping through all of them at once.
 
     ```javascript
-    // 差评 bad
+    // 差评
     const items = getItems(),
         goSportsTeam = true,
         dragonball = 'z';
 
-    // 差评 bad
+    // 差评
     // (compare to above, and try to spot the mistake)
     const items = getItems(),
         goSportsTeam = true;
         dragonball = 'z';
 
-    // 好评 good
+    // 好评
     const items = getItems();
     const goSportsTeam = true;
     const dragonball = 'z';
@@ -1260,19 +1260,19 @@
     > Why? This is helpful when later on you might need to assign a variable depending on one of the previous assigned variables.
 
     ```javascript
-    // 差评 bad
+    // 差评
     let i, len, dragonball,
         items = getItems(),
         goSportsTeam = true;
 
-    // 差评 bad
+    // 差评
     let i;
     const items = getItems();
     let dragonball;
     const goSportsTeam = true;
     let len;
 
-    // 好评 good
+    // 好评
     const goSportsTeam = true;
     const items = getItems();
     let dragonball;
@@ -1286,7 +1286,7 @@
     > Why? `let` and `const` are block scoped and not function scoped.
 
     ```javascript
-    // 差评 bad - unnecessary function call
+    // 差评 - unnecessary function call
     function checkName(hasName) {
       const name = getName();
 
@@ -1302,7 +1302,7 @@
       return name;
     }
 
-    // 好评 good
+    // 好评
     function checkName(hasName) {
       if (hasName === 'test') {
         return false;
@@ -1448,22 +1448,22 @@
   - [15.3](#comparison--shortcuts) Use shortcuts.
 
     ```javascript
-    // 差评 bad
+    // 差评
     if (name !== '') {
       // ...stuff...
     }
 
-    // 好评 good
+    // 好评
     if (name) {
       // ...stuff...
     }
 
-    // 差评 bad
+    // 差评
     if (collection.length > 0) {
       // ...stuff...
     }
 
-    // 好评 good
+    // 好评
     if (collection.length) {
       // ...stuff...
     }
@@ -1480,7 +1480,7 @@
   eslint rules: [`no-case-declarations`](http://eslint.org/docs/rules/no-case-declarations.html).
 
     ```javascript
-    // 差评 bad
+    // 差评
     switch (foo) {
       case 1:
         let x = 1;
@@ -1495,7 +1495,7 @@
         class C {}
     }
 
-    // 好评 good
+    // 好评
     switch (foo) {
       case 1: {
         let x = 1;
@@ -1524,7 +1524,7 @@
     eslint rules: [`no-nested-ternary`](http://eslint.org/docs/rules/no-nested-ternary.html).
 
     ```javascript
-    // 差评 bad
+    // 差评
     const foo = maybe1 > maybe2
       ? "bar"
       : value1 > value2 ? "baz" : null;
@@ -1536,7 +1536,7 @@
       ? 'bar'
       : maybeNull;
 
-    // 好评如潮 best
+    // 好评如潮
     const maybeNull = value1 > value2 ? 'baz' : null;
 
     const foo = maybe1 > maybe2 ? 'bar' : maybeNull;
@@ -1548,12 +1548,12 @@
     eslint rules: [`no-unneeded-ternary`](http://eslint.org/docs/rules/no-unneeded-ternary.html).
 
     ```javascript
-    // 差评 bad
+    // 差评
     const foo = a ? a : b;
     const bar = c ? true : false;
     const baz = c ? false : true;
 
-    // 好评 good
+    // 好评
     const foo = a || b;
     const bar = !!c;
     const baz = !c;
@@ -1568,22 +1568,22 @@
   - [16.1](#blocks--braces) Use braces with all multi-line blocks.
 
     ```javascript
-    // 差评 bad
+    // 差评
     if (test)
       return false;
 
-    // 好评 good
+    // 好评
     if (test) return false;
 
-    // 好评 good
+    // 好评
     if (test) {
       return false;
     }
 
-    // 差评 bad
+    // 差评
     function foo() { return false; }
 
-    // 好评 good
+    // 好评
     function bar() {
       return false;
     }
@@ -1593,7 +1593,7 @@
   - [16.2](#blocks--cuddled-elses) If you're using multi-line blocks with `if` and `else`, put `else` on the same line as your `if` block's closing brace. eslint: [`brace-style`](http://eslint.org/docs/rules/brace-style.html) jscs:  [`disallowNewlineBeforeBlockStatements`](http://jscs.info/rule/disallowNewlineBeforeBlockStatements)
 
     ```javascript
-    // 差评 bad
+    // 差评
     if (test) {
       thing1();
       thing2();
@@ -1602,7 +1602,7 @@
       thing3();
     }
 
-    // 好评 good
+    // 好评
     if (test) {
       thing1();
       thing2();
@@ -1621,7 +1621,7 @@
   - [17.1](#comments--multiline) Use `/** ... */` for multi-line comments. Include a description, specify types and values for all parameters and return values.
 
     ```javascript
-    // 差评 bad
+    // 差评
     // make() returns a new element
     // based on the passed in tag name
     //
@@ -1634,7 +1634,7 @@
       return element;
     }
 
-    // 好评 good
+    // 好评
     /**
      * make() returns a new element
      * based on the passed in tag name
@@ -1654,14 +1654,14 @@
   - [17.2](#comments--singleline) Use `//` for single line comments. Place single line comments on a newline above the subject of the comment. Put an empty line before the comment unless it's on the first line of a block.
 
     ```javascript
-    // 差评 bad
+    // 差评
     const active = true;  // is current tab
 
-    // 好评 good
+    // 好评
     // is current tab
     const active = true;
 
-    // 差评 bad
+    // 差评
     function getType() {
       console.log('fetching type...');
       // set the default type to 'no type'
@@ -1670,7 +1670,7 @@
       return type;
     }
 
-    // 好评 good
+    // 好评
     function getType() {
       console.log('fetching type...');
 
@@ -1729,17 +1729,17 @@
   - [18.1](#whitespace--spaces) Use soft tabs set to 2 spaces. eslint: [`indent`](http://eslint.org/docs/rules/indent.html) jscs: [`validateIndentation`](http://jscs.info/rule/validateIndentation)
 
     ```javascript
-    // 差评 bad
+    // 差评
     function foo() {
     ∙∙∙∙const name;
     }
 
-    // 差评 bad
+    // 差评
     function bar() {
     ∙const name;
     }
 
-    // 好评 good
+    // 好评
     function baz() {
     ∙∙const name;
     }
@@ -1749,23 +1749,23 @@
   - [18.2](#whitespace--before-blocks) Place 1 space before the leading brace. eslint: [`space-before-blocks`](http://eslint.org/docs/rules/space-before-blocks.html) jscs: [`requireSpaceBeforeBlockStatements`](http://jscs.info/rule/requireSpaceBeforeBlockStatements)
 
     ```javascript
-    // 差评 bad
+    // 差评
     function test(){
       console.log('test');
     }
 
-    // 好评 good
+    // 好评
     function test() {
       console.log('test');
     }
 
-    // 差评 bad
+    // 差评
     dog.set('attr',{
       age: '1 year',
       breed: 'Bernese Mountain Dog',
     });
 
-    // 好评 good
+    // 好评
     dog.set('attr', {
       age: '1 year',
       breed: 'Bernese Mountain Dog',
@@ -1776,22 +1776,22 @@
   - [18.3](#whitespace--around-keywords) Place 1 space before the opening parenthesis in control statements (`if`, `while` etc.). Place no space between the argument list and the function name in function calls and declarations. eslint: [`keyword-spacing`](http://eslint.org/docs/rules/keyword-spacing.html) jscs: [`requireSpaceAfterKeywords`](http://jscs.info/rule/requireSpaceAfterKeywords)
 
     ```javascript
-    // 差评 bad
+    // 差评
     if(isJedi) {
       fight ();
     }
 
-    // 好评 good
+    // 好评
     if (isJedi) {
       fight();
     }
 
-    // 差评 bad
+    // 差评
     function fight () {
       console.log ('Swooosh!');
     }
 
-    // 好评 good
+    // 好评
     function fight() {
       console.log('Swooosh!');
     }
@@ -1801,10 +1801,10 @@
   - [18.4](#whitespace--infix-ops) Set off operators with spaces. eslint: [`space-infix-ops`](http://eslint.org/docs/rules/space-infix-ops.html) jscs: [`requireSpaceBeforeBinaryOperators`](http://jscs.info/rule/requireSpaceBeforeBinaryOperators), [`requireSpaceAfterBinaryOperators`](http://jscs.info/rule/requireSpaceAfterBinaryOperators)
 
     ```javascript
-    // 差评 bad
+    // 差评
     const x=y+5;
 
-    // 好评 good
+    // 好评
     const x = y + 5;
     ```
 
@@ -1812,14 +1812,14 @@
   - [18.5](#whitespace--newline-at-end) End files with a single newline character.
 
     ```javascript
-    // 差评 bad
+    // 差评
     (function (global) {
       // ...stuff...
     })(this);
     ```
 
     ```javascript
-    // 差评 bad
+    // 差评
     (function (global) {
       // ...stuff...
     })(this);↵
@@ -1827,7 +1827,7 @@
     ```
 
     ```javascript
-    // 好评 good
+    // 好评
     (function (global) {
       // ...stuff...
     })(this);↵
@@ -1838,10 +1838,10 @@
     emphasizes that the line is a method call, not a new statement. eslint: [`newline-per-chained-call`](http://eslint.org/docs/rules/newline-per-chained-call) [`no-whitespace-before-property`](http://eslint.org/docs/rules/no-whitespace-before-property)
 
     ```javascript
-    // 差评 bad
+    // 差评
     $('#items').find('.selected').highlight().end().find('.open').updateCount();
 
-    // 差评 bad
+    // 差评
     $('#items').
       find('.selected').
         highlight().
@@ -1849,7 +1849,7 @@
       find('.open').
         updateCount();
 
-    // 好评 good
+    // 好评
     $('#items')
       .find('.selected')
         .highlight()
@@ -1857,13 +1857,13 @@
       .find('.open')
         .updateCount();
 
-    // 差评 bad
+    // 差评
     const leds = stage.selectAll('.led').data(data).enter().append('svg:svg').classed('led', true)
         .attr('width', (radius + margin) * 2).append('svg:g')
         .attr('transform', 'translate(' + (radius + margin) + ',' + (radius + margin) + ')')
         .call(tron.led);
 
-    // 好评 good
+    // 好评
     const leds = stage.selectAll('.led')
         .data(data)
       .enter().append('svg:svg')
@@ -1873,7 +1873,7 @@
         .attr('transform', 'translate(' + (radius + margin) + ',' + (radius + margin) + ')')
         .call(tron.led);
 
-    // 好评 good
+    // 好评
     const leds = stage.selectAll('.led').data(data);
     ```
 
@@ -1881,20 +1881,20 @@
   - [18.7](#whitespace--after-blocks) Leave a blank line after blocks and before the next statement. jscs: [`requirePaddingNewLinesAfterBlocks`](http://jscs.info/rule/requirePaddingNewLinesAfterBlocks)
 
     ```javascript
-    // 差评 bad
+    // 差评
     if (foo) {
       return bar;
     }
     return baz;
 
-    // 好评 good
+    // 好评
     if (foo) {
       return bar;
     }
 
     return baz;
 
-    // 差评 bad
+    // 差评
     const obj = {
       foo() {
       },
@@ -1903,7 +1903,7 @@
     };
     return obj;
 
-    // 好评 good
+    // 好评
     const obj = {
       foo() {
       },
@@ -1914,7 +1914,7 @@
 
     return obj;
 
-    // 差评 bad
+    // 差评
     const arr = [
       function foo() {
       },
@@ -1923,7 +1923,7 @@
     ];
     return arr;
 
-    // 好评 good
+    // 好评
     const arr = [
       function foo() {
       },
@@ -1939,7 +1939,7 @@
   - [18.8](#whitespace--padded-blocks) Do not pad your blocks with blank lines. eslint: [`padded-blocks`](http://eslint.org/docs/rules/padded-blocks.html) jscs:  [`disallowPaddingNewlinesInBlocks`](http://jscs.info/rule/disallowPaddingNewlinesInBlocks)
 
     ```javascript
-    // 差评 bad
+    // 差评
     function bar() {
 
       console.log(foo);
@@ -1955,12 +1955,12 @@
 
     }
 
-    // 好评 good
+    // 好评
     function bar() {
       console.log(foo);
     }
 
-    // 好评 good
+    // 好评
     if (baz) {
       console.log(qux);
     } else {
@@ -1972,22 +1972,22 @@
   - [18.9](#whitespace--in-parens) Do not add spaces inside parentheses. eslint: [`space-in-parens`](http://eslint.org/docs/rules/space-in-parens.html) jscs: [`disallowSpacesInsideParentheses`](http://jscs.info/rule/disallowSpacesInsideParentheses)
 
     ```javascript
-    // 差评 bad
+    // 差评
     function bar( foo ) {
       return foo;
     }
 
-    // 好评 good
+    // 好评
     function bar(foo) {
       return foo;
     }
 
-    // 差评 bad
+    // 差评
     if ( foo ) {
       console.log(foo);
     }
 
-    // 好评 good
+    // 好评
     if (foo) {
       console.log(foo);
     }
@@ -1997,11 +1997,11 @@
   - [18.10](#whitespace--in-brackets) Do not add spaces inside brackets. eslint: [`array-bracket-spacing`](http://eslint.org/docs/rules/array-bracket-spacing.html) jscs: [`disallowSpacesInsideArrayBrackets`](http://jscs.info/rule/disallowSpacesInsideArrayBrackets)
 
     ```javascript
-    // 差评 bad
+    // 差评
     const foo = [ 1, 2, 3 ];
     console.log(foo[ 0 ]);
 
-    // 好评 good
+    // 好评
     const foo = [1, 2, 3];
     console.log(foo[0]);
     ```
@@ -2010,10 +2010,10 @@
   - [18.11](#whitespace--in-braces) Add spaces inside curly braces. eslint: [`object-curly-spacing`](http://eslint.org/docs/rules/object-curly-spacing.html) jscs: [`disallowSpacesInsideObjectBrackets`](http://jscs.info/rule/disallowSpacesInsideObjectBrackets)
 
     ```javascript
-    // 差评 bad
+    // 差评
     const foo = {clark: 'kent'};
 
-    // 好评 good
+    // 好评
     const foo = { clark: 'kent' };
     ```
 
@@ -2023,17 +2023,17 @@
     > Why? This ensures readability and maintainability.
 
     ```javascript
-    // 差评 bad
+    // 差评
     const foo = 'Whatever national crop flips the window. The cartoon reverts within the screw. Whatever wizard constrains a helpful ally. The counterpart ascends!';
 
-    // 差评 bad
+    // 差评
     $.ajax({ method: 'POST', url: 'https://airbnb.com/', data: { name: 'John' } }).done(() => console.log('Congratulations!')).fail(() => console.log('You have failed this city.'));
 
-    // 好评 good
+    // 好评
     const foo = 'Whatever national crop flips the window. The cartoon reverts within the screw. ' +
       'Whatever wizard constrains a helpful ally. The counterpart ascends!';
 
-    // 好评 good
+    // 好评
     $.ajax({
       method: 'POST',
       url: 'https://airbnb.com/',
@@ -2051,21 +2051,21 @@
   - [19.1](#commas--leading-trailing) Leading commas: **Nope.** eslint: [`comma-style`](http://eslint.org/docs/rules/comma-style.html) jscs: [`requireCommaBeforeLineBreak`](http://jscs.info/rule/requireCommaBeforeLineBreak)
 
     ```javascript
-    // 差评 bad
+    // 差评
     const story = [
         once
       , upon
       , aTime
     ];
 
-    // 好评 good
+    // 好评
     const story = [
       once,
       upon,
       aTime,
     ];
 
-    // 差评 bad
+    // 差评
     const hero = {
         firstName: 'Ada'
       , lastName: 'Lovelace'
@@ -2073,7 +2073,7 @@
       , superPower: 'computers'
     };
 
-    // 好评 good
+    // 好评
     const hero = {
       firstName: 'Ada',
       lastName: 'Lovelace',
@@ -2088,7 +2088,7 @@
     > Why? This leads to cleaner git diffs. Also, transpilers like Babel will remove the additional trailing comma in the transpiled code which means you don't have to worry about the [trailing comma problem](es5/README.md#commas) in legacy browsers.
 
     ```javascript
-    // 差评 bad - git diff without trailing comma
+    // 差评 - git diff without trailing comma
     const hero = {
          firstName: 'Florence',
     -    lastName: 'Nightingale'
@@ -2096,14 +2096,14 @@
     +    inventorOf: ['coxcomb graph', 'modern nursing']
     };
 
-    // 好评 good - git diff with trailing comma
+    // 好评 - git diff with trailing comma
     const hero = {
          firstName: 'Florence',
          lastName: 'Nightingale',
     +    inventorOf: ['coxcomb chart', 'modern nursing'],
     };
 
-    // 差评 bad
+    // 差评
     const hero = {
       firstName: 'Dana',
       lastName: 'Scully'
@@ -2114,7 +2114,7 @@
       'Superman'
     ];
 
-    // 好评 good
+    // 好评
     const hero = {
       firstName: 'Dana',
       lastName: 'Scully',
@@ -2135,19 +2135,19 @@
   - [20.1](#20.1) **Yup.** eslint: [`semi`](http://eslint.org/docs/rules/semi.html) jscs: [`requireSemicolons`](http://jscs.info/rule/requireSemicolons)
 
     ```javascript
-    // 差评 bad
+    // 差评
     (function () {
       const name = 'Skywalker'
       return name
     })()
 
-    // 好评 good
+    // 好评
     (function () {
       const name = 'Skywalker';
       return name;
     }());
 
-    // 好评 good, but legacy (guards against the function becoming an argument when two files with IIFEs are concatenated)
+    // 好评, but legacy (guards against the function becoming an argument when two files with IIFEs are concatenated)
     ;(() => {
       const name = 'Skywalker';
       return name;
@@ -2170,13 +2170,13 @@
     ```javascript
     // => this.reviewScore = 9;
 
-    // 差评 bad
+    // 差评
     const totalScore = this.reviewScore + ''; // invokes this.reviewScore.valueOf()
 
-    // 差评 bad
+    // 差评
     const totalScore = this.reviewScore.toString(); // isn't guaranteed to return a string
 
-    // 好评 good
+    // 好评
     const totalScore = String(this.reviewScore);
     ```
 
@@ -2186,22 +2186,22 @@
     ```javascript
     const inputValue = '4';
 
-    // 差评 bad
+    // 差评
     const val = new Number(inputValue);
 
-    // 差评 bad
+    // 差评
     const val = +inputValue;
 
-    // 差评 bad
+    // 差评
     const val = inputValue >> 0;
 
-    // 差评 bad
+    // 差评
     const val = parseInt(inputValue);
 
-    // 好评 good
+    // 好评
     const val = Number(inputValue);
 
-    // 好评 good
+    // 好评
     const val = parseInt(inputValue, 10);
     ```
 
@@ -2209,7 +2209,7 @@
   - [21.4](#coercion--comment-deviations) If for whatever reason you are doing something wild and `parseInt` is your bottleneck and need to use Bitshift for [performance reasons](http://jsperf.com/coercion-vs-casting/3), leave a comment explaining why and what you're doing.
 
     ```javascript
-    // 好评 good
+    // 好评
     /**
      * parseInt was the reason my code was slow.
      * Bitshifting the String to coerce it to a
@@ -2233,13 +2233,13 @@
     ```javascript
     const age = 0;
 
-    // 差评 bad
+    // 差评
     const hasAge = new Boolean(age);
 
-    // 好评 good
+    // 好评
     const hasAge = Boolean(age);
 
-    // 好评如潮 best
+    // 好评如潮
     const hasAge = !!age;
     ```
 
@@ -2252,12 +2252,12 @@
   - [22.1](#naming--descriptive) Avoid single letter names. Be descriptive with your naming.
 
     ```javascript
-    // 差评 bad
+    // 差评
     function q() {
       // ...stuff...
     }
 
-    // 好评 good
+    // 好评
     function query() {
       // ..stuff..
     }
@@ -2267,12 +2267,12 @@
   - [22.2](#naming--camelCase) Use camelCase when naming objects, functions, and instances. eslint: [`camelcase`](http://eslint.org/docs/rules/camelcase.html) jscs: [`requireCamelCaseOrUpperCaseIdentifiers`](http://jscs.info/rule/requireCamelCaseOrUpperCaseIdentifiers)
 
     ```javascript
-    // 差评 bad
+    // 差评
     const OBJEcttsssss = {};
     const this_is_my_object = {};
     function c() {}
 
-    // 好评 good
+    // 好评
     const thisIsMyObject = {};
     function thisIsMyFunction() {}
     ```
@@ -2281,7 +2281,7 @@
   - [22.3](#naming--PascalCase) Use PascalCase only when naming constructors or classes. eslint: [`new-cap`](http://eslint.org/docs/rules/new-cap.html) jscs: [`requireCapitalizedConstructors`](http://jscs.info/rule/requireCapitalizedConstructors)
 
     ```javascript
-    // 差评 bad
+    // 差评
     function user(options) {
       this.name = options.name;
     }
@@ -2290,7 +2290,7 @@
       name: 'nope',
     });
 
-    // 好评 good
+    // 好评
     class User {
       constructor(options) {
         this.name = options.name;
@@ -2308,12 +2308,12 @@
     > Why? JavaScript does not have the concept of privacy in terms of properties or methods. Although a leading underscore is a common convention to mean “private”, in fact, these properties are fully public, and as such, are part of your public API contract. This convention might lead developers to wrongly think that a change won't count as breaking, or that tests aren't needed. tl;dr: if you want something to be “private”, it must not be observably present.
 
     ```javascript
-    // 差评 bad
+    // 差评
     this.__firstName__ = 'Panda';
     this.firstName_ = 'Panda';
     this._firstName = 'Panda';
 
-    // 好评 good
+    // 好评
     this.firstName = 'Panda';
     ```
 
@@ -2321,7 +2321,7 @@
   - [22.5](#naming--self-this) Don't save references to `this`. Use arrow functions or Function#bind. jscs: [`disallowNodeTypes`](http://jscs.info/rule/disallowNodeTypes)
 
     ```javascript
-    // 差评 bad
+    // 差评
     function foo() {
       const self = this;
       return function () {
@@ -2329,7 +2329,7 @@
       };
     }
 
-    // 差评 bad
+    // 差评
     function foo() {
       const that = this;
       return function () {
@@ -2337,7 +2337,7 @@
       };
     }
 
-    // 好评 good
+    // 好评
     function foo() {
       return () => {
         console.log(this);
@@ -2362,19 +2362,19 @@
     export default function insideDirectory() {}
 
     // in some other file
-    // 差评 bad
+    // 差评
     import CheckBox from './checkBox'; // PascalCase import/export, camelCase filename
     import FortyTwo from './FortyTwo'; // PascalCase import/filename, camelCase export
     import InsideDirectory from './InsideDirectory'; // PascalCase import/filename, camelCase export
 
-    // 差评 bad
+    // 差评
     import CheckBox from './check_box'; // PascalCase import/export, snake_case filename
     import forty_two from './forty_two'; // snake_case import/filename, camelCase export
     import inside_directory from './inside_directory'; // snake_case import, camelCase export
     import index from './inside_directory/index'; // requiring the index file explicitly
     import insideDirectory from './insideDirectory/index'; // requiring the index file explicitly
 
-    // 好评 good
+    // 好评
     import CheckBox from './CheckBox'; // PascalCase export/import/filename
     import fortyTwo from './fortyTwo'; // camelCase export/import/filename
     import insideDirectory from './insideDirectory'; // camelCase export/import/directory name/implicit "index"
@@ -2416,16 +2416,16 @@
   - [23.2](#accessors--no-getters-setters) Do not use JavaScript getters/setters as they cause unexpected side effects and are harder to test, maintain, and reason about. Instead, if you do make accessor functions, use getVal() and setVal('hello').
 
     ```javascript
-    // 差评 bad
+    // 差评
     dragon.age();
 
-    // 好评 good
+    // 好评
     dragon.getAge();
 
-    // 差评 bad
+    // 差评
     dragon.age(25);
 
-    // 好评 good
+    // 好评
     dragon.setAge(25);
     ```
 
@@ -2433,12 +2433,12 @@
   - [23.3](#accessors--boolean-prefix) If the property/method is a `boolean`, use `isVal()` or `hasVal()`.
 
     ```javascript
-    // 差评 bad
+    // 差评
     if (!dragon.age()) {
       return false;
     }
 
-    // 好评 good
+    // 好评
     if (!dragon.hasAge()) {
       return false;
     }
@@ -2473,7 +2473,7 @@
   - [24.1](#events--hash) When attaching data payloads to events (whether DOM events or something more proprietary like Backbone events), pass a hash instead of a raw value. This allows a subsequent contributor to add more data to the event payload without finding and updating every handler for the event. For example, instead of:
 
     ```javascript
-    // 差评 bad
+    // 差评
     $(this).trigger('listingUpdated', listing.id);
 
     ...
@@ -2486,7 +2486,7 @@
     prefer:
 
     ```javascript
-    // 好评 good
+    // 好评
     $(this).trigger('listingUpdated', { listingId: listing.id });
 
     ...
@@ -2505,13 +2505,13 @@
   - [25.1](#jquery--dollar-prefix) Prefix jQuery object variables with a `$`. jscs: [`requireDollarBeforejQueryAssignment`](http://jscs.info/rule/requireDollarBeforejQueryAssignment)
 
     ```javascript
-    // 差评 bad
+    // 差评
     const sidebar = $('.sidebar');
 
-    // 好评 good
+    // 好评
     const $sidebar = $('.sidebar');
 
-    // 好评 good
+    // 好评
     const $sidebarBtn = $('.sidebar-btn');
     ```
 
@@ -2519,7 +2519,7 @@
   - [25.2](#jquery--cache) Cache jQuery lookups.
 
     ```javascript
-    // 差评 bad
+    // 差评
     function setSidebar() {
       $('.sidebar').hide();
 
@@ -2530,7 +2530,7 @@
       });
     }
 
-    // 好评 good
+    // 好评
     function setSidebar() {
       const $sidebar = $('.sidebar');
       $sidebar.hide();
@@ -2550,19 +2550,19 @@
   - [25.4](#jquery--find) Use `find` with scoped jQuery object queries.
 
     ```javascript
-    // 差评 bad
+    // 差评
     $('ul', '.sidebar').hide();
 
-    // 差评 bad
+    // 差评
     $('.sidebar').find('ul').hide();
 
-    // 好评 good
+    // 好评
     $('.sidebar ul').hide();
 
-    // 好评 good
+    // 好评
     $('.sidebar > ul').hide();
 
-    // 好评 good
+    // 好评
     $sidebar.find('ul').hide();
     ```
 
