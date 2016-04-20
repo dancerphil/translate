@@ -8,7 +8,9 @@
 > 
 > 这是一篇在[原文](https://github.com/airbnb/javascript)基础上演绎的译文，与原文的表达会有出入。
 > 
-> 除非另行注明，页面上所有内容采用知识共享-署名([CC BY 2.5 AU](http://creativecommons.org/licenses/by/2.5/au/deed.zh))协议共享。
+> 感谢：[yuche/javascript](https://github.com/yuche/javascript)
+> 
+> 除非另行注明，页面上所有内容采用[MIT](#license)协议共享。
 
 [![Downloads](https://img.shields.io/npm/dm/eslint-config-airbnb.svg)](https://www.npmjs.com/package/eslint-config-airbnb)
 [![Downloads](https://img.shields.io/npm/dm/eslint-config-airbnb-base.svg)](https://www.npmjs.com/package/eslint-config-airbnb-base)
@@ -202,6 +204,9 @@
   - [3.4](#es6-computed-properties) 创建有动态属性名的对象时，使用特性：可被计算属性名称（注：代码中方括号部分）
 
     > 什么鬼？这样的话，你可以在一个地方定义所有的对象属性
+    > 
+    > 注 BY [dancerphil](https://github.com/dancerphil)：下方代码中首次出现了 ``` `a key named ${k}` ```，这是 ES6 模板字符串，其中可以包含 `${expression}` 占位符，[（见：MDN 模板字符串）](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/template_strings)
+    > 
 
     ```javascript
 
@@ -299,7 +304,7 @@
   <a name="objects-quoted-props"></a><a name="3.8"></a>
   - [3.8](#objects-quoted-props) 只有拥有不合法标识符的属性名才使用引号。 eslint: [`quote-props`](http://eslint.org/docs/rules/quote-props.html) jscs: [`disallowQuotedKeysInObjects`](http://jscs.info/rule/disallowQuotedKeysInObjects)
 
-  > Why? In general we consider it subjectively easier to read. It improves syntax highlighting, and is also more easily optimized by many JS engines.
+  > 为什么？一般的，我们认为这样更易读，这种做法可以改善 IDE 语法高亮，同时帮助很多JS引擎进行优化。
   > 
   > 注 BY [dancerphil](https://github.com/dancerphil)：这一点还是存在一些争议的，[eslint](http://eslint.org/docs/rules/quote-props.htm) 中对 **属性名引用风格** (Quoting Style for Property Names)有四种不同的规则，此文采用的是 `as-needed` 规则，只在需要引用的情况下才引用。
   > 
@@ -308,6 +313,8 @@
   > 1. 你使用了 ES3 环境，比如坑爹的 IE8 以下，并且你使用了 keyword 比如 `if` ，是必须引号的，这个规则在 ES5 被移除了。
   > 
   > 1. 你想要使用一个非标识符 non-identifier 作为属性名，比如一个带空格的字符串 `"one two"`
+  > 
+  > [_eslint源码在此_](https://github.com/eslint/eslint/blob/master/lib/rules/quote-props.js)
   > 
 
   ```javascript
@@ -331,7 +338,7 @@
 ## Arrays
 
   <a name="arrays--literals"></a><a name="4.1"></a>
-  - [4.1](#arrays--literals) Use the literal syntax for array creation. eslint: [`no-array-constructor`](http://eslint.org/docs/rules/no-array-constructor.html)
+  - [4.1](#arrays--literals) 用你儿子都看得懂的字面语法创建数组。 eslint: [`no-array-constructor`](http://eslint.org/docs/rules/no-array-constructor.html)
 
     ```javascript
     // 差评
@@ -342,7 +349,7 @@
     ```
 
   <a name="arrays--push"></a><a name="4.2"></a>
-  - [4.2](#arrays--push) Use Array#push instead of direct assignment to add items to an array.
+  - [4.2](#arrays--push) 不要用下标方式直接在数组中加上一个项，使用 Array#push 来代替
 
     ```javascript
     const someStack = [];
@@ -355,7 +362,7 @@
     ```
 
   <a name="es6-array-spreads"></a><a name="4.3"></a>
-  - [4.3](#es6-array-spreads) Use array spreads `...` to copy arrays.
+  - [4.3](#es6-array-spreads) 使用数组的拓展运算符 `...` 来复制数组，谁用谁知道
 
     ```javascript
     // 差评
@@ -372,7 +379,7 @@
     ```
 
   <a name="arrays--from"></a><a name="4.4"></a>
-  - [4.4](#arrays--from) To convert an array-like object to an array, use Array#from.
+  - [4.4](#arrays--from) 使用 Array#from 把一个 **类数组对象** 转换成数组[（见：12-javascript-quirks:8）](https://github.com/justjavac/12-javascript-quirks/blob/master/cn/8-array-like-objects.md)
 
     ```javascript
     const foo = document.querySelectorAll('.foo');
@@ -380,7 +387,7 @@
     ```
 
   <a name="arrays--callback-return"></a><a name="4.5"></a>
-  - [4.5](#arrays--callback-return) Use return statements in array method callbacks. It's ok to omit the return if the function body consists of a single statement following [8.2](#8.2). eslint: [`array-callback-return`](http://eslint.org/docs/rules/array-callback-return)
+  - [4.5](#arrays--callback-return) 在数组函数的回调中，使用 return 声明。如果一个函数体只需要一句简单的声明，那么你可以省略 return 。参见 [8.2](#8.2)。 eslint: [`array-callback-return`](http://eslint.org/docs/rules/array-callback-return)
 
     ```javascript
     // 好评
@@ -433,9 +440,9 @@
 ## Destructuring
 
   <a name="destructuring--object"></a><a name="5.1"></a>
-  - [5.1](#destructuring--object) Use object destructuring when accessing and using multiple properties of an object. jscs: [`requireObjectDestructuring`](http://jscs.info/rule/requireObjectDestructuring)
+  - [5.1](#destructuring--object) 使用对象解构(object destructuring)访问和使用多属性对象。 jscs: [`requireObjectDestructuring`](http://jscs.info/rule/requireObjectDestructuring)
 
-    > Why? Destructuring saves you from creating temporary references for those properties.
+    > 为什么？解构把你从创建临时引用的地狱中拯救了出来，还不感谢？
 
     ```javascript
     // 差评
@@ -459,7 +466,7 @@
     ```
 
   <a name="destructuring--array"></a><a name="5.2"></a>
-  - [5.2](#destructuring--array) Use array destructuring. jscs: [`requireArrayDestructuring`](http://jscs.info/rule/requireArrayDestructuring)
+  - [5.2](#destructuring--array) 解构数组。 jscs: [`requireArrayDestructuring`](http://jscs.info/rule/requireArrayDestructuring)
 
     ```javascript
     const arr = [1, 2, 3, 4];
