@@ -22,9 +22,9 @@
  - [CSS & Sass](https://github.com/airbnb/css)
  - [Ruby](https://github.com/airbnb/ruby)
 
-## [目录](#table-of-contents)
+## 目录
 
-  1. [类型 Types](#types)
+  1. [类型 Types](#类型)
   1. [引用 References](#references)
   1. [对象 Objects](#objects)
   1. [数组 Arrays](#arrays)
@@ -97,7 +97,7 @@
     console.log(foo[0], bar[0]); // => 9, 9
     ```
 
-**[↑ 回到最上方](#table-of-contents)**
+**[↑ 回到最上方](#目录)**
 
 ## 引用
 
