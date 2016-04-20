@@ -1,60 +1,68 @@
-# Airbnb JavaScript Style Guide() {
+# JavaScript 代码风格指南() {
 
-*A mostly reasonable approach to JavaScript*
+*如何用最合理的方式写你的 JavaScript 代码*
+
+> BY 张聪([dancerphil@github](https://github.com/dancerphil/trick/))
+> 
+> 原文在不断的更新，本文基于 2016-04-20 的版本，last commit [[0241450]](https://github.com/airbnb/javascript/commit/02414502b6b8ad31bee50a8e999a27b68b16dda1)
+> 
+> 这是一篇在[原文](https://github.com/airbnb/javascript)基础上演绎的译文，与原文的表达会有出入。
+> 
+> 除非另行注明，页面上所有内容采用知识共享-署名([CC BY 2.5 AU](http://creativecommons.org/licenses/by/2.5/au/deed.zh))协议共享。
 
 [![Downloads](https://img.shields.io/npm/dm/eslint-config-airbnb.svg)](https://www.npmjs.com/package/eslint-config-airbnb)
 [![Downloads](https://img.shields.io/npm/dm/eslint-config-airbnb-base.svg)](https://www.npmjs.com/package/eslint-config-airbnb-base)
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/airbnb/javascript?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-Other Style Guides
- - [ES5](es5/)
- - [React](react/)
+其他的代码指南(Style Guides)
+ - [ES5 中文版](https://github.com/sivan/javascript-style-guide/blob/master/es5/README.md)
+ - [React](https://github.com/airbnb/javascript/tree/master/react)
  - [CSS & Sass](https://github.com/airbnb/css)
  - [Ruby](https://github.com/airbnb/ruby)
 
-## Table of Contents
+## 目录
 
-  1. [Types](#types)
-  1. [References](#references)
-  1. [Objects](#objects)
-  1. [Arrays](#arrays)
-  1. [Destructuring](#destructuring)
-  1. [Strings](#strings)
-  1. [Functions](#functions)
-  1. [Arrow Functions](#arrow-functions)
-  1. [Classes & Constructors](#classes--constructors)
-  1. [Modules](#modules)
-  1. [Iterators and Generators](#iterators-and-generators)
-  1. [Properties](#properties)
-  1. [Variables](#variables)
-  1. [Hoisting](#hoisting)
-  1. [Comparison Operators & Equality](#comparison-operators--equality)
-  1. [Blocks](#blocks)
-  1. [Comments](#comments)
-  1. [Whitespace](#whitespace)
-  1. [Commas](#commas)
-  1. [Semicolons](#semicolons)
-  1. [Type Casting & Coercion](#type-casting--coercion)
-  1. [Naming Conventions](#naming-conventions)
-  1. [Accessors](#accessors)
-  1. [Events](#events)
+  1. [类型 Types](#types)
+  1. [引用 References](#references)
+  1. [对象 Objects](#objects)
+  1. [数组 Arrays](#arrays)
+  1. [解构 Destructuring](#destructuring) [【参考】](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+  1. [字符串 Strings](#strings)
+  1. [函数 Functions](#functions)
+  1. [箭头函数 Arrow Functions](#arrow-functions)
+  1. [类，构造函数 Classes & Constructors](#classes--constructors)
+  1. [模块 Modules](#modules)
+  1. [迭代器，生成器 Iterators and Generators](#iterators-and-generators)
+  1. [属性 Properties](#properties)
+  1. [变量 Variables](#variables)
+  1. [提升 Hoisting](#hoisting)
+  1. [比较运算符，等号 Comparison Operators & Equality](#comparison-operators--equality)
+  1. [块 Blocks](#blocks)
+  1. [注释 Comments](#comments)
+  1. [空格 Whitespace](#whitespace)
+  1. [逗号 Commas](#commas)
+  1. [分号 Semicolons](#semicolons)
+  1. [类型，强制类型转换 Type Casting & Coercion](#type-casting--coercion)
+  1. [命名规则 Naming Conventions](#naming-conventions)
+  1. [存取器 Accessors](#accessors) (getter,setter)
+  1. [事件 Events](#events)
   1. [jQuery](#jquery)
-  1. [ECMAScript 5 Compatibility](#ecmascript-5-compatibility)
-  1. [ECMAScript 6 Styles](#ecmascript-6-styles)
-  1. [Testing](#testing)
-  1. [Performance](#performance)
-  1. [Resources](#resources)
-  1. [In the Wild](#in-the-wild)
-  1. [Translation](#translation)
-  1. [The JavaScript Style Guide Guide](#the-javascript-style-guide-guide)
-  1. [Chat With Us About JavaScript](#chat-with-us-about-javascript)
-  1. [Contributors](#contributors)
-  1. [License](#license)
+  1. [ECMAScript 5 兼容](#ecmascript-5-compatibility)
+  1. [ES6 代码风格](#ecmascript-6-styles)
+  1. [测试 Testing](#testing)
+  1. [性能 Performance](#performance)
+  1. [资源 Resources](#resources)
+  1. [使用人群删）](#in-the-wild)
+  1. [翻译（删）](#translation)
+  1. [指南的指南（删）](#the-javascript-style-guide-guide)
+  1. [和我们一起讨论JS](#chat-with-us-about-javascript)
+  1. [贡献者（删）](#contributors)
+  1. [许可 License](#license)
 
-## Types
+## 类型
 
   <a name="types--primitives"></a><a name="1.1"></a>
-  - [1.1](#types--primitives) **Primitives**: When you access a primitive type you work directly on its value.
+  - [1.1](#types--primitives) **基本类型**： 你直接访问到基本类型的值
 
     + `string`
     + `number`
@@ -72,7 +80,7 @@ Other Style Guides
     ```
 
   <a name="types--complex"></a><a name="1.2"></a>
-  - [1.2](#types--complex)  **Complex**: When you access a complex type you work on a reference to its value.
+  - [1.2](#types--complex)  **复杂类型**: 你访问到复杂类型的引用，通过引用得到值
 
     + `object`
     + `array`
@@ -87,14 +95,14 @@ Other Style Guides
     console.log(foo[0], bar[0]); // => 9, 9
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[↑ 回到最上方](#table-of-contents)**
 
-## References
+## 引用
 
   <a name="references--prefer-const"></a><a name="2.1"></a>
-  - [2.1](#references--prefer-const) Use `const` for all of your references; avoid using `var`. eslint: [`prefer-const`](http://eslint.org/docs/rules/prefer-const.html), [`no-const-assign`](http://eslint.org/docs/rules/no-const-assign.html)
+  - [2.1](#references--prefer-const) 你的所有引用都应该使用 `const` ； 避免使用 `var` 。 eslint: [`prefer-const`](http://eslint.org/docs/rules/prefer-const.html), [`no-const-assign`](http://eslint.org/docs/rules/no-const-assign.html)
 
-    > Why? This ensures that you can't reassign your references, which can lead to bugs and difficult to comprehend code.
+    > 为毛？ 这就确保了你不会对引用(reference)重新赋值，否则一旦出现 bug ，你根本不知道哪里有错，半天也 de 不出来
 
     ```javascript
     // bad
@@ -107,9 +115,9 @@ Other Style Guides
     ```
 
   <a name="references--disallow-var"></a><a name="2.2"></a>
-  - [2.2](#references--disallow-var) If you must reassign references, use `let` instead of `var`. eslint: [`no-var`](http://eslint.org/docs/rules/no-var.html) jscs: [`disallowVar`](http://jscs.info/rule/disallowVar)
+  - [2.2](#references--disallow-var) 如果你一定要修改一个引用，那也不要用 `var` ，你可以用 `let` 来代替。 eslint: [`no-var`](http://eslint.org/docs/rules/no-var.html) jscs: [`disallowVar`](http://jscs.info/rule/disallowVar)
 
-    > Why? `let` is block-scoped rather than function-scoped like `var`.
+    > 为毛？ `let` 是块级作用域变量，而 `var` 是函数作用域变量，那你还不快用 `let` ？ // TODO for循环函数注册bug
 
     ```javascript
     // bad
@@ -126,7 +134,7 @@ Other Style Guides
     ```
 
   <a name="references--block-scope"></a><a name="2.3"></a>
-  - [2.3](#references--block-scope) Note that both `let` and `const` are block-scoped.
+  - [2.3](#references--block-scope) 提醒你一下： `let` 和 `const` 都是块级作用域
 
     ```javascript
     // const and let only exist in the blocks they are defined in.
@@ -138,12 +146,12 @@ Other Style Guides
     console.log(b); // ReferenceError
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[↑ 回到最上方](#table-of-contents)**
 
-## Objects
+## 对象
 
   <a name="objects--no-new"></a><a name="3.1"></a>
-  - [3.1](#objects--no-new) Use the literal syntax for object creation. eslint: [`no-new-object`](http://eslint.org/docs/rules/no-new-object.html)
+  - [3.1](#objects--no-new) 使用能让人看懂的，字面的，自解释的语法来创建对象。 eslint: [`no-new-object`](http://eslint.org/docs/rules/no-new-object.html)
 
     ```javascript
     // bad
@@ -154,7 +162,7 @@ Other Style Guides
     ```
 
   <a name="objects--reserved-words"></a><a name="3.2"></a>
-  - [3.2](#objects--reserved-words) If your code will be executed in browsers in script context, don't use [reserved words](http://es5.github.io/#x7.6.1) as keys. It won't work in IE8. [More info](https://github.com/airbnb/javascript/issues/61). It’s OK to use them in ES6 modules and server-side code. jscs: [`disallowIdentifierNames`](http://jscs.info/rule/disallowIdentifierNames)
+  - [3.2](#objects--reserved-words) 如果你的代码在浏览器环境下执行，别使用 [保留字 reserved words](http://es5.github.io/#x7.6.1) 作为键值。随便来个 IE8 ，它就爆炸了。 [更多信息](https://github.com/airbnb/javascript/issues/61)。而在ES6模块中使用或者在服务器端使用时，毛事没有。 jscs: [`disallowIdentifierNames`](http://jscs.info/rule/disallowIdentifierNames)
 
     ```javascript
     // bad
@@ -309,7 +317,7 @@ Other Style Guides
   };
   ```
 
-**[⬆ back to top](#table-of-contents)**
+**[↑ 回到最上方](#table-of-contents)**
 
 ## Arrays
 
@@ -411,7 +419,7 @@ Other Style Guides
     });
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[↑ 回到最上方](#table-of-contents)**
 
 ## Destructuring
 
@@ -481,7 +489,7 @@ Other Style Guides
     ```
 
 
-**[⬆ back to top](#table-of-contents)**
+**[↑ 回到最上方](#table-of-contents)**
 
 ## Strings
 
@@ -562,7 +570,7 @@ Other Style Guides
     const foo = `'this' is "quoted"`;
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## Functions
@@ -779,7 +787,7 @@ Other Style Guides
     }
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[↑ 回到最上方](#table-of-contents)**
 
 ## Arrow Functions
 
@@ -892,7 +900,7 @@ Other Style Guides
     const itemHeight = (item) => { return item.height > 256 ? item.largeSize : item.smallSize; }
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## Classes & Constructors
@@ -1061,7 +1069,7 @@ Other Style Guides
     ```
 
 
-**[⬆ back to top](#table-of-contents)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## Modules
@@ -1135,7 +1143,7 @@ Other Style Guides
     } from 'foo';
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[↑ 回到最上方](#table-of-contents)**
 
 ## Iterators and Generators
 
@@ -1170,7 +1178,7 @@ Other Style Guides
 
     > Why? They don't transpile well to ES5.
 
-**[⬆ back to top](#table-of-contents)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## Properties
@@ -1207,7 +1215,7 @@ Other Style Guides
     const isJedi = getProp('jedi');
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## Variables
@@ -1311,7 +1319,7 @@ Other Style Guides
     }
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## Hoisting
@@ -1411,7 +1419,7 @@ Other Style Guides
 
   - For more information refer to [JavaScript Scoping & Hoisting](http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting/) by [Ben Cherry](http://www.adequatelygood.com/).
 
-**[⬆ back to top](#table-of-contents)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## Comparison Operators & Equality
@@ -1551,7 +1559,7 @@ Other Style Guides
     const baz = !c;
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## Blocks
@@ -1604,7 +1612,7 @@ Other Style Guides
     ```
 
 
-**[⬆ back to top](#table-of-contents)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## Comments
@@ -1712,7 +1720,7 @@ Other Style Guides
     }
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## Whitespace
@@ -2035,7 +2043,7 @@ Other Style Guides
       .fail(() => console.log('You have failed this city.'));
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[↑ 回到最上方](#table-of-contents)**
 
 ## Commas
 
@@ -2118,7 +2126,7 @@ Other Style Guides
     ];
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## Semicolons
@@ -2148,7 +2156,7 @@ Other Style Guides
 
     [Read more](http://stackoverflow.com/questions/7365172/semicolon-before-self-invoking-function/7365214%237365214).
 
-**[⬆ back to top](#table-of-contents)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## Type Casting & Coercion
@@ -2235,7 +2243,7 @@ Other Style Guides
     const hasAge = !!age;
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## Naming Conventions
@@ -2396,7 +2404,7 @@ Other Style Guides
     ```
 
 
-**[⬆ back to top](#table-of-contents)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## Accessors
@@ -2456,7 +2464,7 @@ Other Style Guides
     }
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## Events
@@ -2488,7 +2496,7 @@ Other Style Guides
     });
     ```
 
-  **[⬆ back to top](#table-of-contents)**
+  **[↑ 回到最上方](#table-of-contents)**
 
 
 ## jQuery
@@ -2558,7 +2566,7 @@ Other Style Guides
     $sidebar.find('ul').hide();
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## ECMAScript 5 Compatibility
@@ -2566,7 +2574,7 @@ Other Style Guides
   <a name="es5-compat--kangax"></a><a name="26.1"></a>
   - [26.1](#es5-compat--kangax) Refer to [Kangax](https://twitter.com/kangax/)'s ES5 [compatibility table](http://kangax.github.io/es5-compat-table/).
 
-**[⬆ back to top](#table-of-contents)**
+**[↑ 回到最上方](#table-of-contents)**
 
 ## ECMAScript 6 Styles
 
@@ -2587,7 +2595,7 @@ Other Style Guides
 1. [Iterators and Generators](#iterators-and-generators)
 1. [Modules](#modules)
 
-**[⬆ back to top](#table-of-contents)**
+**[↑ 回到最上方](#table-of-contents)**
 
 ## Testing
 
@@ -2609,7 +2617,7 @@ Other Style Guides
    - 100% test coverage is a good goal to strive for, even if it's not always practical to reach it.
    - Whenever you fix a bug, _write a regression test_. A bug fixed without a regression test is almost certainly going to break again in the future.
 
-**[⬆ back to top](#table-of-contents)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## Performance
@@ -2624,7 +2632,7 @@ Other Style Guides
   - [Are Javascript functions like `map()`, `reduce()`, and `filter()` optimized for traversing arrays?](https://www.quora.com/JavaScript-programming-language-Are-Javascript-functions-like-map-reduce-and-filter-already-optimized-for-traversing-array/answer/Quildreen-Motta)
   - Loading...
 
-**[⬆ back to top](#table-of-contents)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## Resources
@@ -2706,7 +2714,7 @@ Other Style Guides
   - [JavaScript Jabber](https://devchat.tv/js-jabber/)
 
 
-**[⬆ back to top](#table-of-contents)**
+**[↑ 回到最上方](#table-of-contents)**
 
 ## In the Wild
 
@@ -2781,7 +2789,7 @@ Other Style Guides
   - **Zillow**: [zillow/javascript](https://github.com/zillow/javascript)
   - **ZocDoc**: [ZocDoc/javascript](https://github.com/ZocDoc/javascript)
 
-**[⬆ back to top](#table-of-contents)**
+**[↑ 回到最上方](#table-of-contents)**
 
 ## Translation
 
@@ -2841,7 +2849,7 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-**[⬆ back to top](#table-of-contents)**
+**[↑ 回到最上方](#table-of-contents)**
 
 ## Amendments
 
