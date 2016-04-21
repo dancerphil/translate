@@ -22,13 +22,14 @@
  - [CSS & Sass](https://github.com/airbnb/css)
  - [Ruby](https://github.com/airbnb/ruby)
 
+<a name="table-of-contents"></a>
 ## 目录
 
-  1. [类型 Types](#类型)
+  1. [类型 Types](#types)
   1. [引用 References](#references)
   1. [对象 Objects](#objects)
   1. [数组 Arrays](#arrays)
-  1. [解构 Destructuring](#destructuring) [【参考】](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+  1. [解构 Destructuring](#destructuring) [（注：MDN 解构赋值）](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
   1. [字符串 Strings](#strings)
   1. [函数 Functions](#functions)
   1. [箭头函数 Arrow Functions](#arrow-functions)
@@ -53,7 +54,7 @@
   1. [ES6 代码风格](#ecmascript-6-styles)
   1. [测试 Testing](#testing)
   1. [性能 Performance](#performance)
-  1. [资源 Resources](#resources)
+  1. [学习资源 Resources](#resources)
   1. [使用人群删）](#in-the-wild)
   1. [翻译（删）](#translation)
   1. [指南的指南（删）](#the-javascript-style-guide-guide)
@@ -61,6 +62,7 @@
   1. [贡献者（删）](#contributors)
   1. [许可 License](#license)
 
+<a name="types"></a>
 ## 类型
 
   <a name="types--primitives"></a><a name="1.1"></a>
@@ -99,6 +101,7 @@
 
 **[↑ 回到最上方](#目录)**
 
+<a name="references"></a>
 ## 引用
 
   <a name="references--prefer-const"></a><a name="2.1"></a>
@@ -150,6 +153,7 @@
 
 **[↑ 回到最上方](#table-of-contents)**
 
+<a name="objects"></a>
 ## 对象
 
   <a name="objects--no-new"></a><a name="3.1"></a>
@@ -335,7 +339,8 @@
 
 **[↑ 回到最上方](#table-of-contents)**
 
-## Arrays
+<a name="arrays"></a>
+## 数组
 
   <a name="arrays--literals"></a><a name="4.1"></a>
   - [4.1](#arrays--literals) 用你儿子都看得懂的字面语法创建数组。 eslint: [`no-array-constructor`](http://eslint.org/docs/rules/no-array-constructor.html)
@@ -437,7 +442,8 @@
 
 **[↑ 回到最上方](#table-of-contents)**
 
-## Destructuring
+<a name="destructuring"></a>
+## 解构
 
   <a name="destructuring--object"></a><a name="5.1"></a>
   - [5.1](#destructuring--object) 使用对象解构(object destructuring)访问和使用多属性对象。 jscs: [`requireObjectDestructuring`](http://jscs.info/rule/requireObjectDestructuring)
@@ -507,7 +513,8 @@
 
 **[↑ 回到最上方](#table-of-contents)**
 
-## Strings
+<a name="strings"></a>
+## 字符串
 
   <a name="strings--quotes"></a><a name="6.1"></a>
   - [6.1](#strings--quotes) Use single quotes `''` for strings. eslint: [`quotes`](http://eslint.org/docs/rules/quotes.html) jscs: [`validateQuoteMarks`](http://jscs.info/rule/validateQuoteMarks)
@@ -589,7 +596,8 @@
 **[↑ 回到最上方](#table-of-contents)**
 
 
-## Functions
+<a name="functions"></a>
+## 函数
 
   <a name="functions--declarations"></a><a name="7.1"></a>
   - [7.1](#functions--declarations) Use function declarations instead of function expressions. jscs: [`requireFunctionDeclarations`](http://jscs.info/rule/requireFunctionDeclarations)
@@ -805,7 +813,8 @@
 
 **[↑ 回到最上方](#table-of-contents)**
 
-## Arrow Functions
+<a name="arrow-functions"></a>
+## 箭头函数
 
   <a name="arrows--use-them"></a><a name="8.1"></a>
   - [8.1](#arrows--use-them) When you must use function expressions (as when passing an anonymous function), use arrow function notation. eslint: [`prefer-arrow-callback`](http://eslint.org/docs/rules/prefer-arrow-callback.html), [`arrow-spacing`](http://eslint.org/docs/rules/arrow-spacing.html) jscs: [`requireArrowFunctions`](http://jscs.info/rule/requireArrowFunctions)
@@ -919,7 +928,8 @@
 **[↑ 回到最上方](#table-of-contents)**
 
 
-## Classes & Constructors
+<a name="classes--constructors"></a>
+## 类，构造函数
 
   <a name="constructors--use-class"></a><a name="9.1"></a>
   - [9.1](#constructors--use-class) Always use `class`. Avoid manipulating `prototype` directly.
@@ -1088,7 +1098,8 @@
 **[↑ 回到最上方](#table-of-contents)**
 
 
-## Modules
+<a name="modules"></a>
+## 模块
 
   <a name="modules--use-them"></a><a name="10.1"></a>
   - [10.1](#modules--use-them) Always use modules (`import`/`export`) over a non-standard module system. You can always transpile to your preferred module system.
@@ -1161,7 +1172,8 @@
 
 **[↑ 回到最上方](#table-of-contents)**
 
-## Iterators and Generators
+<a name="iterators-and-generators"></a>
+## 迭代器，生成器
 
   <a name="iterators--nope"></a><a name="11.1"></a>
   - [11.1](#iterators--nope) Don't use iterators. Prefer JavaScript's higher-order functions like `map()` and `reduce()` instead of loops like `for-of`. eslint: [`no-iterator`](http://eslint.org/docs/rules/no-iterator.html)
@@ -1197,7 +1209,8 @@
 **[↑ 回到最上方](#table-of-contents)**
 
 
-## Properties
+<a name="properties"></a>
+## 属性
 
   <a name="properties--dot"></a><a name="12.1"></a>
   - [12.1](#properties--dot) Use dot notation when accessing properties. eslint: [`dot-notation`](http://eslint.org/docs/rules/dot-notation.html) jscs: [`requireDotNotation`](http://jscs.info/rule/requireDotNotation)
@@ -1234,7 +1247,8 @@
 **[↑ 回到最上方](#table-of-contents)**
 
 
-## Variables
+<a name="variables"></a>
+## 变量
 
   <a name="variables--const"></a><a name="13.1"></a>
   - [13.1](#variables--const) Always use `const` to declare variables. Not doing so will result in global variables. We want to avoid polluting the global namespace. Captain Planet warned us of that.
@@ -1338,7 +1352,8 @@
 **[↑ 回到最上方](#table-of-contents)**
 
 
-## Hoisting
+<a name="hoisting"></a>
+## 提升 //TODO
 
   <a name="hoisting--about"></a><a name="14.1"></a>
   - [14.1](#hoisting--about) `var` declarations get hoisted to the top of their scope, their assignment does not. `const` and `let` declarations are blessed with a new concept called [Temporal Dead Zones (TDZ)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#Temporal_dead_zone_and_errors_with_let). It's important to know why [typeof is no longer safe](http://es-discourse.com/t/why-typeof-is-no-longer-safe/15).
@@ -1438,7 +1453,8 @@
 **[↑ 回到最上方](#table-of-contents)**
 
 
-## Comparison Operators & Equality
+<a name="comparison-operators--equality"></a>
+## 比较运算符，等号
 
   <a name="comparison--eqeqeq"></a><a name="15.1"></a>
   - [15.1](#comparison--eqeqeq) Use `===` and `!==` over `==` and `!=`. eslint: [`eqeqeq`](http://eslint.org/docs/rules/eqeqeq.html)
@@ -1578,7 +1594,8 @@
 **[↑ 回到最上方](#table-of-contents)**
 
 
-## Blocks
+<a name="blocks"></a>
+## 块
 
   <a name="blocks--braces"></a><a name="16.1"></a>
   - [16.1](#blocks--braces) Use braces with all multi-line blocks.
@@ -1631,7 +1648,8 @@
 **[↑ 回到最上方](#table-of-contents)**
 
 
-## Comments
+<a name="comments"></a>
+## 注释
 
   <a name="comments--multiline"></a><a name="17.1"></a>
   - [17.1](#comments--multiline) Use `/** ... */` for multi-line comments. Include a description, specify types and values for all parameters and return values.
@@ -1739,7 +1757,8 @@
 **[↑ 回到最上方](#table-of-contents)**
 
 
-## Whitespace
+<a name="whitespace"></a>
+## 空格
 
   <a name="whitespace--spaces"></a><a name="18.1"></a>
   - [18.1](#whitespace--spaces) Use soft tabs set to 2 spaces. eslint: [`indent`](http://eslint.org/docs/rules/indent.html) jscs: [`validateIndentation`](http://jscs.info/rule/validateIndentation)
@@ -2061,7 +2080,8 @@
 
 **[↑ 回到最上方](#table-of-contents)**
 
-## Commas
+<a name="commas"></a>
+## 逗号
 
 <a name="commas--leading-trailing"></a><a name="19.1"></a>
   - [19.1](#commas--leading-trailing) Leading commas: **Nope.** eslint: [`comma-style`](http://eslint.org/docs/rules/comma-style.html) jscs: [`requireCommaBeforeLineBreak`](http://jscs.info/rule/requireCommaBeforeLineBreak)
@@ -2145,7 +2165,8 @@
 **[↑ 回到最上方](#table-of-contents)**
 
 
-## Semicolons
+<a name="semicolons"></a>
+## 分号
 
   <a name="semicolons--required"></a><a name="20.1"></a>
   - [20.1](#20.1) **Yup.** eslint: [`semi`](http://eslint.org/docs/rules/semi.html) jscs: [`requireSemicolons`](http://jscs.info/rule/requireSemicolons)
@@ -2175,7 +2196,8 @@
 **[↑ 回到最上方](#table-of-contents)**
 
 
-## Type Casting & Coercion
+<a name="type-casting--coercion"></a>
+## 类型，强制类型转换
 
   <a name="coercion--explicit"></a><a name="21.1"></a>
   - [21.1](#coercion--explicit) Perform type coercion at the beginning of the statement.
@@ -2262,7 +2284,8 @@
 **[↑ 回到最上方](#table-of-contents)**
 
 
-## Naming Conventions
+<a name="naming-conventions"></a>
+## 命名规则
 
   <a name="naming--descriptive"></a><a name="22.1"></a>
   - [22.1](#naming--descriptive) Avoid single letter names. Be descriptive with your naming.
@@ -2423,7 +2446,8 @@
 **[↑ 回到最上方](#table-of-contents)**
 
 
-## Accessors
+<a name="accessors"></a>
+## 存取器
 
   <a name="accessors--not-required"></a><a name="23.1"></a>
   - [23.1](#accessors--not-required) Accessor functions for properties are not required.
@@ -2483,7 +2507,8 @@
 **[↑ 回到最上方](#table-of-contents)**
 
 
-## Events
+<a name="events"></a>
+## 事件
 
   <a name="events--hash"></a><a name="24.1"></a>
   - [24.1](#events--hash) When attaching data payloads to events (whether DOM events or something more proprietary like Backbone events), pass a hash instead of a raw value. This allows a subsequent contributor to add more data to the event payload without finding and updating every handler for the event. For example, instead of:
@@ -2515,6 +2540,7 @@
   **[↑ 回到最上方](#table-of-contents)**
 
 
+<a name="jquery"></a>
 ## jQuery
 
   <a name="jquery--dollar-prefix"></a><a name="25.1"></a>
@@ -2585,14 +2611,16 @@
 **[↑ 回到最上方](#table-of-contents)**
 
 
-## ECMAScript 5 Compatibility
+<a name="ecmascript-5-compatibility"></a>
+## ECMAScript 5 兼容性
 
   <a name="es5-compat--kangax"></a><a name="26.1"></a>
   - [26.1](#es5-compat--kangax) Refer to [Kangax](https://twitter.com/kangax/)'s ES5 [compatibility table](http://kangax.github.io/es5-compat-table/).
 
 **[↑ 回到最上方](#table-of-contents)**
 
-## ECMAScript 6 Styles
+<a name="ecmascript-6-styles"></a>
+## ES6 代码风格
 
   <a name="es6-styles"></a><a name="27.1"></a>
   - [27.1](#es6-styles) This is a collection of links to the various ES6 features.
@@ -2613,7 +2641,8 @@
 
 **[↑ 回到最上方](#table-of-contents)**
 
-## Testing
+<a name="testing"></a>
+## 测试
 
   <a name="testing--yup"></a><a name="28.1"></a>
   - [28.1](#testing--yup) **Yup.**
@@ -2636,7 +2665,8 @@
 **[↑ 回到最上方](#table-of-contents)**
 
 
-## Performance
+<a name="performance"></a>
+## 性能
 
   - [On Layout & Web Performance](http://www.kellegous.com/j/2013/01/26/layout-performance/)
   - [String vs Array Concat](http://jsperf.com/string-vs-array-concat/2)
@@ -2651,7 +2681,8 @@
 **[↑ 回到最上方](#table-of-contents)**
 
 
-## Resources
+<a name="resources"></a>
+## 学习资源
 
 **Learning ES6**
 
@@ -2732,115 +2763,19 @@
 
 **[↑ 回到最上方](#table-of-contents)**
 
-## In the Wild
-
-  This is a list of organizations that are using this style guide. Send us a pull request and we'll add you to the list.
-
-  - **Aan Zee**: [AanZee/javascript](https://github.com/AanZee/javascript)
-  - **Adult Swim**: [adult-swim/javascript](https://github.com/adult-swim/javascript)
-  - **Airbnb**: [airbnb/javascript](https://github.com/airbnb/javascript)
-  - **Apartmint**: [apartmint/javascript](https://github.com/apartmint/javascript)
-  - **Ascribe**: [ascribe/javascript](https://github.com/ascribe/javascript)
-  - **Avalara**: [avalara/javascript](https://github.com/avalara/javascript)
-  - **Avant**: [avantcredit/javascript](https://github.com/avantcredit/javascript)
-  - **Billabong**: [billabong/javascript](https://github.com/billabong/javascript)
-  - **Bisk**: [bisk/javascript](https://github.com/Bisk/javascript/)
-  - **Blendle**: [blendle/javascript](https://github.com/blendle/javascript)
-  - **Brainshark**: [brainshark/javascript](https://github.com/brainshark/javascript)
-  - **Chartboost**: [ChartBoost/javascript-style-guide](https://github.com/ChartBoost/javascript-style-guide)
-  - **ComparaOnline**: [comparaonline/javascript](https://github.com/comparaonline/javascript-style-guide)
-  - **Compass Learning**: [compasslearning/javascript-style-guide](https://github.com/compasslearning/javascript-style-guide)
-  - **DailyMotion**: [dailymotion/javascript](https://github.com/dailymotion/javascript)
-  - **Digitpaint** [digitpaint/javascript](https://github.com/digitpaint/javascript)
-  - **Ecosia**: [ecosia/javascript](https://github.com/ecosia/javascript)
-  - **Evernote**: [evernote/javascript-style-guide](https://github.com/evernote/javascript-style-guide)
-  - **Evolution Gaming**: [evolution-gaming/javascript](https://github.com/evolution-gaming/javascript)
-  - **ExactTarget**: [ExactTarget/javascript](https://github.com/ExactTarget/javascript)
-  - **Expensify** [Expensify/Style-Guide](https://github.com/Expensify/Style-Guide/blob/master/javascript.md)
-  - **Flexberry**: [Flexberry/javascript-style-guide](https://github.com/Flexberry/javascript-style-guide)
-  - **Gawker Media**: [gawkermedia/javascript](https://github.com/gawkermedia/javascript)
-  - **General Electric**: [GeneralElectric/javascript](https://github.com/GeneralElectric/javascript)
-  - **GoodData**: [gooddata/gdc-js-style](https://github.com/gooddata/gdc-js-style)
-  - **Grooveshark**: [grooveshark/javascript](https://github.com/grooveshark/javascript)
-  - **How About We**: [howaboutwe/javascript](https://github.com/howaboutwe/javascript-style-guide)
-  - **Huballin**: [huballin/javascript](https://github.com/huballin/javascript)
-  - **HubSpot**: [HubSpot/javascript](https://github.com/HubSpot/javascript)
-  - **Hyper**: [hyperoslo/javascript-playbook](https://github.com/hyperoslo/javascript-playbook/blob/master/style.md)
-  - **InfoJobs**: [InfoJobs/JavaScript-Style-Guide](https://github.com/InfoJobs/JavaScript-Style-Guide)
-  - **Intent Media**: [intentmedia/javascript](https://github.com/intentmedia/javascript)
-  - **Jam3**: [Jam3/Javascript-Code-Conventions](https://github.com/Jam3/Javascript-Code-Conventions)
-  - **JeopardyBot**: [kesne/jeopardy-bot](https://github.com/kesne/jeopardy-bot/blob/master/STYLEGUIDE.md)
-  - **JSSolutions**: [JSSolutions/javascript](https://github.com/JSSolutions/javascript)
-  - **KickorStick**: [kickorstick/javascript](https://github.com/kickorstick/javascript)
-  - **Kinetica Solutions**: [kinetica/javascript](https://github.com/kinetica/Javascript-style-guide)
-  - **Mighty Spring**: [mightyspring/javascript](https://github.com/mightyspring/javascript)
-  - **MinnPost**: [MinnPost/javascript](https://github.com/MinnPost/javascript)
-  - **MitocGroup**: [MitocGroup/javascript](https://github.com/MitocGroup/javascript)
-  - **ModCloth**: [modcloth/javascript](https://github.com/modcloth/javascript)
-  - **Money Advice Service**: [moneyadviceservice/javascript](https://github.com/moneyadviceservice/javascript)
-  - **Muber**: [muber/javascript](https://github.com/muber/javascript)
-  - **National Geographic**: [natgeo/javascript](https://github.com/natgeo/javascript)
-  - **National Park Service**: [nationalparkservice/javascript](https://github.com/nationalparkservice/javascript)
-  - **Nimbl3**: [nimbl3/javascript](https://github.com/nimbl3/javascript)
-  - **Orion Health**: [orionhealth/javascript](https://github.com/orionhealth/javascript)
-  - **OutBoxSoft**: [OutBoxSoft/javascript](https://github.com/OutBoxSoft/javascript)
-  - **Peerby**: [Peerby/javascript](https://github.com/Peerby/javascript)
-  - **Razorfish**: [razorfish/javascript-style-guide](https://github.com/razorfish/javascript-style-guide)
-  - **reddit**: [reddit/styleguide/javascript](https://github.com/reddit/styleguide/tree/master/javascript)
-  - **React**: [/facebook/react/blob/master/CONTRIBUTING.md#style-guide](https://github.com/facebook/react/blob/master/CONTRIBUTING.md#style-guide)
-  - **REI**: [reidev/js-style-guide](https://github.com/rei/code-style-guides/blob/master/docs/javascript.md)
-  - **Ripple**: [ripple/javascript-style-guide](https://github.com/ripple/javascript-style-guide)
-  - **SeekingAlpha**: [seekingalpha/javascript-style-guide](https://github.com/seekingalpha/javascript-style-guide)
-  - **Shutterfly**: [shutterfly/javascript](https://github.com/shutterfly/javascript)
-  - **Springload**: [springload/javascript](https://github.com/springload/javascript)
-  - **StudentSphere**: [studentsphere/javascript](https://github.com/studentsphere/guide-javascript)
-  - **SysGarage**: [sysgarage/javascript-style-guide](https://github.com/sysgarage/javascript-style-guide)
-  - **Target**: [target/javascript](https://github.com/target/javascript)
-  - **TheLadders**: [TheLadders/javascript](https://github.com/TheLadders/javascript)
-  - **The Nerdery**: [thenerdery/javascript-standards](https://github.com/thenerdery/javascript-standards)
-  - **T4R Technology**: [T4R-Technology/javascript](https://github.com/T4R-Technology/javascript)
-  - **VoxFeed**: [VoxFeed/javascript-style-guide](https://github.com/VoxFeed/javascript-style-guide)
-  - **WeBox Studio**: [weboxstudio/javascript](https://github.com/weboxstudio/javascript)
-  - **Weggo**: [Weggo/javascript](https://github.com/Weggo/javascript)
-  - **Zillow**: [zillow/javascript](https://github.com/zillow/javascript)
-  - **ZocDoc**: [ZocDoc/javascript](https://github.com/ZocDoc/javascript)
-
-**[↑ 回到最上方](#table-of-contents)**
-
-## Translation
-
-  This style guide is also available in other languages:
-
-  - ![br](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Brazil.png) **Brazilian Portuguese**: [armoucar/javascript-style-guide](https://github.com/armoucar/javascript-style-guide)
-  - ![bg](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Bulgaria.png) **Bulgarian**: [borislavvv/javascript](https://github.com/borislavvv/javascript)
-  - ![ca](https://raw.githubusercontent.com/fpmweb/javascript-style-guide/master/img/catala.png) **Catalan**: [fpmweb/javascript-style-guide](https://github.com/fpmweb/javascript-style-guide)
-  - ![cn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/China.png) **Chinese (Simplified)**: [sivan/javascript-style-guide](https://github.com/sivan/javascript-style-guide)
-  - ![tw](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Taiwan.png) **Chinese (Traditional)**: [jigsawye/javascript](https://github.com/jigsawye/javascript)
-  - ![fr](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/France.png) **French**: [nmussy/javascript-style-guide](https://github.com/nmussy/javascript-style-guide)
-  - ![de](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Germany.png) **German**: [timofurrer/javascript-style-guide](https://github.com/timofurrer/javascript-style-guide)
-  - ![it](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Italy.png) **Italian**: [sinkswim/javascript-style-guide](https://github.com/sinkswim/javascript-style-guide)
-  - ![jp](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Japan.png) **Japanese**: [mitsuruog/javacript-style-guide](https://github.com/mitsuruog/javacript-style-guide)
-  - ![kr](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/South-Korea.png) **Korean**: [tipjs/javascript-style-guide](https://github.com/tipjs/javascript-style-guide)
-  - ![pl](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Poland.png) **Polish**: [mjurczyk/javascript](https://github.com/mjurczyk/javascript)
-  - ![ru](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Russia.png) **Russian**: [uprock/javascript](https://github.com/uprock/javascript)
-  - ![es](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Spain.png) **Spanish**: [paolocarrasco/javascript-style-guide](https://github.com/paolocarrasco/javascript-style-guide)
-  - ![th](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Thailand.png) **Thai**: [lvarayut/javascript-style-guide](https://github.com/lvarayut/javascript-style-guide)
-  - ![vn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Vietnam.png) **Vietnam**: [giangpii/javascript-style-guide](https://github.com/giangpii/javascript-style-guide)
-
-## The JavaScript Style Guide Guide
-
-  - [Reference](https://github.com/airbnb/javascript/wiki/The-JavaScript-Style-Guide-Guide)
-
-## Chat With Us About JavaScript
+<a name="chat-with-us-about-javascript"></a>
+## 和我们一起讨论JS
 
   - Find us on [gitter](https://gitter.im/airbnb/javascript).
 
-## Contributors
+<a name="contributors"></a>
+## 贡献者
 
   - [View Contributors](https://github.com/airbnb/javascript/graphs/contributors)
 
 
-## License
+<a name="license"></a>
+## 许可
 
 (The MIT License)
 
@@ -2865,9 +2800,12 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+>警告：转载时必须包含此许可证
+
 **[↑ 回到最上方](#table-of-contents)**
 
-## Amendments
+<a name="amendments"></a>
+## 修订
 
 We encourage you to fork this guide and change the rules to fit your team's style guide. Below, you may list some amendments to the style guide. This allows you to periodically update your style guide without having to deal with merge conflicts.
 
