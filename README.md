@@ -25,40 +25,40 @@
 ## 目录
 
   1. [类型 Types](#类型)
-  1. [引用 References](#引用)
-  1. [对象 Objects](#对象)
-  1. [数组 Arrays](#数组)
-  1. [解构 Destructuring](#解构) [（注：MDN 解构赋值）](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
-  1. [字符串 Strings](#字符串)
-  1. [函数 Functions](#函数 )
-  1. [箭头函数 Arrow Functions](#箭头函数)
-  1. [类，构造函数 Classes & Constructors](#类，构造函数)
-  1. [模块 Modules](#模块)
-  1. [迭代器，生成器 Iterators and Generators](#迭代器，生成器)
-  1. [属性 Properties](#属性)
-  1. [变量 Variables](#变量)
-  1. [提升 Hoisting](#提升)
-  1. [比较运算符，等号 Comparison Operators & Equality](#比较运算符，等号)
-  1. [块 Blocks](#块)
-  1. [注释 Comments](#注释)
-  1. [空格 Whitespace](#空格)
-  1. [逗号 Commas](#逗号)
-  1. [分号 Semicolons](#分号)
-  1. [类型，强制类型转换 Type Casting & Coercion](#类型，强制类型转换)
-  1. [命名规则 Naming Conventions](#命名规则)
-  1. [存取器 Accessors](#存取器) (注：getter,setter)
-  1. [事件 Events](#事件)
+  1. [引用 References](#references)
+  1. [对象 Objects](#objects)
+  1. [数组 Arrays](#arrays)
+  1. [解构 Destructuring](#destructuring) [【参考】](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+  1. [字符串 Strings](#strings)
+  1. [函数 Functions](#functions)
+  1. [箭头函数 Arrow Functions](#arrow-functions)
+  1. [类，构造函数 Classes & Constructors](#classes--constructors)
+  1. [模块 Modules](#modules)
+  1. [迭代器，生成器 Iterators and Generators](#iterators-and-generators)
+  1. [属性 Properties](#properties)
+  1. [变量 Variables](#variables)
+  1. [提升 Hoisting](#hoisting)
+  1. [比较运算符，等号 Comparison Operators & Equality](#comparison-operators--equality)
+  1. [块 Blocks](#blocks)
+  1. [注释 Comments](#comments)
+  1. [空格 Whitespace](#whitespace)
+  1. [逗号 Commas](#commas)
+  1. [分号 Semicolons](#semicolons)
+  1. [类型，强制类型转换 Type Casting & Coercion](#type-casting--coercion)
+  1. [命名规则 Naming Conventions](#naming-conventions)
+  1. [存取器 Accessors](#accessors) (getter,setter)
+  1. [事件 Events](#events)
   1. [jQuery](#jquery)
-  1. [ECMAScript 5 兼容](#ECMAScript-5-兼容)
-  1. [ES6 代码风格](#ES6-代码风格)
-  1. [测试 Testing](#测试)
-  1. [性能 Performance](#性能)
-  1. [资源 Resources](#资源)
-  1. 使用人群（删）
-  1. 翻译（删）
-  1. 指南的指南（删）
-  1. [和我们一起讨论JS](#和我们一起讨论JS)
-  1. [贡献者](#贡献者)
+  1. [ECMAScript 5 兼容](#ecmascript-5-compatibility)
+  1. [ES6 代码风格](#ecmascript-6-styles)
+  1. [测试 Testing](#testing)
+  1. [性能 Performance](#performance)
+  1. [资源 Resources](#resources)
+  1. [使用人群删）](#in-the-wild)
+  1. [翻译（删）](#translation)
+  1. [指南的指南（删）](#the-javascript-style-guide-guide)
+  1. [和我们一起讨论JS](#chat-with-us-about-javascript)
+  1. [贡献者（删）](#contributors)
   1. [许可 License](#license)
 
 ## 类型
@@ -148,7 +148,7 @@
     console.log(b); // 出现 ReferenceError
     ```
 
-**[↑ 回到最上方](#目录)**
+**[↑ 回到最上方](#table-of-contents)**
 
 ## 对象
 
@@ -333,9 +333,9 @@
   };
   ```
 
-**[↑ 回到最上方](#目录)**
+**[↑ 回到最上方](#table-of-contents)**
 
-## 数组
+## Arrays
 
   <a name="arrays--literals"></a><a name="4.1"></a>
   - [4.1](#arrays--literals) 用你儿子都看得懂的字面语法创建数组。 eslint: [`no-array-constructor`](http://eslint.org/docs/rules/no-array-constructor.html)
@@ -435,9 +435,9 @@
     });
     ```
 
-**[↑ 回到最上方](#目录)**
+**[↑ 回到最上方](#table-of-contents)**
 
-## 解构
+## Destructuring
 
   <a name="destructuring--object"></a><a name="5.1"></a>
   - [5.1](#destructuring--object) 使用对象解构(object destructuring)访问和使用多属性对象。 jscs: [`requireObjectDestructuring`](http://jscs.info/rule/requireObjectDestructuring)
@@ -505,7 +505,7 @@
     ```
 
 
-**[↑ 回到最上方](#目录)**
+**[↑ 回到最上方](#table-of-contents)**
 
 ## Strings
 
@@ -586,7 +586,7 @@
     const foo = `'this' is "quoted"`;
     ```
 
-**[↑ 回到最上方](#目录)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## Functions
@@ -803,7 +803,7 @@
     }
     ```
 
-**[↑ 回到最上方](#目录)**
+**[↑ 回到最上方](#table-of-contents)**
 
 ## Arrow Functions
 
@@ -916,10 +916,10 @@
     const itemHeight = (item) => { return item.height > 256 ? item.largeSize : item.smallSize; }
     ```
 
-**[↑ 回到最上方](#目录)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
-## 类，构造函数
+## Classes & Constructors
 
   <a name="constructors--use-class"></a><a name="9.1"></a>
   - [9.1](#constructors--use-class) Always use `class`. Avoid manipulating `prototype` directly.
@@ -1085,7 +1085,7 @@
     ```
 
 
-**[↑ 回到最上方](#目录)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## Modules
@@ -1159,7 +1159,7 @@
     } from 'foo';
     ```
 
-**[↑ 回到最上方](#目录)**
+**[↑ 回到最上方](#table-of-contents)**
 
 ## Iterators and Generators
 
@@ -1194,7 +1194,7 @@
 
     > Why? They don't transpile well to ES5.
 
-**[↑ 回到最上方](#目录)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## Properties
@@ -1231,7 +1231,7 @@
     const isJedi = getProp('jedi');
     ```
 
-**[↑ 回到最上方](#目录)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## Variables
@@ -1335,7 +1335,7 @@
     }
     ```
 
-**[↑ 回到最上方](#目录)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## Hoisting
@@ -1435,7 +1435,7 @@
 
   - For more information refer to [JavaScript Scoping & Hoisting](http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting/) by [Ben Cherry](http://www.adequatelygood.com/).
 
-**[↑ 回到最上方](#目录)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## Comparison Operators & Equality
@@ -1575,7 +1575,7 @@
     const baz = !c;
     ```
 
-**[↑ 回到最上方](#目录)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## Blocks
@@ -1628,7 +1628,7 @@
     ```
 
 
-**[↑ 回到最上方](#目录)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## Comments
@@ -1736,7 +1736,7 @@
     }
     ```
 
-**[↑ 回到最上方](#目录)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## Whitespace
@@ -2059,7 +2059,7 @@
       .fail(() => console.log('You have failed this city.'));
     ```
 
-**[↑ 回到最上方](#目录)**
+**[↑ 回到最上方](#table-of-contents)**
 
 ## Commas
 
@@ -2142,7 +2142,7 @@
     ];
     ```
 
-**[↑ 回到最上方](#目录)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## Semicolons
@@ -2172,7 +2172,7 @@
 
     [Read more](http://stackoverflow.com/questions/7365172/semicolon-before-self-invoking-function/7365214%237365214).
 
-**[↑ 回到最上方](#目录)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## Type Casting & Coercion
@@ -2259,7 +2259,7 @@
     const hasAge = !!age;
     ```
 
-**[↑ 回到最上方](#目录)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## Naming Conventions
@@ -2420,7 +2420,7 @@
     ```
 
 
-**[↑ 回到最上方](#目录)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## Accessors
@@ -2480,7 +2480,7 @@
     }
     ```
 
-**[↑ 回到最上方](#目录)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## Events
@@ -2512,7 +2512,7 @@
     });
     ```
 
-  **[↑ 回到最上方](#目录)**
+  **[↑ 回到最上方](#table-of-contents)**
 
 
 ## jQuery
@@ -2582,15 +2582,15 @@
     $sidebar.find('ul').hide();
     ```
 
-**[↑ 回到最上方](#目录)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
-## ECMAScript 5 兼容
+## ECMAScript 5 Compatibility
 
   <a name="es5-compat--kangax"></a><a name="26.1"></a>
   - [26.1](#es5-compat--kangax) Refer to [Kangax](https://twitter.com/kangax/)'s ES5 [compatibility table](http://kangax.github.io/es5-compat-table/).
 
-**[↑ 回到最上方](#目录)**
+**[↑ 回到最上方](#table-of-contents)**
 
 ## ECMAScript 6 Styles
 
@@ -2611,7 +2611,7 @@
 1. [Iterators and Generators](#iterators-and-generators)
 1. [Modules](#modules)
 
-**[↑ 回到最上方](#目录)**
+**[↑ 回到最上方](#table-of-contents)**
 
 ## Testing
 
@@ -2633,7 +2633,7 @@
    - 100% test coverage is a good goal to strive for, even if it's not always practical to reach it.
    - Whenever you fix a bug, _write a regression test_. A bug fixed without a regression test is almost certainly going to break again in the future.
 
-**[↑ 回到最上方](#目录)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## Performance
@@ -2648,7 +2648,7 @@
   - [Are Javascript functions like `map()`, `reduce()`, and `filter()` optimized for traversing arrays?](https://www.quora.com/JavaScript-programming-language-Are-Javascript-functions-like-map-reduce-and-filter-already-optimized-for-traversing-array/answer/Quildreen-Motta)
   - Loading...
 
-**[↑ 回到最上方](#目录)**
+**[↑ 回到最上方](#table-of-contents)**
 
 
 ## Resources
@@ -2730,7 +2730,7 @@
   - [JavaScript Jabber](https://devchat.tv/js-jabber/)
 
 
-**[↑ 回到最上方](#目录)**
+**[↑ 回到最上方](#table-of-contents)**
 
 ## In the Wild
 
@@ -2805,7 +2805,7 @@
   - **Zillow**: [zillow/javascript](https://github.com/zillow/javascript)
   - **ZocDoc**: [ZocDoc/javascript](https://github.com/ZocDoc/javascript)
 
-**[↑ 回到最上方](#目录)**
+**[↑ 回到最上方](#table-of-contents)**
 
 ## Translation
 
@@ -2865,9 +2865,7 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
->警告：转载时必须包含此许可证
-
-**[↑ 回到最上方](#目录)**
+**[↑ 回到最上方](#table-of-contents)**
 
 ## Amendments
 
