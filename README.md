@@ -2060,7 +2060,7 @@
     ```
 
   <a name="whitespace--max-len"></a><a name="18.12"></a>
-  - [18.12](#whitespace--max-len) 避免你的某一行代码超过了 100 字符，当然空格也算在里面。 eslint: [`max-len`](http://eslint.org/docs/rules/max-len.html) jscs: [`maximumLineLength`](http://jscs.info/rule/maximumLineLength)
+  - [18.12](#whitespace--max-len) 避免你的某一行代码超过了 100 字符，空格也算。 eslint: [`max-len`](http://eslint.org/docs/rules/max-len.html) jscs: [`maximumLineLength`](http://jscs.info/rule/maximumLineLength)
 
     > 为毛？这种做法保证了可读性和可维护性。
 
