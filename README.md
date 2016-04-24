@@ -2205,14 +2205,14 @@
       return name;
     }());
 
-    // 好评, but legacy (guards against the function becoming an argument when two files with IIFEs are concatenated)
+    // 好评，但是过于传统（这种做法曾被用来预防当两个文件合并时括号被误当作一个函数的参数的情况）
     ;(() => {
       const name = 'Skywalker';
       return name;
     }());
     ```
 
-    [Read more](http://stackoverflow.com/questions/7365172/semicolon-before-self-invoking-function/7365214%237365214).
+    [在 stackoverflow 阅读更多](http://stackoverflow.com/questions/7365172/semicolon-before-self-invoking-function/7365214%237365214).
 
 **[↑ 回到最上方](#table-of-contents)**
 
@@ -2221,26 +2221,26 @@
 ## 类型，强制类型转换
 
   <a name="coercion--explicit"></a><a name="21.1"></a>
-  - [21.1](#coercion--explicit) Perform type coercion at the beginning of the statement.
+  - [21.1](#coercion--explicit) 执行类型转换的位置应当是语句的开头
 
   <a name="coercion--strings"></a><a name="21.2"></a>
-  - [21.2](#coercion--strings)  Strings:
+  - [21.2](#coercion--strings)  对字符串：
 
     ```javascript
     // => this.reviewScore = 9;
 
     // 差评
-    const totalScore = this.reviewScore + ''; // invokes this.reviewScore.valueOf()
+    const totalScore = this.reviewScore + ''; // 调用 this.reviewScore.valueOf()
 
     // 差评
-    const totalScore = this.reviewScore.toString(); // isn't guaranteed to return a string
+    const totalScore = this.reviewScore.toString(); // 不能保证返回字符串
 
     // 好评
     const totalScore = String(this.reviewScore);
     ```
 
   <a name="coercion--numbers"></a><a name="21.3"></a>
-  - [21.3](#coercion--numbers) Numbers: Use `Number` for type casting and `parseInt` always with a radix for parsing strings. eslint: [`radix`](http://eslint.org/docs/rules/radix)
+  - [21.3](#coercion--numbers) 数字：使用 `Number` 来进行类型转换，在使用 `parseInt` 时，总是带上类型转换的基数。 eslint: [`radix`](http://eslint.org/docs/rules/radix)
 
     ```javascript
     const inputValue = '4';
@@ -2265,20 +2265,19 @@
     ```
 
   <a name="coercion--comment-deviations"></a><a name="21.4"></a>
-  - [21.4](#coercion--comment-deviations) If for whatever reason you are doing something wild and `parseInt` is your bottleneck and need to use Bitshift for [performance reasons](http://jsperf.com/coercion-vs-casting/3), leave a comment explaining why and what you're doing.
+  - [21.4](#coercion--comment-deviations) 如果因为某些原因， `parseInt` 成为了[性能瓶颈](http://jsperf.com/coercion-vs-casting/3)，而你就是任性的要使用 **位操作** (Bitshift)，那么留个注释解释一下原因吧。
 
     ```javascript
     // 好评
     /**
-     * parseInt was the reason my code was slow.
-     * Bitshifting the String to coerce it to a
-     * Number made it a lot faster.
+     * 我的程序那么慢，全是 parseInt 的锅
+     * 改成使用位操作后，很快很爽很开心。
      */
     const val = inputValue >> 0;
     ```
 
   <a name="coercion--bitwise"></a><a name="21.5"></a>
-  - [21.5](#coercion--bitwise) **Note:** Be careful when using bitshift operations. Numbers are represented as [64-bit values](http://es5.github.io/#x4.3.19), but bitshift operations always return a 32-bit integer ([source](http://es5.github.io/#x11.7)). Bitshift can lead to unexpected behavior for integer values larger than 32 bits. [Discussion](https://github.com/airbnb/javascript/issues/109). Largest signed 32-bit Int is 2,147,483,647:
+  - [21.5](#coercion--bitwise) **注意** : 小心使用位操作运算符。数字会被当成 [64位变量](http://es5.github.io/#x4.3.19)，但是位操作运算符总是返回 32 位的整数([参考](http://es5.github.io/#x11.7))。位操作在处理大于 32 位的整数值时，并不会如你所料。[相关讨论](https://github.com/airbnb/javascript/issues/109)。最大的 32 位整数是 2,147,483,647 ：
 
     ```javascript
     2147483647 >> 0 //=> 2147483647
@@ -2287,7 +2286,7 @@
     ```
 
   <a name="coercion--booleans"></a><a name="21.6"></a>
-  - [21.6](#coercion--booleans) Booleans:
+  - [21.6](#coercion--booleans) 布尔值：
 
     ```javascript
     const age = 0;
