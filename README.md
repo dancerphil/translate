@@ -2363,9 +2363,11 @@
     ```
 
   <a name="naming--leading-underscore"></a><a name="22.4"></a>
-  - [22.4](#naming--leading-underscore) Do not use trailing or leading underscores. eslint: [`no-underscore-dangle`](http://eslint.org/docs/rules/no-underscore-dangle.html) jscs: [`disallowDanglingUnderscores`](http://jscs.info/rule/disallowDanglingUnderscores)
+  - [22.4](#naming--leading-underscore) 不要以下划线作为开头或结尾。 eslint: [`no-underscore-dangle`](http://eslint.org/docs/rules/no-underscore-dangle.html) jscs: [`disallowDanglingUnderscores`](http://jscs.info/rule/disallowDanglingUnderscores)
 
-    > Why? JavaScript does not have the concept of privacy in terms of properties or methods. Although a leading underscore is a common convention to mean “private”, in fact, these properties are fully public, and as such, are part of your public API contract. This convention might lead developers to wrongly think that a change won't count as breaking, or that tests aren't needed. tl;dr: if you want something to be “private”, it must not be observably present.
+    > 为什么？事实上，Javascript 没有隐私方面的概念。虽然在一般的约定中，在前面加下划线的意思是 private ，但事实上，这些属性完完全全的就是公开的，也因此，意味着它们也是你公共 API 的一部分。这个一般的约定误导一部分程序员，使他们错误的认为一个小小的变化不会引起什么结果，或者认为测试是可有可无的。
+    > 
+    > 太长不看：如果你真的需要一些“私密”的属性，它不应该被双手奉上。
 
     ```javascript
     // 差评
@@ -2378,7 +2380,7 @@
     ```
 
   <a name="naming--self-this"></a><a name="22.5"></a>
-  - [22.5](#naming--self-this) Don't save references to `this`. Use arrow functions or Function#bind. jscs: [`disallowNodeTypes`](http://jscs.info/rule/disallowNodeTypes)
+  - [22.5](#naming--self-this) 别保存 `this` 的引用。使用箭头函数或 Function#bind。 jscs: [`disallowNodeTypes`](http://jscs.info/rule/disallowNodeTypes)
 
     ```javascript
     // 差评
@@ -2406,7 +2408,7 @@
     ```
 
   <a name="naming--filename-matches-export"></a><a name="22.6"></a>
-  - [22.6](#naming--filename-matches-export) A base filename should exactly match the name of its default export.
+  - [22.6](#naming--filename-matches-export) 你的文件名应当和默认的类名保持完全一致
 
     ```javascript
     // file 1 contents
@@ -2442,7 +2444,7 @@
     ```
 
   <a name="naming--camelCase-default-export"></a><a name="22.7"></a>
-  - [22.7](#naming--camelCase-default-export) Use camelCase when you export-default a function. Your filename should be identical to your function's name.
+  - [22.7](#naming--camelCase-default-export) 使用驼峰式命名导出默认函数。你的文件名应当和函数名保持完全一致
 
     ```javascript
     function makeStyleGuide() {
@@ -2452,7 +2454,7 @@
     ```
 
   <a name="naming--PascalCase-singleton"></a><a name="22.8"></a>
-  - [22.8](#naming--PascalCase-singleton) Use PascalCase when you export a constructor / class / singleton / function library / bare object.
+  - [22.8](#naming--PascalCase-singleton) 使用帕斯卡式命名导出构造函数、类、单例(singleton)、函数库、空对象
 
     ```javascript
     const AirbnbStyleGuide = {
