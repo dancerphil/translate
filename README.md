@@ -620,7 +620,7 @@
     > Why? An immediately invoked function expression is a single unit - wrapping both it, and its invocation parens, in parens, cleanly expresses this. Note that in a world with modules everywhere, you almost never need an IIFE.
 
     ```javascript
-    // immediately-invoked function expression (IIFE)
+    // 立即调用的函数表达式 (IIFE)
     (function () {
       console.log('Welcome to the Internet. Please follow me.');
     }());
@@ -630,7 +630,7 @@
   - [7.3](#functions--in-blocks) Never declare a function in a non-function block (if, while, etc). Assign the function to a variable instead. Browsers will allow you to do it, but they all interpret it differently, which is bad news bears. eslint: [`no-loop-func`](http://eslint.org/docs/rules/no-loop-func.html)
 
   <a name="functions--note-on-blocks"></a><a name="7.4"></a>
-  - [7.4](#functions--note-on-blocks) **Note:** ECMA-262 defines a `block` as a list of statements. A function declaration is not a statement. [Read ECMA-262's note on this issue](http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf#page=97).
+  - [7.4](#functions--note-on-blocks) **注意：** ECMA-262 defines a `block` as a list of statements. A function declaration is not a statement. [Read ECMA-262's note on this issue](http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf#page=97).
 
     ```javascript
     // 差评
@@ -650,7 +650,7 @@
     ```
 
   <a name="functions--arguments-shadow"></a><a name="7.5"></a>
-  - [7.5](#functions--arguments-shadow) Never name a parameter `arguments`. This will take precedence over the `arguments` object that is given to every function scope.
+  - [7.5](#functions--arguments-shadow) 永远不要把参数命名为 `arguments` 。这将取代原来函数作用域内的 `arguments` 对象
 
     ```javascript
     // 差评
@@ -665,7 +665,7 @@
     ```
 
   <a name="es6-rest"></a><a name="7.6"></a>
-  - [7.6](#es6-rest) Never use `arguments`, opt to use rest syntax `...` instead. eslint: [`prefer-rest-params`](http://eslint.org/docs/rules/prefer-rest-params)
+  - [7.6](#es6-rest) 与此同时，不要使用 `arguments` 。可以选择 rest 语法 `...` 替代。 eslint: [`prefer-rest-params`](http://eslint.org/docs/rules/prefer-rest-params)
 
     > Why? `...` is explicit about which arguments you want pulled. Plus, rest arguments are a real Array, and not merely Array-like like `arguments`.
 
@@ -2205,14 +2205,15 @@
       return name;
     }());
 
-    // 好评，但是过于传统（这种做法曾被用来预防当两个文件合并时括号被误当作一个函数的参数的情况）
+    // 好评，但是过于传统（这种做法曾被用来预防当两个存在 IIFE 的文件合并时括号被误当作一个函数的参数的情况）
     ;(() => {
       const name = 'Skywalker';
       return name;
     }());
     ```
-
-    [在 stackoverflow 阅读更多](http://stackoverflow.com/questions/7365172/semicolon-before-self-invoking-function/7365214%237365214).
+    [IIFE](#7.2) - immediately-invoked function expression - 立即调用的函数表达式
+    
+    [在 stackoverflow 阅读更多](http://stackoverflow.com/questions/7365172/semicolon-before-self-invoking-function/7365214%237365214)
 
 **[↑ 回到最上方](#table-of-contents)**
 
