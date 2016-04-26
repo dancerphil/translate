@@ -2635,7 +2635,7 @@
 ## ECMAScript 5 兼容性
 
   <a name="es5-compat--kangax"></a><a name="26.1"></a>
-  - [26.1](#es5-compat--kangax) Refer to [Kangax](https://twitter.com/kangax/)'s ES5 [compatibility table](http://kangax.github.io/es5-compat-table/).
+  - [26.1](#es5-compat--kangax) 参考 [Kangax](https://twitter.com/kangax/) 的 ES5 [兼容性表格](http://kangax.github.io/es5-compat-table/)，里面有你要的一切
 
 **[↑ 回到最上方](#table-of-contents)**
 
@@ -2643,7 +2643,7 @@
 ## ES6 代码风格
 
   <a name="es6-styles"></a><a name="27.1"></a>
-  - [27.1](#es6-styles) This is a collection of links to the various ES6 features.
+  - [27.1](#es6-styles) ES6 代码风格分布在各个篇目中，我们整理了一下，以下是链接到 ES6 的各个特性的列表。
 
 1. [Arrow Functions](#arrow-functions)
 1. [Classes](#constructors)
@@ -2665,7 +2665,7 @@
 ## 测试
 
   <a name="testing--yup"></a><a name="28.1"></a>
-  - [28.1](#testing--yup) **Yup.**
+  - [28.1](#testing--yup) **测试这个东西，真的可以有！**
 
     ```javascript
     function foo() {
@@ -2674,13 +2674,13 @@
     ```
 
   <a name="testing--for-real"></a><a name="28.2"></a>
-  - [28.2](#testing--for-real) **No, but seriously**:
-   - Whichever testing framework you use, you should be writing tests!
-   - Strive to write many small pure functions, and minimize where mutations occur.
-   - Be cautious about stubs and mocks - they can make your tests more brittle.
-   - We primarily use [`mocha`](https://www.npmjs.com/package/mocha) at Airbnb. [`tape`](https://www.npmjs.com/package/tape) is also used occasionally for small, separate modules.
-   - 100% test coverage is a good goal to strive for, even if it's not always practical to reach it.
-   - Whenever you fix a bug, _write a regression test_. A bug fixed without a regression test is almost certainly going to break again in the future.
+  - [28.2](#testing--for-real) **好吧，认真一点：**
+   - 不论你使用了什么测试框架，你都应该写测试！
+   - 尽量写很多小的纯函数(small pure functions)，这样你可以在很小的区域里探知异常发生的地点
+   - 对 stubs 和 mocks 保持严谨 - 他们使你的测试变得更加脆弱。 // TODO Why?
+   - 在 Airbnb 我们主要使用 [`mocha`](https://www.npmjs.com/package/mocha) ，对一些小型或单独的模块会使用 [`tape`](https://www.npmjs.com/package/tape)
+   - 达到 100% 测试覆盖率，虽然实现它是不切实际的，但是这是一个非常好的目标
+   - 每当你修复一个 bug ，就为这个 bug 写 **回归测试** 。一个修复的 bug 如果没有回归测试，一般而言都会复发
 
 **[↑ 回到最上方](#table-of-contents)**
 
@@ -2696,7 +2696,7 @@
   - [innerHTML vs textContent for script text](http://jsperf.com/innerhtml-vs-textcontent-for-script-text)
   - [Long String Concatenation](http://jsperf.com/ya-string-concat)
   - [Are Javascript functions like `map()`, `reduce()`, and `filter()` optimized for traversing arrays?](https://www.quora.com/JavaScript-programming-language-Are-Javascript-functions-like-map-reduce-and-filter-already-optimized-for-traversing-array/answer/Quildreen-Motta)
-  - Loading...
+  - 载入中...
 
 **[↑ 回到最上方](#table-of-contents)**
 
@@ -2704,38 +2704,38 @@
 <a name="resources"></a>
 ## 学习资源
 
-**Learning ES6**
+**学习 ES6**
 
   - [Draft ECMA 2015 (ES6) Spec](https://people.mozilla.org/~jorendorff/es6-draft.html)
   - [ExploringJS](http://exploringjs.com/)
   - [ES6 Compatibility Table](https://kangax.github.io/compat-table/es6/)
   - [Comprehensive Overview of ES6 Features](http://es6-features.org/)
 
-**Read This**
+**阅读**
 
   - [Standard ECMA-262](http://www.ecma-international.org/ecma-262/6.0/index.html)
 
-**Tools**
+**工具**
 
   - Code Style Linters
     + [ESlint](http://eslint.org/) - [Airbnb Style .eslintrc](https://github.com/airbnb/javascript/blob/master/linters/.eslintrc)
     + [JSHint](http://jshint.com/) - [Airbnb Style .jshintrc](https://github.com/airbnb/javascript/blob/master/linters/.jshintrc)
     + [JSCS](https://github.com/jscs-dev/node-jscs) - [Airbnb Style Preset](https://github.com/jscs-dev/node-jscs/blob/master/presets/airbnb.json)
 
-**Other Style Guides**
+**其他风格指南**
 
   - [Google JavaScript Style Guide](http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
   - [jQuery Core Style Guidelines](http://contribute.jquery.org/style-guide/js/)
   - [Principles of Writing Consistent, Idiomatic JavaScript](https://github.com/rwaldron/idiomatic.js)
 
-**Other Styles**
+**其他风格**
 
   - [Naming this in nested functions](https://gist.github.com/cjohansen/4135065) - Christian Johansen
   - [Conditional Callbacks](https://github.com/airbnb/javascript/issues/52) - Ross Allen
   - [Popular JavaScript Coding Conventions on Github](http://sideeffect.kr/popularconvention/#javascript) - JeongHoon Byun
   - [Multiple var statements in JavaScript, not superfluous](http://benalman.com/news/2012/05/multiple-var-statements-javascript/) - Ben Alman
 
-**Further Reading**
+**更多阅读**
 
   - [Understanding JavaScript Closures](http://javascriptweblog.wordpress.com/2010/10/25/understanding-javascript-closures/) - Angus Croll
   - [Basic JavaScript for the impatient programmer](http://www.2ality.com/2013/06/basic-javascript.html) - Dr. Axel Rauschmayer
@@ -2743,7 +2743,7 @@
   - [ES6 Features](https://github.com/lukehoban/es6features) - Luke Hoban
   - [Frontend Guidelines](https://github.com/bendc/frontend-guidelines) - Benjamin De Cock
 
-**Books**
+**相关书籍**
 
   - [JavaScript: The Good Parts](http://www.amazon.com/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742) - Douglas Crockford
   - [JavaScript Patterns](http://www.amazon.com/JavaScript-Patterns-Stoyan-Stefanov/dp/0596806752) - Stoyan Stefanov
@@ -2762,7 +2762,7 @@
   - [Eloquent JavaScript](http://eloquentjavascript.net/) - Marijn Haverbeke
   - [You Don't Know JS: ES6 & Beyond](http://shop.oreilly.com/product/0636920033769.do) - Kyle Simpson
 
-**Blogs**
+**博客**（我很喜欢“部落格”，台湾会这么说。为了部落！格。）
 
   - [DailyJS](http://dailyjs.com/)
   - [JavaScript Weekly](http://javascriptweekly.com/)
@@ -2776,7 +2776,7 @@
   - [Dustin Diaz](http://dustindiaz.com/)
   - [nettuts](http://code.tutsplus.com/?s=javascript)
 
-**Podcasts**
+**播客** (Podcasts)
 
   - [JavaScript Jabber](https://devchat.tv/js-jabber/)
 
@@ -2786,12 +2786,13 @@
 <a name="chat-with-us-about-javascript"></a>
 ## 和我们一起讨论JS
 
-  - Find us on [gitter](https://gitter.im/airbnb/javascript).
+  - 在这里找我们： [gitter](https://gitter.im/airbnb/javascript).
 
 <a name="contributors"></a>
 ## 贡献者
 
-  - [View Contributors](https://github.com/airbnb/javascript/graphs/contributors)
+  - [查看为原文作出贡献的同学们](https://github.com/airbnb/javascript/graphs/contributors)
+  - [查看为译文作出贡献的同学们](https://github.com/dancerphil/trick/graphs/contributors)
 
 
 <a name="license"></a>
@@ -2820,13 +2821,13 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
->警告：转载时必须包含此许可证
+> **警告** ：转载时必须包含此许可证
 
 **[↑ 回到最上方](#table-of-contents)**
 
 <a name="amendments"></a>
 ## 修订
 
-We encourage you to fork this guide and change the rules to fit your team's style guide. Below, you may list some amendments to the style guide. This allows you to periodically update your style guide without having to deal with merge conflicts.
+非常鼓励你 [`fork`](https://github.com/dancerphil/trick) 这份代码风格指南，稍加改动后作为你们团队的指南。欢迎讨论。
 
 # };
