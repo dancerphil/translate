@@ -517,7 +517,7 @@
 ## 字符串
 
   <a name="strings--quotes"></a><a name="6.1"></a>
-  - [6.1](#strings--quotes) Use single quotes `''` for strings. eslint: [`quotes`](http://eslint.org/docs/rules/quotes.html) jscs: [`validateQuoteMarks`](http://jscs.info/rule/validateQuoteMarks)
+  - [6.1](#strings--quotes) 字符串使用单引号 `''` 。 eslint: [`quotes`](http://eslint.org/docs/rules/quotes.html) jscs: [`validateQuoteMarks`](http://jscs.info/rule/validateQuoteMarks)
 
     ```javascript
     // 差评
@@ -528,10 +528,10 @@
     ```
 
   <a name="strings--line-length"></a><a name="6.2"></a>
-  - [6.2](#strings--line-length) Strings that cause the line to go over 100 characters should be written across multiple lines using string concatenation.
+  - [6.2](#strings--line-length) 字符串超过 100 个字节时，应当使用字符串连接号换行。
 
   <a name="strings--concat-perf"></a><a name="6.3"></a>
-  - [6.3](#strings--concat-perf) Note: If overused, long strings with concatenation could impact performance. [jsPerf](http://jsperf.com/ya-string-concat) & [Discussion](https://github.com/airbnb/javascript/issues/40).
+  - [6.3](#strings--concat-perf) **注意**：过度使用字串连接符号可能会对性能造成影响。 [jsPerf](http://jsperf.com/ya-string-concat) 和 [相关讨论](https://github.com/airbnb/javascript/issues/40).
 
     ```javascript
     // 差评
@@ -550,9 +550,9 @@
     ```
 
   <a name="es6-template-literals"></a><a name="6.4"></a>
-  - [6.4](#es6-template-literals) When programmatically building up strings, use template strings instead of concatenation. eslint: [`prefer-template`](http://eslint.org/docs/rules/prefer-template.html) [`template-curly-spacing`](http://eslint.org/docs/rules/template-curly-spacing) jscs: [`requireTemplateStrings`](http://jscs.info/rule/requireTemplateStrings)
+  - [6.4](#es6-template-literals) 用程序生成字符串时，使用模板字符串代替字符串连接。 eslint: [`prefer-template`](http://eslint.org/docs/rules/prefer-template.html) [`template-curly-spacing`](http://eslint.org/docs/rules/template-curly-spacing) jscs: [`requireTemplateStrings`](http://jscs.info/rule/requireTemplateStrings)
 
-    > Why? Template strings give you a readable, concise syntax with proper newlines and string interpolation features.
+    > 为什么呢？模板字符串更为简洁，更具可读性，其恰当的换行和字符串插值非常好用
 
     ```javascript
     // 差评
@@ -577,12 +577,12 @@
     ```
 
   <a name="strings--eval"></a><a name="6.5"></a>
-  - [6.5](#strings--eval) Never use `eval()` on a string, it opens too many vulnerabilities.
+  - [6.5](#strings--eval) 永远不要在字符串上使用 `eval()` ，这会造成很多漏洞
 
   <a name="strings--escaping"></a>
-  - [6.6](#strings--escaping) Do not unnecessarily escape characters in strings. eslint: [`no-useless-escape`](http://eslint.org/docs/rules/no-useless-escape)
+  - [6.6](#strings--escaping) 不要在字符串里使用无谓的转义符号。 eslint: [`no-useless-escape`](http://eslint.org/docs/rules/no-useless-escape)
 
-    > Why? Backslashes harm readability, thus they should only be present when necessary.
+    > 为什么？你看得清吗？所以只有必要的时候才转义
 
     ```javascript
     // 差评
@@ -600,9 +600,9 @@
 ## 函数
 
   <a name="functions--declarations"></a><a name="7.1"></a>
-  - [7.1](#functions--declarations) Use function declarations instead of function expressions. jscs: [`requireFunctionDeclarations`](http://jscs.info/rule/requireFunctionDeclarations)
+  - [7.1](#functions--declarations) 使用函数声明，不要使用函数表达式。 jscs: [`requireFunctionDeclarations`](http://jscs.info/rule/requireFunctionDeclarations)
 
-    > Why? Function declarations are named, so they're easier to identify in call stacks. Also, the whole body of a function declaration is hoisted, whereas only the reference of a function expression is hoisted. This rule makes it possible to always use [Arrow Functions](#arrow-functions) in place of function expressions.
+    > 为什么？函数声明是可命名的，他们在调用栈中更容易被识别。另外，函数声明会把整个函数提升（hoisted），而函数表达式只会把函数的引用变量名提升。所以[箭头函数](#arrow-functions)可以完全取代函数表达式。
 
     ```javascript
     // 差评
