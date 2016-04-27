@@ -817,11 +817,11 @@
 ## 箭头函数
 
   <a name="arrows--use-them"></a><a name="8.1"></a>
-  - [8.1](#arrows--use-them) When you must use function expressions (as when passing an anonymous function), use arrow function notation. eslint: [`prefer-arrow-callback`](http://eslint.org/docs/rules/prefer-arrow-callback.html), [`arrow-spacing`](http://eslint.org/docs/rules/arrow-spacing.html) jscs: [`requireArrowFunctions`](http://jscs.info/rule/requireArrowFunctions)
+  - [8.1](#arrows--use-them) 当你必须使用函数表达式（或传递一个匿名函数）时，使用箭头函数符号。 eslint: [`prefer-arrow-callback`](http://eslint.org/docs/rules/prefer-arrow-callback.html), [`arrow-spacing`](http://eslint.org/docs/rules/arrow-spacing.html) jscs: [`requireArrowFunctions`](http://jscs.info/rule/requireArrowFunctions)
 
-    > Why? It creates a version of the function that executes in the context of `this`, which is usually what you want, and is a more concise syntax.
-
-    > Why not? If you have a fairly complicated function, you might move that logic out into its own function declaration.
+    > 为什么？箭头函数创造了一个新的 `this` 上下文，通常符合你的期望，而且箭头函数非常简洁。（感谢 yuche 的参考： [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) 和 [toddmotto](http://toddmotto.com/es6-arrow-functions-syntaxes-and-lexical-scoping/)）
+    > 
+    > 如果不，又是为什么？如果你有一个相当复杂的函数，你或许想要把逻辑部分转移到一个函数声明上
 
     ```javascript
     // 差评
@@ -838,11 +838,11 @@
     ```
 
   <a name="arrows--implicit-return"></a><a name="8.2"></a>
-  - [8.2](#arrows--implicit-return) If the function body consists of a single expression, omit the braces and use the implicit return. Otherwise, keep the braces and use a `return` statement. eslint: [`arrow-parens`](http://eslint.org/docs/rules/arrow-parens.html), [`arrow-body-style`](http://eslint.org/docs/rules/arrow-body-style.html) jscs:  [`disallowParenthesesAroundArrowParam`](http://jscs.info/rule/disallowParenthesesAroundArrowParam), [`requireShorthandArrowFunctions`](http://jscs.info/rule/requireShorthandArrowFunctions)
+  - [8.2](#arrows--implicit-return) 如果一个函数体只有很简单的一行，那就把花括号、圆括号和 `return` 都省略掉。如果不是，那就保留括号和 `return` 。 eslint: [`arrow-parens`](http://eslint.org/docs/rules/arrow-parens.html), [`arrow-body-style`](http://eslint.org/docs/rules/arrow-body-style.html) jscs:  [`disallowParenthesesAroundArrowParam`](http://jscs.info/rule/disallowParenthesesAroundArrowParam), [`requireShorthandArrowFunctions`](http://jscs.info/rule/requireShorthandArrowFunctions)
 
-    > Why? Syntactic sugar. It reads well when multiple functions are chained together.
-
-    > Why not? If you plan on returning an object.
+    > 为什么？通过语法修饰，在函数的链式调用中可读性很高。
+    > 
+    > 何时不用？当你打算回传一个对象的时候。
 
     ```javascript
     // 差评
@@ -862,9 +862,9 @@
     ```
 
   <a name="arrows--paren-wrap"></a><a name="8.3"></a>
-  - [8.3](#arrows--paren-wrap) In case the expression spans over multiple lines, wrap it in parentheses for better readability.
+  - [8.3](#arrows--paren-wrap) 如果你们表达式跨行了，请使用括号把它们包裹起来，增加可读性
 
-    > Why? It shows clearly where the function starts and ends.
+    > 为什么？这样做是的表达式的开始和结束的位置更加清楚
 
     ```js
     // 差评
@@ -881,9 +881,9 @@
     ```
 
   <a name="arrows--one-arg-parens"></a><a name="8.4"></a>
-  - [8.4](#arrows--one-arg-parens) If your function takes a single argument and doesn’t use braces, omit the parentheses. Otherwise, always include parentheses around arguments. eslint: [`arrow-parens`](http://eslint.org/docs/rules/arrow-parens.html) jscs:  [`disallowParenthesesAroundArrowParam`](http://jscs.info/rule/disallowParenthesesAroundArrowParam)
+  - [8.4](#arrows--one-arg-parens) 如果你的函数只有一个参数，而且不包含大括号，那么省略括号吧，否则，你应当使用括号包住参数。 eslint: [`arrow-parens`](http://eslint.org/docs/rules/arrow-parens.html) jscs:  [`disallowParenthesesAroundArrowParam`](http://jscs.info/rule/disallowParenthesesAroundArrowParam)
 
-    > Why? Less visual clutter.
+    > 为什么？减少视觉噪声
 
     ```js
     // 差评
@@ -912,7 +912,7 @@
     ```
 
   <a name="arrows--confusing"></a><a name="8.5"></a>
-  - [8.5](#arrows--confusing) Avoid confusing arrow function syntax (`=>`) with comparison operators (`<=`, `>=`). eslint: [`no-confusing-arrow`](http://eslint.org/docs/rules/no-confusing-arrow)
+  - [8.5](#arrows--confusing) 避免把箭头函数语法 (`=>`) 和比较运算符 (`<=`, `>=`) 相混淆。不是你自己看得清就可以的，而是你写的时候要让别人看清。 eslint: [`no-confusing-arrow`](http://eslint.org/docs/rules/no-confusing-arrow)
 
     ```js
     // 差评
