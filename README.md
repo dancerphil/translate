@@ -1074,7 +1074,7 @@
   <a name="classes--no-duplicate-members"></a>
   - [9.6](#classes--no-duplicate-members) 避免重复的类成员。 eslint: [`no-dupe-class-members`](http://eslint.org/docs/rules/no-dupe-class-members)
 
-    > 为什么？重复的类成员中，只有最后一个声明会被静静的选中，重复几乎必然的会引起 bug
+    > 为什么？重复的类成员中，只有最后一个声明会被静静的选中，重复类成员几乎必然会引起 bug
 
     ```javascript
     // 差评
@@ -1102,16 +1102,16 @@
 ## 模块
 
   <a name="modules--use-them"></a><a name="10.1"></a>
-  - [10.1](#modules--use-them) Always use modules (`import`/`export`) over a non-standard module system. You can always transpile to your preferred module system.
+  - [10.1](#modules--use-them) 总是使用模组 (`import`/`export`) 而不是其他非标准模块系统。你可以编译为你喜欢的模块系统。[参考：@颜海镜](http://yanhaijing.com/javascript/2015/03/28/js-module/) ，[@segmentgault](https://segmentfault.com/a/1190000000492678)
 
-    > Why? Modules are the future, let's start using the future now.
+    > 为什么？模块是未来，让我们开始使用“未来”吧！
 
     ```javascript
     // 差评
     const AirbnbStyleGuide = require('./AirbnbStyleGuide');
     module.exports = AirbnbStyleGuide.es6;
 
-    // ok
+    // 还可以
     import AirbnbStyleGuide from './AirbnbStyleGuide';
     export default AirbnbStyleGuide.es6;
 
@@ -1121,9 +1121,9 @@
     ```
 
   <a name="modules--no-wildcard"></a><a name="10.2"></a>
-  - [10.2](#modules--no-wildcard) Do not use wildcard imports.
+  - [10.2](#modules--no-wildcard) 不要使用通配符 `*` 引入
 
-    > Why? This makes sure you have a single default export.
+    > 为什么？这样能确保你只有一个默认的 `export` 。
 
     ```javascript
     // 差评
@@ -1134,9 +1134,9 @@
     ```
 
   <a name="modules--no-export-from-import"></a><a name="10.3"></a>
-  - [10.3](#modules--no-export-from-import) And do not export directly from an import.
+  - [10.3](#modules--no-export-from-import) 不要从 `import` 中直接 `export` 。
 
-    > Why? Although the one-liner is concise, having one clear way to import and one clear way to export makes things consistent.
+    > 为什么？虽然写在一行看起来很棒，但是它们毕竟一个是引入，一个是导出，分开写会让所有事都井井有条
 
     ```javascript
     // 差评
@@ -1150,14 +1150,14 @@
     ```
 
   <a name="modules--no-duplicate-imports"></a>
-  - [10.4](#modules--no-duplicate-imports) Only import from a path in one place.
+  - [10.4](#modules--no-duplicate-imports) 来自相同路径的 `import` ，就把他们写在同一个地方。
  eslint: [`no-duplicate-imports`](http://eslint.org/docs/rules/no-duplicate-imports)
-    > Why? Having multiple lines that import from the same path can make code harder to maintain.
+    > 为什么？写在不同行的话，程序的维护和更新变得非常困难
 
     ```javascript
     // 差评
     import foo from 'foo';
-    // … some other imports … //
+    // … 一些其他的 imports … //
     import { named1, named2 } from 'foo';
 
     // 好评
