@@ -107,7 +107,7 @@
   <a name="references--prefer-const"></a><a name="2.1"></a>
   - [2.1](#references--prefer-const) 你的所有引用都应该使用 `const` ； 避免使用 `var` 。 eslint: [`prefer-const`](http://eslint.org/docs/rules/prefer-const.html), [`no-const-assign`](http://eslint.org/docs/rules/no-const-assign.html)
 
-    > 为毛？ 这就确保了你不会对引用(reference)重新赋值，否则一旦出现 bug ，你根本不知道哪里有错，半天也 de 不出来
+    > 为什么？这就确保了你不会对引用(reference)重新赋值，否则一旦出现 bug ，你根本不知道哪里有错，半天也 de 不出来
 
     ```javascript
     // 差评
@@ -122,7 +122,7 @@
   <a name="references--disallow-var"></a><a name="2.2"></a>
   - [2.2](#references--disallow-var) 如果你一定要修改一个引用，那也不要用 `var` ，你可以用 `let` 来代替。 eslint: [`no-var`](http://eslint.org/docs/rules/no-var.html) jscs: [`disallowVar`](http://jscs.info/rule/disallowVar)
 
-    > 为毛？ `let` 是块级作用域变量，而 `var` 是函数作用域变量，那你还不快用 `let` ？ // TODO for循环函数注册bug
+    > 为什么？ `let` 是块级作用域变量，而 `var` 是函数作用域变量，那你还不快用 `let` ？ // TODO for循环函数注册bug
 
     ```javascript
     // 差评
@@ -207,7 +207,7 @@
   <a name="es6-computed-properties"></a><a name="3.4"></a>
   - [3.4](#es6-computed-properties) 创建有动态属性名的对象时，使用特性：可被计算属性名称（注：代码中方括号部分）
 
-    > 什么鬼？这样的话，你可以在一个地方定义所有的对象属性
+    > 你说的什么意思？这样的话，你可以在一个地方定义所有的对象属性
     > 
     > 注 BY [dancerphil](https://github.com/dancerphil)：下方代码中首次出现了 ``` `a key named ${k}` ```，这是 ES6 模板字符串，其中可以包含 `${expression}` 占位符，[（见：MDN 模板字符串）](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/template_strings)
     > 
@@ -259,7 +259,7 @@
   <a name="es6-object-concise"></a><a name="3.6"></a>
   - [3.6](#es6-object-concise) 使用对象属性值的简写写法。 eslint: [`object-shorthand`](http://eslint.org/docs/rules/object-shorthand.html) jscs: [`requireEnhancedObjectLiterals`](http://jscs.info/rule/requireEnhancedObjectLiterals)
 
-    > 为什么？这样写更短更有力！（原话好像不是这么说的吧）
+    > 为什么？这样写更短更有力！
 
     ```javascript
     const lukeSkywalker = 'Luke Skywalker';
@@ -278,7 +278,7 @@
   <a name="objects--grouped-shorthand"></a><a name="3.7"></a>
   - [3.7](#objects--grouped-shorthand) 把简写的属性放在一起，然后写在对象的开头处。
 
-    > 为毛？这样能清楚地分辨哪些属性使用了简写。
+    > 为什么？这样能清楚地分辨哪些属性使用了简写。
 
     ```javascript
     const anakinSkywalker = 'Anakin Skywalker';
@@ -932,9 +932,9 @@
 ## 类，构造函数
 
   <a name="constructors--use-class"></a><a name="9.1"></a>
-  - [9.1](#constructors--use-class) Always use `class`. Avoid manipulating `prototype` directly.
+  - [9.1](#constructors--use-class) 总是使用 `class`。避免直接操作 `prototype` 
 
-    > Why? `class` syntax is more concise and easier to reason about.
+    > 为什么? class 语法更简洁易读
 
     ```javascript
     // 差评
@@ -962,9 +962,9 @@
     ```
 
   <a name="constructors--extends"></a><a name="9.2"></a>
-  - [9.2](#constructors--extends) Use `extends` for inheritance.
+  - [9.2](#constructors--extends) 使用 `extends` 来继承
 
-    > Why? It is a built-in way to inherit prototype functionality without breaking `instanceof`.
+    > 为什么？ `extends` 是一个内建的原型继承方法，它不会破坏 `instanceof` 。
 
     ```javascript
     // 差评
@@ -986,7 +986,7 @@
     ```
 
   <a name="constructors--chaining"></a><a name="9.3"></a>
-  - [9.3](#constructors--chaining) Methods can return `this` to help with method chaining.
+  - [9.3](#constructors--chaining) 方法返回 `this` 可以帮助链式调用，这真的棒。
 
     ```javascript
     // 差评
@@ -1024,7 +1024,7 @@
 
 
   <a name="constructors--tostring"></a><a name="9.4"></a>
-  - [9.4](#constructors--tostring) It's okay to write a custom toString() method, just make sure it works successfully and causes no side effects.
+  - [9.4](#constructors--tostring) 你想写一个自定义的 `toString()` 方法？没问题，但要确保它能正常运行并且不会引起副作用。
 
     ```javascript
     class Jedi {
@@ -1043,7 +1043,7 @@
     ```
 
   <a name="constructors--no-useless"></a><a name="9.5"></a>
-  - [9.5](#constructors--no-useless) Classes have a default constructor if one is not specified. An empty constructor function or one that just delegates to a parent class is unnecessary. eslint: [`no-useless-constructor`](http://eslint.org/docs/rules/no-useless-constructor)
+  - [9.5](#constructors--no-useless) 如果没有指定，类会拥有默认的构造方法，你不需要写一个空的构造方法，或者只是继承父类的方法。 eslint: [`no-useless-constructor`](http://eslint.org/docs/rules/no-useless-constructor)
 
     ```javascript
     // 差评
@@ -1072,9 +1072,9 @@
     ```
 
   <a name="classes--no-duplicate-members"></a>
-  - [9.6](#classes--no-duplicate-members) Avoid duplicate class members. eslint: [`no-dupe-class-members`](http://eslint.org/docs/rules/no-dupe-class-members)
+  - [9.6](#classes--no-duplicate-members) 避免重复的类成员。 eslint: [`no-dupe-class-members`](http://eslint.org/docs/rules/no-dupe-class-members)
 
-    > Why? Duplicate class member declarations will silently prefer the last one - having duplicates is almost certainly a bug.
+    > 为什么？重复的类成员中，只有最后一个声明会被静静的选中，重复几乎必然的会引起 bug
 
     ```javascript
     // 差评
