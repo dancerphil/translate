@@ -1362,46 +1362,42 @@
 
 
 <a name="hoisting"></a>
-## 提升 //TODO
+## 提升
 
   <a name="hoisting--about"></a><a name="14.1"></a>
-  - [14.1](#hoisting--about) `var` declarations get hoisted to the top of their scope, their assignment does not. `const` and `let` declarations are blessed with a new concept called [Temporal Dead Zones (TDZ)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#Temporal_dead_zone_and_errors_with_let). It's important to know why [typeof is no longer safe](http://es-discourse.com/t/why-typeof-is-no-longer-safe/15).
+  - [14.1](#hoisting--about) `var` 声明会被提升至该作用域的顶部，但它们赋值不会提升。 `let` 和 `const` 被赋予了一种新概念，称为暂时性死区[(Temporal Dead Zones)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#Temporal_dead_zone_and_errors_with_let)。这对于了解为什么 [typeof 不再安全](http://es-discourse.com/t/why-typeof-is-no-longer-safe/15)相当重要
 
     ```javascript
-    // we know this wouldn't work (assuming there
-    // is no notDefined global variable)
+    // 这样是运行不了的
+    // （如果 notDefined 不是全局变量）
     function example() {
-      console.log(notDefined); // => throws a ReferenceError
+      console.log(notDefined); // => 抛出 ReferenceError
     }
 
-    // creating a variable declaration after you
-    // reference the variable will work due to
-    // variable hoisting. Note: the assignment
-    // value of `true` is not hoisted.
+    // 由于变量提升的原因，在引用变量后再声明变量是可以运行的。
+    // 但是变量的赋值 `true` 不会被提升。
     function example() {
       console.log(declaredButNotAssigned); // => undefined
       var declaredButNotAssigned = true;
     }
 
-    // the interpreter is hoisting the variable
-    // declaration to the top of the scope,
-    // which means our example could be rewritten as:
+    // 编译器会把函数声明提升到作用域的顶层，所以上述代码其实可以写成这样
     function example() {
       let declaredButNotAssigned;
       console.log(declaredButNotAssigned); // => undefined
       declaredButNotAssigned = true;
     }
 
-    // using const and let
+    // 使用 const 和 let
     function example() {
-      console.log(declaredButNotAssigned); // => throws a ReferenceError
-      console.log(typeof declaredButNotAssigned); // => throws a ReferenceError
+      console.log(declaredButNotAssigned); // => 抛出 ReferenceError
+      console.log(typeof declaredButNotAssigned); // => 抛出 ReferenceError
       const declaredButNotAssigned = true;
     }
     ```
 
   <a name="hoisting--anon-expressions"></a><a name="14.2"></a>
-  - [14.2](#hoisting--anon-expressions) Anonymous function expressions hoist their variable name, but not the function assignment.
+  - [14.2](#hoisting--anon-expressions) 匿名函数表达式的变量名会被提升，但函数内容不会
 
     ```javascript
     function example() {
@@ -1416,7 +1412,7 @@
     ```
 
   <a name="hoisting--named-expresions"></a><a name="14.3"></a>
-  - [14.3](#hoisting--named-expresions) Named function expressions hoist the variable name, not the function name or the function body.
+  - [14.3](#hoisting--named-expresions) 命名函数表达式的变量名会被提升，但函数名和函数函数内容不会
 
     ```javascript
     function example() {
@@ -1445,7 +1441,7 @@
     ```
 
   <a name="hoisting--declarations"></a><a name="14.4"></a>
-  - [14.4](#hoisting--declarations) Function declarations hoist their name and the function body.
+  - [14.4](#hoisting--declarations) 函数声明的名称和函数体都会被提升，所以你知道该怎么写
 
     ```javascript
     function example() {
@@ -1457,7 +1453,8 @@
     }
     ```
 
-  - For more information refer to [JavaScript Scoping & Hoisting](http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting/) by [Ben Cherry](http://www.adequatelygood.com/).
+  - 想了解更多信息，参考 [Scoping & Hoisting](http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting/) 来自 [Ben Cherry](http://www.adequatelygood.com/)。
+  > 在我看来，没有必要的时候先定义后使用，并没有什么错
 
 **[↑ 回到最上方](#table-of-contents)**
 
@@ -1466,7 +1463,7 @@
 ## 比较运算符，等号
 
   <a name="comparison--eqeqeq"></a><a name="15.1"></a>
-  - [15.1](#comparison--eqeqeq) Use `===` and `!==` over `==` and `!=`. eslint: [`eqeqeq`](http://eslint.org/docs/rules/eqeqeq.html)
+  - [15.1](#comparison--eqeqeq) 尽量使用 `===` 和 `!==` ，而不是 `==` 和 `!=` 。 eslint: [`eqeqeq`](http://eslint.org/docs/rules/eqeqeq.html)
 
   <a name="comparison--if"></a><a name="15.2"></a>
   - [15.2](#comparison--if) Conditional statements such as the `if` statement evaluate their expression using coercion with the `ToBoolean` abstract method and always follow these simple rules:
