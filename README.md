@@ -1176,9 +1176,9 @@
 ## 迭代器，生成器
 
   <a name="iterators--nope"></a><a name="11.1"></a>
-  - [11.1](#iterators--nope) Don't use iterators. Prefer JavaScript's higher-order functions like `map()` and `reduce()` instead of loops like `for-of`. eslint: [`no-iterator`](http://eslint.org/docs/rules/no-iterator.html)
+  - [11.1](#iterators--nope) 不要使用迭代器(iterators)。选择 JS 高阶函数比如 `map()` 和 `reduce()` ，不要使用循环，比如 `for-of` 。 eslint: [`no-iterator`](http://eslint.org/docs/rules/no-iterator.html)
 
-    > Why? This enforces our immutable rule. Dealing with pure functions that return values is easier to reason about than side effects.
+    > 为什么？这增加了代码的不变性，处理纯函数的返回值非常方便，超过了其可以造成的副作用
 
     ```javascript
     const numbers = [1, 2, 3, 4, 5];
@@ -1202,9 +1202,11 @@
     ```
 
   <a name="generators--nope"></a><a name="11.2"></a>
-  - [11.2](#generators--nope) Don't use generators for now.
+  - [11.2](#generators--nope) 暂时不要使用生成器(generators)
 
-    > Why? They don't transpile well to ES5.
+    > 为什么？他们不能很好的被编译到 ES5 。
+    > 
+    > 不过截至目前，V8 和 Nodejs 已经很好的支持了生成器。
 
 **[↑ 回到最上方](#table-of-contents)**
 
@@ -1213,7 +1215,7 @@
 ## 属性
 
   <a name="properties--dot"></a><a name="12.1"></a>
-  - [12.1](#properties--dot) Use dot notation when accessing properties. eslint: [`dot-notation`](http://eslint.org/docs/rules/dot-notation.html) jscs: [`requireDotNotation`](http://jscs.info/rule/requireDotNotation)
+  - [12.1](#properties--dot) 使用 `.` 符号来访问对象属性。 eslint: [`dot-notation`](http://eslint.org/docs/rules/dot-notation.html) jscs: [`requireDotNotation`](http://jscs.info/rule/requireDotNotation)
 
     ```javascript
     const luke = {
@@ -1229,7 +1231,7 @@
     ```
 
   <a name="properties--bracket"></a><a name="12.2"></a>
-  - [12.2](#properties--bracket) Use bracket notation `[]` when accessing properties with a variable.
+  - [12.2](#properties--bracket) 如果使用一个变量来访问属性，那么使用 `[]` 
 
     ```javascript
     const luke = {
@@ -1251,7 +1253,7 @@
 ## 变量
 
   <a name="variables--const"></a><a name="13.1"></a>
-  - [13.1](#variables--const) Always use `const` to declare variables. Not doing so will result in global variables. We want to avoid polluting the global namespace. Captain Planet warned us of that.
+  - [13.1](#variables--const) 你应当使用 `const` 来声明变量。不这么做会导致全局变量。我们想要尽量避免污染全局命名空间。地球队长(Captain Planet)已经警告过我们了。（解释：Captain Planet 保卫着 global namespace，好冷）
 
     ```javascript
     // 差评
@@ -1262,9 +1264,11 @@
     ```
 
   <a name="variables--one-const"></a><a name="13.2"></a>
-  - [13.2](#variables--one-const) Use one `const` declaration per variable. eslint: [`one-var`](http://eslint.org/docs/rules/one-var.html) jscs: [`disallowMultipleVarDecl`](http://jscs.info/rule/disallowMultipleVarDecl)
+  - [13.2](#variables--one-const) 每个变量都对应一个 `const` 。 eslint: [`one-var`](http://eslint.org/docs/rules/one-var.html) jscs: [`disallowMultipleVarDecl`](http://jscs.info/rule/disallowMultipleVarDecl)
 
-    > Why? It's easier to add new variable declarations this way, and you never have to worry about swapping out a `;` for a `,` or introducing punctuation-only diffs. You can also step through each declaration with the debugger, instead of jumping through all of them at once.
+    > 为什么？增加新的变量会更容易，而且你永远不用再担心把 `,` 和 `;` 换来换去的事情，你肯定觉得 git diff 里包含太多标点符号的变换是很蠢的事情。而且，调试时你可以步进，而不是一次性跳过了所有的声明
+    > 
+    > 不写分号星人有另一种可供参考的的写法
 
     ```javascript
     // 差评
@@ -1282,12 +1286,17 @@
     const items = getItems();
     const goSportsTeam = true;
     const dragonball = 'z';
+    
+    // 译者
+    const items = getItems()
+      , goSportsTeam = true
+      , dragonball = 'z'
     ```
 
   <a name="variables--const-let-group"></a><a name="13.3"></a>
-  - [13.3](#variables--const-let-group) Group all your `const`s and then group all your `let`s.
+  - [13.3](#variables--const-let-group) 把你所有的 `const` 放在一起，再把所有的 `let` 放在一起
 
-    > Why? This is helpful when later on you might need to assign a variable depending on one of the previous assigned variables.
+    > 为什么？等到你想要把已赋值的变量赋给一个新变量的时候，这很有帮助
 
     ```javascript
     // 差评
@@ -1311,12 +1320,12 @@
     ```
 
   <a name="variables--define-where-used"></a><a name="13.4"></a>
-  - [13.4](#variables--define-where-used) Assign variables where you need them, but place them in a reasonable place.
+  - [13.4](#variables--define-where-used) 在你需要的地方赋值变量，把他们放到合理的位置
 
-    > Why? `let` and `const` are block scoped and not function scoped.
+    > 为什么？ `let` 和 `const` 是块级作用域的，不是函数级作用域的
 
     ```javascript
-    // 差评 - unnecessary function call
+    // 差评 - 没有必要的函数调用
     function checkName(hasName) {
       const name = getName();
 
