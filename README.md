@@ -1508,8 +1508,18 @@
     ```
 
   <a name="comparison--moreinfo"></a><a name="15.4"></a>
-  - [15.4](#comparison--moreinfo) 想了解更多信息，可以参考 Angus Croll 的 [Truth Equality and JavaScript](http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108)
+  - [15.4](#comparison--moreinfo) 想了解更多信息，可以参考 Angus Croll 的 [Truth Equality and JavaScript](http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108)（你点进去后会发现你的思维并没有你想像的那么清晰）
 
+    ```javascript
+    // 译者
+    console.log([] == true); // false
+    console.log(![] == true); // false
+    console.log(!![] == true); // true
+    if([]) {
+      console.log('why?'); // why?
+    }
+    ```
+    
   <a name="comparison--switch-blocks"></a><a name="15.5"></a>
   - [15.5](#comparison--switch-blocks) Use braces to create blocks in `case` and `default` clauses that contain lexical declarations (e.g. `let`, `const`, `function`, and `class`).
 
