@@ -55,11 +55,11 @@
   1. [测试 Testing](#testing)
   1. [性能 Performance](#performance)
   1. [学习资源 Resources](#resources)
-  1. [使用人群删）](#in-the-wild)
-  1. [翻译（删）](#translation)
-  1. [指南的指南（删）](#the-javascript-style-guide-guide)
+  1. ~~使用人群~~
+  1. ~~其他翻译~~
+  1. ~~指南的指南~~
   1. [和我们一起讨论JS](#chat-with-us-about-javascript)
-  1. [贡献者（删）](#contributors)
+  1. [贡献者](#contributors)
   1. [许可 License](#license)
 
 <a name="types"></a>
@@ -1468,47 +1468,47 @@
   <a name="comparison--if"></a><a name="15.2"></a>
   - [15.2](#comparison--if) Conditional statements such as the `if` statement evaluate their expression using coercion with the `ToBoolean` abstract method and always follow these simple rules:
 
-    + **Objects** evaluate to **true**
-    + **Undefined** evaluates to **false**
-    + **Null** evaluates to **false**
-    + **Booleans** evaluate to **the value of the boolean**
-    + **Numbers** evaluate to **false** if **+0, -0, or NaN**, otherwise **true**
-    + **Strings** evaluate to **false** if an empty string `''`, otherwise **true**
+    + **Objects** 被视为 **true**
+    + **Undefined** 被视为 **false**
+    + **Null** 被视为 **false**
+    + **Booleans** 被视为 **boolean的值**
+    + 如果 **Numbers** 是 **+0, -0, or NaN** ，将被视为 **false** ，否则被视为 **true**
+    + 如果 **Strings** 是一个空字符串 `''` ，将被视为 **false** ，否则被视为 **true**
 
     ```javascript
     if ([0] && []) {
       // true
-      // an array (even an empty one) is an object, objects will evaluate to true
+      // 数组（即使它是空的）是一个对象，而对象被视为 true
     }
     ```
 
   <a name="comparison--shortcuts"></a><a name="15.3"></a>
-  - [15.3](#comparison--shortcuts) Use shortcuts.
+  - [15.3](#comparison--shortcuts) 使用简写(shortcuts)
 
     ```javascript
     // 差评
     if (name !== '') {
-      // ...stuff...
+      // ...一些代码...
     }
 
     // 好评
     if (name) {
-      // ...stuff...
+      // ...一些代码...
     }
 
     // 差评
     if (collection.length > 0) {
-      // ...stuff...
+      // ...一些代码...
     }
 
     // 好评
     if (collection.length) {
-      // ...stuff...
+      // ...一些代码...
     }
     ```
 
   <a name="comparison--moreinfo"></a><a name="15.4"></a>
-  - [15.4](#comparison--moreinfo) For more information see [Truth Equality and JavaScript](http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108) by Angus Croll.
+  - [15.4](#comparison--moreinfo) 想了解更多信息，可以参考 Angus Croll 的 [Truth Equality and JavaScript](http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108)
 
   <a name="comparison--switch-blocks"></a><a name="15.5"></a>
   - [15.5](#comparison--switch-blocks) Use braces to create blocks in `case` and `default` clauses that contain lexical declarations (e.g. `let`, `const`, `function`, and `class`).
