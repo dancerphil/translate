@@ -1126,7 +1126,7 @@
 ## 模块
 
   <a name="modules--use-them"></a><a name="10.1"></a>
-  - [10.1](#modules--use-them) 总是使用模组 (`import`/`export`) 而不是其他非标准模块系统。你可以编译为你喜欢的模块系统。参考 BY [dancerphil](https://github.com/dancerphil)：[@颜海镜](http://yanhaijing.com/javascript/2015/03/28/js-module/) ，[@segmentgault](https://segmentfault.com/a/1190000000492678)
+  - [10.1](#modules--use-them) 总是使用模组 (`import`/`export`) 而不是其他非标准模块系统。你可以编译为你喜欢的模块系统。参考：[@颜海镜](http://yanhaijing.com/javascript/2015/03/28/js-module/) ，[@segmentgault](https://segmentfault.com/a/1190000000492678)
 
     > 为什么？模块是未来，让我们开始使用“未来”吧！
 
@@ -1311,7 +1311,7 @@
     const goSportsTeam = true;
     const dragonball = 'z';
     
-    // BY [dancerphil](https://github.com/dancerphil)
+    // BY dancerphil
     const items = getItems()
       , goSportsTeam = true
       , dragonball = 'z'
@@ -1535,7 +1535,7 @@
   - [15.4](#comparison--moreinfo) 想了解更多信息，可以参考 Angus Croll 的 [Truth Equality and JavaScript](http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108)（你点进去后会发现你的思维并没有你想像的那么清晰）
 
     ```javascript
-    // BY [dancerphil](https://github.com/dancerphil)
+    // BY dancerphil
     console.log([] == true); // false
     console.log(![] == true); // false
     console.log(!![] == true); // true
@@ -2252,7 +2252,7 @@
       return name;
     }());
     ```
-    [IIFE](#7.2) - immediately-invoked function expression - 立即调用的函数表达式
+    [IIFE](#7.2) - 立即调用的函数表达式
     
     [在 stackoverflow 阅读更多](http://stackoverflow.com/questions/7365172/semicolon-before-self-invoking-function/7365214%237365214)
 
@@ -2350,7 +2350,7 @@
 ## 命名规则
 
   <a name="naming--descriptive"></a><a name="22.1"></a>
-  - [22.1](#naming--descriptive) Avoid single letter names. Be descriptive with your naming.
+  - [22.1](#naming--descriptive) 别用单字母命名。让你的命名具备描述性
 
     ```javascript
     // 差评
@@ -2365,7 +2365,7 @@
     ```
 
   <a name="naming--camelCase"></a><a name="22.2"></a>
-  - [22.2](#naming--camelCase) Use camelCase when naming objects, functions, and instances. eslint: [`camelcase`](http://eslint.org/docs/rules/camelcase.html) jscs: [`requireCamelCaseOrUpperCaseIdentifiers`](http://jscs.info/rule/requireCamelCaseOrUpperCaseIdentifiers)
+  - [22.2](#naming--camelCase) 使用驼峰式命名对象、函数和实例。 eslint: [`camelcase`](http://eslint.org/docs/rules/camelcase.html) jscs: [`requireCamelCaseOrUpperCaseIdentifiers`](http://jscs.info/rule/requireCamelCaseOrUpperCaseIdentifiers)
 
     ```javascript
     // 差评
@@ -2379,7 +2379,7 @@
     ```
 
   <a name="naming--PascalCase"></a><a name="22.3"></a>
-  - [22.3](#naming--PascalCase) Use PascalCase only when naming constructors or classes. eslint: [`new-cap`](http://eslint.org/docs/rules/new-cap.html) jscs: [`requireCapitalizedConstructors`](http://jscs.info/rule/requireCapitalizedConstructors)
+  - [22.3](#naming--PascalCase) 使用帕斯卡式命名构造函数或类。它又被称为大驼峰式命名 eslint: [`new-cap`](http://eslint.org/docs/rules/new-cap.html) jscs: [`requireCapitalizedConstructors`](http://jscs.info/rule/requireCapitalizedConstructors)
 
     ```javascript
     // 差评
@@ -2464,7 +2464,7 @@
     // file 3 contents
     export default function insideDirectory() {}
 
-    // in some other file
+    // 然后在其他的一些文件里
     // 差评
     import CheckBox from './checkBox'; // PascalCase import/export, camelCase filename
     import FortyTwo from './FortyTwo'; // PascalCase import/filename, camelCase export
@@ -2514,10 +2514,10 @@
 ## 存取器
 
   <a name="accessors--not-required"></a><a name="23.1"></a>
-  - [23.1](#accessors--not-required) Accessor functions for properties are not required.
+  - [23.1](#accessors--not-required) 并非所有属性的存取器函数都是必须的
 
   <a name="accessors--no-getters-setters"></a><a name="23.2"></a>
-  - [23.2](#accessors--no-getters-setters) Do not use JavaScript getters/setters as they cause unexpected side effects and are harder to test, maintain, and reason about. Instead, if you do make accessor functions, use getVal() and setVal('hello').
+  - [23.2](#accessors--no-getters-setters) 不要使用 JavaScript 的 getters/setters ，因为它们会导致你不期待的副作用，而且使测试、维护和推论。如果你一定要存取器函数，使用 getVal() 和 setVal('hello')
 
     ```javascript
     // 差评
@@ -2534,7 +2534,7 @@
     ```
 
   <a name="accessors--boolean-prefix"></a><a name="23.3"></a>
-  - [23.3](#accessors--boolean-prefix) If the property/method is a `boolean`, use `isVal()` or `hasVal()`.
+  - [23.3](#accessors--boolean-prefix) 如果属性或方法是一个 `boolean` ，使用 `isVal()` 或 `hasVal()`
 
     ```javascript
     // 差评
