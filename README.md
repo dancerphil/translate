@@ -107,7 +107,7 @@
   <a name="references--prefer-const"></a><a name="2.1"></a>
   - [2.1](#references--prefer-const) 你的所有引用都应该使用 `const` ； 避免使用 `var` 。 eslint: [`prefer-const`](http://eslint.org/docs/rules/prefer-const.html), [`no-const-assign`](http://eslint.org/docs/rules/no-const-assign.html)
 
-    > 为什么？这就确保了你不会对引用(reference)重新赋值，否则一旦出现 bug ，你根本不知道哪里有错，半天也 de 不出来
+    > 为什么？这就确保了你不会对引用(reference)重新赋值，否则会出现难以理解的 bug 
 
     ```javascript
     // 差评
@@ -138,8 +138,9 @@
     }
     ```
 
+    > BY [dancerphil](https://github.com/dancerphil) 有一个经典的例子
+
     ```javascript
-    // BY [dancerphil](https://github.com/dancerphil) 有一个经典的例子
     // 差评，而且失败
     var foos = []
     for(var i = 0; i < 4; i++){
@@ -189,7 +190,7 @@
     ```
 
   <a name="objects--reserved-words"></a><a name="3.2"></a>
-  - [3.2](#objects--reserved-words) 如果你的代码在浏览器环境下执行，别使用 [保留字 reserved words](http://es5.github.io/#x7.6.1) 作为键值。随便来个 IE8 ，它就爆炸了。 [更多信息](https://github.com/airbnb/javascript/issues/61)。而在ES6模块中使用或者在服务器端使用时，毛事没有。 jscs: [`disallowIdentifierNames`](http://jscs.info/rule/disallowIdentifierNames)
+  - [3.2](#objects--reserved-words) 如果你的代码在浏览器环境下执行，别使用 [保留字 reserved words](http://es5.github.io/#x7.6.1) 作为键值。来个 IE8 ，它就爆炸了。 [更多信息](https://github.com/airbnb/javascript/issues/61)。而在ES6模块中使用或者在服务器端使用时，什么事都没有。 jscs: [`disallowIdentifierNames`](http://jscs.info/rule/disallowIdentifierNames)
 
     ```javascript
     // 差评
@@ -363,7 +364,7 @@
 ## 数组
 
   <a name="arrays--literals"></a><a name="4.1"></a>
-  - [4.1](#arrays--literals) 用你儿子都看得懂的字面语法创建数组。 eslint: [`no-array-constructor`](http://eslint.org/docs/rules/no-array-constructor.html)
+  - [4.1](#arrays--literals) 用大家都看得懂的字面语法创建数组。 eslint: [`no-array-constructor`](http://eslint.org/docs/rules/no-array-constructor.html)
 
     ```javascript
     // 差评
@@ -468,7 +469,7 @@
   <a name="destructuring--object"></a><a name="5.1"></a>
   - [5.1](#destructuring--object) 使用对象解构(object destructuring)访问和使用多属性对象。 jscs: [`requireObjectDestructuring`](http://jscs.info/rule/requireObjectDestructuring)
 
-    > 为什么？解构把你从创建临时引用的地狱中拯救了出来，还不感谢？
+    > 为什么？解构把你从创建临时引用的地狱中拯救了出来，感谢。
 
     ```javascript
     // 差评
@@ -650,7 +651,7 @@
   - [7.3](#functions--in-blocks) 永远不要再一个非函数代码块（`if`, `while` 等等）定义一个函数。请把你想要的那个函数赋给一个变量。浏览器会允许你这么做，但是它们的解析表现不一致。 eslint: [`no-loop-func`](http://eslint.org/docs/rules/no-loop-func.html)
 
   <a name="functions--note-on-blocks"></a><a name="7.4"></a>
-  - [7.4](#functions--note-on-blocks) **注意：** ECMA-262 把 `block` 定义为一组语句。而函数声明并不是语句。 [Read ECMA-262's note on this issue](http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf#page=97).
+  - [7.4](#functions--note-on-blocks) **注意：** ECMA-262 把 `block` 定义为一组语句。而函数声明并不是语句。 [阅读 ECMA-262 相关说明](http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf#page=97).
 
     ```javascript
     // 差评
@@ -952,7 +953,7 @@
 ## 类，构造函数
 
   <a name="constructors--use-class"></a><a name="9.1"></a>
-  - [9.1](#constructors--use-class) 总是使用 `class`。避免直接操作 `prototype` 
+  - [9.1](#constructors--use-class) 总是使用 `class`。避免直接操作 `prototype` ，会 `prototype` 不一定要用，对吧
 
     > 为什么? class 语法更简洁易读
 
@@ -1063,7 +1064,7 @@
     ```
 
   <a name="constructors--no-useless"></a><a name="9.5"></a>
-  - [9.5](#constructors--no-useless) 如果没有指定，类会拥有默认的构造方法，你不需要写一个空的构造方法，或者只是继承父类的方法。 eslint: [`no-useless-constructor`](http://eslint.org/docs/rules/no-useless-constructor)
+  - [9.5](#constructors--no-useless) 如果没有指定，类会拥有默认的构造方法，你不需要写一个空的构造方法，或者只是继承父类的方法，多余。 eslint: [`no-useless-constructor`](http://eslint.org/docs/rules/no-useless-constructor)
 
     ```javascript
     // 差评
@@ -1172,6 +1173,7 @@
   <a name="modules--no-duplicate-imports"></a>
   - [10.4](#modules--no-duplicate-imports) 来自相同路径的 `import` ，就把他们写在同一个地方。
  eslint: [`no-duplicate-imports`](http://eslint.org/docs/rules/no-duplicate-imports)
+
     > 为什么？写在不同行的话，程序的维护和更新变得非常困难
 
     ```javascript
@@ -1251,7 +1253,7 @@
     ```
 
   <a name="properties--bracket"></a><a name="12.2"></a>
-  - [12.2](#properties--bracket) 如果使用一个变量来访问属性，那么使用 `[]` 
+  - [12.2](#properties--bracket) 如果要使用一个变量来访问属性，那么使用 `[]` 
 
     ```javascript
     const luke = {
@@ -1288,7 +1290,7 @@
 
     > 为什么？增加新的变量会更容易，而且你永远不用再担心把 `,` 和 `;` 换来换去的事情，你肯定觉得 git diff 里包含太多标点符号的变换是很蠢的事情。而且，调试时你可以步进，而不是一次性跳过了所有的声明
     > 
-    > 不写分号星人有另一种可供参考的的写法
+    > BY [dancerphil](https://github.com/dancerphil)：不写分号星人有另一种可供参考的的写法
 
     ```javascript
     // 差评
@@ -1296,8 +1298,7 @@
         goSportsTeam = true,
         dragonball = 'z';
 
-    // 差评
-    // (compare to above, and try to spot the mistake)
+    // 差评（与上面比较一下，再说说哪里写错了）
     const items = getItems(),
         goSportsTeam = true;
         dragonball = 'z';
