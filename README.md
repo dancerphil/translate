@@ -1764,7 +1764,7 @@
   - [17.3](#comments--actionitems) 在注释前加上 `FIXME` 或 `TODO` 可以帮助其他开发者快速的了解写这段注释的原因。也许你正在指出一个需要复查的问题，或者你正在给需要实现的功能提供一个解决方式。和一般的注解不用，它们是可被执行的，对应的动作为 `FIXME: -- 需要搞清楚这一点` 或者 `TODO: -- 需要实现`
 
   <a name="comments--fixme"></a><a name="17.4"></a>
-  - [17.4](#comments--fixme) Use `// FIXME:` 标注问题
+  - [17.4](#comments--fixme) 使用 `// FIXME:` 标注问题
 
     ```javascript
     class Calculator extends Abacus {
@@ -1778,7 +1778,7 @@
     ```
 
   <a name="comments--todo"></a><a name="17.5"></a>
-  - [17.5](#comments--todo) Use `// TODO:` 标注问题的解决方式
+  - [17.5](#comments--todo) 使用 `// TODO:` 标注问题的解决方式
 
     ```javascript
     class Calculator extends Abacus {
