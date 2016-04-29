@@ -230,8 +230,7 @@
 
     > 你说的什么意思？这样的话，你可以在一个地方定义所有的对象属性
     > 
-    > 注 BY [dancerphil](https://github.com/dancerphil)：下方代码中首次出现了 ``` `a key named ${k}` ```，这是 ES6 模板字符串，其中可以包含 `${expression}` 占位符，[（见：MDN 模板字符串）](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/template_strings)
-    > 
+    > 注 BY [dancerphil](https://github.com/dancerphil)： ``` `a key named ${k}` ``` 是 ES6 模板字符串，其中可以包含 `${expression}` 占位符，[（见：MDN 模板字符串）](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/template_strings)
 
     ```javascript
 
@@ -507,27 +506,27 @@
     ```
 
   <a name="destructuring--object-over-array"></a><a name="5.3"></a>
-  - [5.3](#destructuring--object-over-array) Use object destructuring for multiple return values, not array destructuring. jscs: [`disallowArrayDestructuringReturn`](http://jscs.info/rule/disallowArrayDestructuringReturn)
+  - [5.3](#destructuring--object-over-array) 要返回多个值时，使用对象解构，而不是数组解构。 jscs: [`disallowArrayDestructuringReturn`](http://jscs.info/rule/disallowArrayDestructuringReturn)
 
-    > Why? You can add new properties over time or change the order of things without breaking call sites.
+    > 为什么？你可以轻松的增减返回值或更改它们的顺序，而不需要改变调用者的代码。
 
     ```javascript
     // 差评
     function processInput(input) {
-      // then a miracle occurs
+      // 一些奇怪的事情发生了(then a miracle occurs)
       return [left, right, top, bottom];
     }
 
-    // the caller needs to think about the order of return data
+    // 调用者需要思考返回值的顺序问题
     const [left, __, top] = processInput(input);
 
     // 好评
     function processInput(input) {
-      // then a miracle occurs
+      // 一些奇怪的事情发生了
       return { left, right, top, bottom };
     }
 
-    // the caller selects only the data they need
+    // 调用者只拿取它们需要的数据
     const { left, top } = processInput(input);
     ```
 
@@ -638,7 +637,7 @@
   <a name="functions--iife"></a><a name="7.2"></a>
   - [7.2](#functions--iife) 在立即调用的函数表达式的两侧用括号包裹。 eslint: [`wrap-iife`](http://eslint.org/docs/rules/wrap-iife.html) jscs: [`requireParenthesesAroundIIFE`](http://jscs.info/rule/requireParenthesesAroundIIFE)
 
-    > 为什么？An immediately invoked function expression is a single unit - wrapping both it, and its invocation parens, in parens, cleanly expresses this. Note that in a world with modules everywhere, you almost never need an IIFE.
+    > 为什么？立即调用的函数表达式(immediately invoked function expression)是一个单独的单元，你需要强调这一点，所以把表达式和它的调用括号包裹起来。还需要提醒一下的是：在写模块的时候，你永远不会需要一个 IIFE
 
     ```javascript
     // 立即调用的函数表达式 (IIFE)
@@ -709,9 +708,9 @@
     ```javascript
     // 实在差评
     function handleThings(opts) {
-      // No! We shouldn't mutate function arguments.
-      // Double bad: if opts is falsy it'll be set to an object which may
-      // be what you want but it can introduce subtle bugs.
+      // 不！我们不该改变函数参数
+      // 错上加错！如果 opts 被计算为 false ，它会成为一个对象
+      // 或许你想这么做，但是这样会引起 bug
       opts = opts || {};
       // ...
     }
@@ -733,7 +732,7 @@
   <a name="functions--default-side-effects"></a><a name="7.8"></a>
   - [7.8](#functions--default-side-effects) 避免预设参数的语法的副作用
 
-    > 为什么？这样做完之后，代码完全没有逻辑
+    > 为什么？这样做完之后，代码变得没有逻辑
 
     ```javascript
     var b = 1;
