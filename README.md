@@ -4,11 +4,9 @@
 
 > BY 张聪([dancerphil@github](https://github.com/dancerphil/trick/))
 > 
-> 原文在不断的更新，本文基于 2016-04-28 的版本，last commit [[a71bffa]](https://github.com/airbnb/javascript/commit/a71bffa5e3515c83023595e2716fee3bc75da7e5)
-> 
 > 这是一篇在[原文](https://github.com/airbnb/javascript)基础上演绎的译文，与原文的表达会有出入。
 > 
-> 感谢：[yuche/javascript](https://github.com/yuche/javascript)
+> 原文在不断的更新，本文基于 2016-04-28 的版本，last commit [ [a71bffa] ](https://github.com/airbnb/javascript/commit/a71bffa5e3515c83023595e2716fee3bc75da7e5)
 > 
 > 除非另行注明，页面上所有内容采用[MIT](#license)协议共享。
 
@@ -2835,6 +2833,7 @@
 ## 贡献者
 
   - [查看为原文作出贡献的同学们](https://github.com/airbnb/javascript/graphs/contributors)
+  - 感谢：[yuche](https://github.com/yuche/javascript)
   - [查看为译文作出贡献的同学们](https://github.com/dancerphil/trick/graphs/contributors)
 
 
