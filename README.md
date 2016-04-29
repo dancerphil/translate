@@ -1454,7 +1454,7 @@
     ```
 
   - 想了解更多信息，参考 [Scoping & Hoisting](http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting/) 来自 [Ben Cherry](http://www.adequatelygood.com/)。
-  > 在我看来，没有必要的时候先定义后使用，并没有什么错
+  > BY [dancerphil](https://github.com/dancerphil)：在我看来可以这样总结，没有特殊需要的时候，把定义放在使用之前就可以了。
 
 **[↑ 回到最上方](#table-of-contents)**
 
