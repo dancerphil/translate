@@ -1172,8 +1172,7 @@
     ```
 
   <a name="modules--no-duplicate-imports"></a>
-  - [10.4](#modules--no-duplicate-imports) 来自相同路径的 `import` ，就把他们写在同一个地方。
- eslint: [`no-duplicate-imports`](http://eslint.org/docs/rules/no-duplicate-imports)
+  - [10.4](#modules--no-duplicate-imports) 来自相同路径的 `import` ，就把他们写在同一个地方。 eslint: [`no-duplicate-imports`](http://eslint.org/docs/rules/no-duplicate-imports)
 
     > 为什么？写在不同行的话，程序的维护和更新变得非常困难
 

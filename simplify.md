@@ -6,7 +6,7 @@
 > 
 > 这是一篇在[原文](https://github.com/airbnb/javascript)基础上演绎的译文，与原文的表达会有出入
 > 
-> 原文在不断的更新，本文基于 2016-04-28 的版本，last commit [ [a71bffa] ](https://github.com/airbnb/javascript/commit/a71bffa5e3515c83023595e2716fee3bc75da7e5)
+> 这是一篇简略版的文章，删去了一些参考链接，查看 [完整版](https://github.com/dancerphil/trick)
 > 
 > 除非另行注明，页面上所有内容采用[MIT](#license)协议共享
 
@@ -1168,8 +1168,7 @@
     ```
 
   <a name="modules--no-duplicate-imports"></a>
-  - [10.4](#modules--no-duplicate-imports) 来自相同路径的 `import` ，就把他们写在同一个地方。
- eslint: [`no-duplicate-imports`](http://eslint.org/docs/rules/no-duplicate-imports)
+  - [10.4](#modules--no-duplicate-imports) 来自相同路径的 `import` ，就把他们写在同一个地方
 
     > 为什么？写在不同行的话，程序的维护和更新变得非常困难
 
