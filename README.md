@@ -205,7 +205,7 @@
     ```
 
   <a name="es6-computed-properties"></a><a name="3.4"></a>
-  - [3.4](#es6-computed-properties) 创建有动态属性名的对象时，使用特性：可被计算属性名称（注：代码中方括号部分）
+  - [3.4](#es6-computed-properties) 创建有动态属性名的对象时，使用特性：可被计算属性名称
 
     > 你说的什么意思？这样的话，你可以在一个地方定义所有的对象属性
     > 
@@ -229,7 +229,7 @@
     const obj = {
       id: 5,
       name: 'San Francisco',
-      [getKey('enabled')]: true,
+      [getKey('enabled')]: true, // 可被计算属性名称
     };
     ```
 
@@ -819,7 +819,7 @@
   <a name="arrows--use-them"></a><a name="8.1"></a>
   - [8.1](#arrows--use-them) 当你必须使用函数表达式（或传递一个匿名函数）时，使用箭头函数符号。 eslint: [`prefer-arrow-callback`](http://eslint.org/docs/rules/prefer-arrow-callback.html), [`arrow-spacing`](http://eslint.org/docs/rules/arrow-spacing.html) jscs: [`requireArrowFunctions`](http://jscs.info/rule/requireArrowFunctions)
 
-    > 为什么？箭头函数创造了一个新的 `this` 上下文，通常符合你的期望，而且箭头函数非常简洁。（感谢 yuche 的参考： [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) 和 [toddmotto](http://toddmotto.com/es6-arrow-functions-syntaxes-and-lexical-scoping/)）
+    > 为什么？箭头函数创造了一个新的 `this` 上下文，通常符合你的期望，而且箭头函数非常简洁。（参考 BY [yuche](https://github.com/yuche)： [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) 和 [toddmotto](http://toddmotto.com/es6-arrow-functions-syntaxes-and-lexical-scoping/)）
     > 
     > 如果不，又是为什么？如果你有一个相当复杂的函数，你或许想要把逻辑部分转移到一个函数声明上
 
@@ -1102,7 +1102,7 @@
 ## 模块
 
   <a name="modules--use-them"></a><a name="10.1"></a>
-  - [10.1](#modules--use-them) 总是使用模组 (`import`/`export`) 而不是其他非标准模块系统。你可以编译为你喜欢的模块系统。[参考：@颜海镜](http://yanhaijing.com/javascript/2015/03/28/js-module/) ，[@segmentgault](https://segmentfault.com/a/1190000000492678)
+  - [10.1](#modules--use-them) 总是使用模组 (`import`/`export`) 而不是其他非标准模块系统。你可以编译为你喜欢的模块系统。参考 BY [dancerphil](https://github.com/dancerphil)：[@颜海镜](http://yanhaijing.com/javascript/2015/03/28/js-module/) ，[@segmentgault](https://segmentfault.com/a/1190000000492678)
 
     > 为什么？模块是未来，让我们开始使用“未来”吧！
 
@@ -1206,7 +1206,7 @@
 
     > 为什么？他们不能很好的被编译到 ES5 。
     > 
-    > 不过截至目前，V8 和 Nodejs 已经很好的支持了生成器。
+    > 注 BY [dancerphil](https://github.com/dancerphil)：不过截至目前，V8 和 Nodejs 已经很好的支持了生成器。
 
 **[↑ 回到最上方](#table-of-contents)**
 
@@ -1253,7 +1253,7 @@
 ## 变量
 
   <a name="variables--const"></a><a name="13.1"></a>
-  - [13.1](#variables--const) 你应当使用 `const` 来声明变量。不这么做会导致全局变量。我们想要尽量避免污染全局命名空间。地球队长(Captain Planet)已经警告过我们了。（解释：Captain Planet 保卫着 global namespace，好冷）
+  - [13.1](#variables--const) 你应当使用 `const` 来声明变量。不这么做会导致全局变量。我们想要尽量避免污染全局命名空间。地球队长(Captain Planet)已经警告过我们了。（解释 BY [dancerphil](https://github.com/dancerphil)：Captain Planet 保卫着 global namespace，好冷）
 
     ```javascript
     // 差评
@@ -1287,7 +1287,7 @@
     const goSportsTeam = true;
     const dragonball = 'z';
     
-    // 译者
+    // BY [dancerphil](https://github.com/dancerphil)
     const items = getItems()
       , goSportsTeam = true
       , dragonball = 'z'
@@ -1511,7 +1511,7 @@
   - [15.4](#comparison--moreinfo) 想了解更多信息，可以参考 Angus Croll 的 [Truth Equality and JavaScript](http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108)（你点进去后会发现你的思维并没有你想像的那么清晰）
 
     ```javascript
-    // 译者
+    // BY [dancerphil](https://github.com/dancerphil)
     console.log([] == true); // false
     console.log(![] == true); // false
     console.log(!![] == true); // true
@@ -1780,7 +1780,7 @@
   <a name="whitespace--spaces"></a><a name="18.1"></a>
   - [18.1](#whitespace--spaces) ~~使用两个空格作为缩进~~。 eslint: [`indent`](http://eslint.org/docs/rules/indent.html) jscs: [`validateIndentation`](http://jscs.info/rule/validateIndentation)
 
-  > 不！！！使用 Tab 作为缩进，并在 IDE 设置 Tab 为 4 空格宽，如果你选择此文作为某个组织的代码风格文档，则你应当认同此点。
+  > BY [dancerphil](https://github.com/dancerphil)：不！！！使用 Tab 作为缩进，并在 IDE 设置 Tab 为 4 空格宽，如果你选择此文作为某个组织的代码风格文档，则你应当认同此点。
   > 
   > 选择两个空格作为缩进的理由是：JS 是一个充满了回调函数的语言，如果使用过长的缩进，会使一部分深处的代码左侧悬空，对此，我建议使用一个大的显示屏，并调整 IDE 的字体大小。
   > 
@@ -2203,7 +2203,7 @@
   <a name="semicolons--required"></a><a name="20.1"></a>
   - [20.1](#20.1) **要** 。 eslint: [`semi`](http://eslint.org/docs/rules/semi.html) jscs: [`requireSemicolons`](http://jscs.info/rule/requireSemicolons)
 
-    > 首先，我是不写的，一是受 Python 的影响，二是我司规定。[（知乎的相关讨论）](https://www.zhihu.com/question/20298345)。
+    > BY [dancerphil](https://github.com/dancerphil)：首先，我是不写的，一是受 Python 的影响，二是我司规定。[（知乎的相关讨论）](https://www.zhihu.com/question/20298345)。
     > 
     > 至于 eslint，配置一下就好。
     > 
