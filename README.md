@@ -4,7 +4,7 @@
 
 > BY 张聪([dancerphil@github](https://github.com/dancerphil/trick/))
 > 
-> 原文在不断的更新，本文基于 2016-04-20 的版本，last commit [[0241450]](https://github.com/airbnb/javascript/commit/02414502b6b8ad31bee50a8e999a27b68b16dda1)
+> 原文在不断的更新，本文基于 2016-04-28 的版本，last commit [[a71bffa]](https://github.com/airbnb/javascript/commit/a71bffa5e3515c83023595e2716fee3bc75da7e5)
 > 
 > 这是一篇在[原文](https://github.com/airbnb/javascript)基础上演绎的译文，与原文的表达会有出入。
 > 
@@ -429,7 +429,7 @@
     const flat = {};
     [[0, 1], [2, 3], [4, 5]].reduce((memo, item, index) => {
       const flatten = memo.concat(item);
-      flat[index] = memo.concat(item);
+      flat[index] = flatten;
     });
 
     // 好评
@@ -862,8 +862,6 @@
   - [8.2](#arrows--implicit-return) 如果一个函数体只有很简单的一行，那就把花括号、圆括号和 `return` 都省略掉。如果不是，那就保留括号和 `return` 。 eslint: [`arrow-parens`](http://eslint.org/docs/rules/arrow-parens.html), [`arrow-body-style`](http://eslint.org/docs/rules/arrow-body-style.html) jscs:  [`disallowParenthesesAroundArrowParam`](http://jscs.info/rule/disallowParenthesesAroundArrowParam), [`requireShorthandArrowFunctions`](http://jscs.info/rule/requireShorthandArrowFunctions)
 
     > 为什么？通过语法修饰，在函数的链式调用中可读性很高。
-    > 
-    > 何时不用？当你打算回传一个对象的时候。
 
     ```javascript
     // 差评
@@ -880,6 +878,11 @@
       const nextNumber = number + 1;
       return `A string containing the ${nextNumber}.`;
     });
+
+    // 好评
+    [1, 2, 3].map((number, index) => ({
+      index: number
+    }));
     ```
 
   <a name="arrows--paren-wrap"></a><a name="8.3"></a>
