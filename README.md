@@ -676,12 +676,12 @@
     ```javascript
     // 差评
     function nope(name, options, arguments) {
-      // ...stuff...
+      // ...一些代码...
     }
 
     // 好评
     function yup(name, options, args) {
-      // ...stuff...
+      // ...一些代码...
     }
     ```
 
@@ -1451,8 +1451,7 @@
       };
     }
 
-    // the same is true when the function name
-    // is the same as the variable name.
+    // 当函数名和变量名相同时，结论也同样成立
     function example() {
       console.log(named); // => undefined
 
@@ -1704,7 +1703,7 @@
     // @return {Element} element
     function make(tag) {
 
-      // ...stuff...
+      // ...一些代码...
 
       return element;
     }
@@ -1719,7 +1718,7 @@
      */
     function make(tag) {
 
-      // ...stuff...
+      // ...一些代码...
 
       return element;
     }
@@ -1904,14 +1903,14 @@
     ```javascript
     // 差评
     (function (global) {
-      // ...stuff...
+      // ...一些代码...
     })(this);
     ```
 
     ```javascript
     // 差评
     (function (global) {
-      // ...stuff...
+      // ...一些代码...
     })(this);↵
     ↵
     ```
@@ -1919,7 +1918,7 @@
     ```javascript
     // 好评
     (function (global) {
-      // ...stuff...
+      // ...一些代码...
     })(this);↵
     ```
 
@@ -2355,12 +2354,12 @@
     ```javascript
     // 差评
     function q() {
-      // ...stuff...
+      // ...一些代码...
     }
 
     // 好评
     function query() {
-      // ..stuff..
+      // ..一些代码..
     }
     ```
 
@@ -2549,7 +2548,7 @@
     ```
 
   <a name="accessors--consistent"></a><a name="23.4"></a>
-  - [23.4](#accessors--consistent) It's okay to create get() and set() functions, but be consistent.
+  - [23.4](#accessors--consistent) 你当然可以创建 get() 和 set() 函数，但是注意保持一致
 
     ```javascript
     class Jedi {
@@ -2575,7 +2574,7 @@
 ## 事件
 
   <a name="events--hash"></a><a name="24.1"></a>
-  - [24.1](#events--hash) When attaching data payloads to events (whether DOM events or something more proprietary like Backbone events), pass a hash instead of a raw value. This allows a subsequent contributor to add more data to the event payload without finding and updating every handler for the event. For example, instead of:
+  - [24.1](#events--hash) 当事件需要一些附加数据时（无论是 DOM 事件还是私有事件），传入一个哈希而不是原始值。这样可以让后面的开发者简单的增加更多数据到事件中，而无需找出并更新事件的每一个处理器。比如不要写：
 
     ```javascript
     // 差评
@@ -2584,11 +2583,11 @@
     ...
 
     $(this).on('listingUpdated', (e, listingId) => {
-      // do something with listingId
+      // 使用 listingId
     });
     ```
 
-    prefer:
+    而写：
 
     ```javascript
     // 好评
@@ -2597,7 +2596,7 @@
     ...
 
     $(this).on('listingUpdated', (e, data) => {
-      // do something with data.listingId
+      // 使用 data.listingId
     });
     ```
 
@@ -2608,7 +2607,7 @@
 ## jQuery
 
   <a name="jquery--dollar-prefix"></a><a name="25.1"></a>
-  - [25.1](#jquery--dollar-prefix) Prefix jQuery object variables with a `$`. jscs: [`requireDollarBeforejQueryAssignment`](http://jscs.info/rule/requireDollarBeforejQueryAssignment)
+  - [25.1](#jquery--dollar-prefix) jQuery 对象的变量名统一加上前缀 `$` 。 jscs: [`requireDollarBeforejQueryAssignment`](http://jscs.info/rule/requireDollarBeforejQueryAssignment)
 
     ```javascript
     // 差评
@@ -2622,14 +2621,14 @@
     ```
 
   <a name="jquery--cache"></a><a name="25.2"></a>
-  - [25.2](#jquery--cache) Cache jQuery lookups.
+  - [25.2](#jquery--cache) 缓存 jQuery 查询，避免无用的查询。
 
     ```javascript
     // 差评
     function setSidebar() {
       $('.sidebar').hide();
 
-      // ...stuff...
+      // ...一些代码...
 
       $('.sidebar').css({
         'background-color': 'pink'
@@ -2641,7 +2640,7 @@
       const $sidebar = $('.sidebar');
       $sidebar.hide();
 
-      // ...stuff...
+      // ...一些代码...
 
       $sidebar.css({
         'background-color': 'pink'
@@ -2650,10 +2649,10 @@
     ```
 
   <a name="jquery--queries"></a><a name="25.3"></a>
-  - [25.3](#jquery--queries) For DOM queries use Cascading `$('.sidebar ul')` or parent > child `$('.sidebar > ul')`. [jsPerf](http://jsperf.com/jquery-find-vs-context-sel/16)
+  - [25.3](#jquery--queries) 查询 DOM 时，使用层叠 `$('.sidebar ul')` 或 parent > child 的模式 `$('.sidebar > ul')`. [jsPerf](http://jsperf.com/jquery-find-vs-context-sel/16)
 
   <a name="jquery--find"></a><a name="25.4"></a>
-  - [25.4](#jquery--find) Use `find` with scoped jQuery object queries.
+  - [25.4](#jquery--find) 查询有作用域的 jQuery 对象时，使用 `find` 
 
     ```javascript
     // 差评
@@ -2723,7 +2722,7 @@
    - 尽量写很多小的纯函数(small pure functions)，这样你可以在很小的区域里探知异常发生的地点
    - 对 stubs 和 mocks 保持严谨 - 他们使你的测试变得更加脆弱。 // TODO Why?
    - 在 Airbnb 我们主要使用 [`mocha`](https://www.npmjs.com/package/mocha) ，对一些小型或单独的模块会使用 [`tape`](https://www.npmjs.com/package/tape)
-   - 达到 100% 测试覆盖率，虽然实现它是不切实际的，但是这是一个非常好的目标
+   - 达到 100% 测试覆盖率，虽然实现它是不切实际的，但这是一个非常好的目标
    - 每当你修复一个 bug ，就为这个 bug 写 **回归测试** 。一个修复的 bug 如果没有回归测试，一般而言都会复发
 
 **[↑ 回到最上方](#table-of-contents)**
