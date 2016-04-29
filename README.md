@@ -122,7 +122,7 @@
   <a name="references--disallow-var"></a><a name="2.2"></a>
   - [2.2](#references--disallow-var) 如果你一定要修改一个引用，那也不要用 `var` ，你可以用 `let` 来代替。 eslint: [`no-var`](http://eslint.org/docs/rules/no-var.html) jscs: [`disallowVar`](http://jscs.info/rule/disallowVar)
 
-    > 为什么？ `let` 是块级作用域变量，而 `var` 是函数作用域变量，那你还不快用 `let` ？ // TODO for循环函数注册bug
+    > 为什么？ `let` 是块级作用域变量，而 `var` 是函数作用域变量，那你还不快用 `let` ？
 
     ```javascript
     // 差评
@@ -136,6 +136,27 @@
     if (true) {
       count += 1;
     }
+    ```
+
+    ```javascript
+    // BY [dancerphil](https://github.com/dancerphil) 有一个经典的例子
+    // 差评，而且失败
+    var foos = []
+    for(var i = 0; i < 4; i++){
+      foos[i] = function() {
+        console.log(i)
+      }
+    }
+    foos[1]()
+
+    // 好评
+    var foos = []
+    for(let i = 0; i < 4; i++){ // 使用 let
+      foos[i] = function() {
+        console.log(i)
+      }
+    }
+    foos[1]()
     ```
 
   <a name="references--block-scope"></a><a name="2.3"></a>
