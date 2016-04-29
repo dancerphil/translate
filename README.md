@@ -136,7 +136,7 @@
     }
     ```
 
-    > BY [dancerphil](https://github.com/dancerphil) 有一个经典的例子
+    > BY [dancerphil](https://github.com/dancerphil)：有一个经典的例子
 
     ```javascript
     // 差评，而且失败
@@ -146,7 +146,7 @@
         console.log(i)
       }
     }
-    foos[1]()
+    foos[1]() // 4
 
     // 好评
     var foos = []
@@ -155,7 +155,7 @@
         console.log(i)
       }
     }
-    foos[1]()
+    foos[1]() // 1
     ```
 
   <a name="references--block-scope"></a><a name="2.3"></a>
