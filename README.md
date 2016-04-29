@@ -1639,7 +1639,7 @@
 ## 块
 
   <a name="blocks--braces"></a><a name="16.1"></a>
-  - [16.1](#blocks--braces) Use braces with all multi-line blocks.
+  - [16.1](#blocks--braces) 用大括号包裹所有的多行代码块
 
     ```javascript
     // 差评
@@ -1664,7 +1664,7 @@
     ```
 
   <a name="blocks--cuddled-elses"></a><a name="16.2"></a>
-  - [16.2](#blocks--cuddled-elses) If you're using multi-line blocks with `if` and `else`, put `else` on the same line as your `if` block's closing brace. eslint: [`brace-style`](http://eslint.org/docs/rules/brace-style.html) jscs:  [`disallowNewlineBeforeBlockStatements`](http://jscs.info/rule/disallowNewlineBeforeBlockStatements)
+  - [16.2](#blocks--cuddled-elses) 如果你在使用带 `if` 和 `else` 的多行代码块，把 `else` 放在 `if` 代码块关闭括号的同一行。 eslint: [`brace-style`](http://eslint.org/docs/rules/brace-style.html) jscs:  [`disallowNewlineBeforeBlockStatements`](http://jscs.info/rule/disallowNewlineBeforeBlockStatements)
 
     ```javascript
     // 差评
@@ -1693,7 +1693,7 @@
 ## 注释
 
   <a name="comments--multiline"></a><a name="17.1"></a>
-  - [17.1](#comments--multiline) Use `/** ... */` for multi-line comments. Include a description, specify types and values for all parameters and return values.
+  - [17.1](#comments--multiline) 使用 `/** ... */` 作为多行注释。包含描述，并指定参数和返回值的类型和值
 
     ```javascript
     // 差评
@@ -1726,7 +1726,7 @@
     ```
 
   <a name="comments--singleline"></a><a name="17.2"></a>
-  - [17.2](#comments--singleline) Use `//` for single line comments. Place single line comments on a newline above the subject of the comment. Put an empty line before the comment unless it's on the first line of a block.
+  - [17.2](#comments--singleline) 使用 `//` 作为单行注释。在需要注释的代码上方另起一行写注释。在注释前空一行，除非注释在块的开头。
 
     ```javascript
     // 差评
@@ -1755,7 +1755,7 @@
       return type;
     }
 
-    // also good
+    // 同样好评
     function getType() {
       // set the default type to 'no type'
       const type = this._type || 'no type';
@@ -1765,31 +1765,31 @@
     ```
 
   <a name="comments--actionitems"></a><a name="17.3"></a>
-  - [17.3](#comments--actionitems) Prefixing your comments with `FIXME` or `TODO` helps other developers quickly understand if you're pointing out a problem that needs to be revisited, or if you're suggesting a solution to the problem that needs to be implemented. These are different than regular comments because they are actionable. The actions are `FIXME: -- need to figure this out` or `TODO: -- need to implement`.
+  - [17.3](#comments--actionitems) 在注释前加上 `FIXME` 或 `TODO` 可以帮助其他开发者快速的了解写这段注释的原因。也许你正在指出一个需要复查的问题，或者你正在给需要实现的功能提供一个解决方式。和一般的注解不用，它们是可被执行的，对应的动作为 `FIXME: -- 需要搞清楚这一点` 或者 `TODO: -- 需要实现`.
 
   <a name="comments--fixme"></a><a name="17.4"></a>
-  - [17.4](#comments--fixme) Use `// FIXME:` to annotate problems.
+  - [17.4](#comments--fixme) Use `// FIXME:` 标注问题
 
     ```javascript
     class Calculator extends Abacus {
       constructor() {
         super();
 
-        // FIXME: shouldn't use a global here
+        // FIXME: 这里不应该存在全局变量
         total = 0;
       }
     }
     ```
 
   <a name="comments--todo"></a><a name="17.5"></a>
-  - [17.5](#comments--todo) Use `// TODO:` to annotate solutions to problems.
+  - [17.5](#comments--todo) Use `// TODO:` 标注问题的解决方式
 
     ```javascript
     class Calculator extends Abacus {
       constructor() {
         super();
 
-        // TODO: total should be configurable by an options param
+        // TODO: total 应该是个可被传入的可选变量
         this.total = 0;
       }
     }
