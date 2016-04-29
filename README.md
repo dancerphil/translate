@@ -1521,11 +1521,12 @@
     ```
     
   <a name="comparison--switch-blocks"></a><a name="15.5"></a>
-  - [15.5](#comparison--switch-blocks) Use braces to create blocks in `case` and `default` clauses that contain lexical declarations (e.g. `let`, `const`, `function`, and `class`).
-
-  > Why? Lexical declarations are visible in the entire `switch` block but only get initialized when assigned, which only happens when its `case` is reached. This causes problems when multiple `case` clauses attempt to define the same thing.
-
+  - [15.5](#comparison--switch-blocks) 如果在 `case` 和 `default` 中包含了宣告语法(lexical declarations)，比如 `let`, `const`, `function`, 和 `class`。那么用大括号来建立代码块
+  
   eslint rules: [`no-case-declarations`](http://eslint.org/docs/rules/no-case-declarations.html).
+
+  > 为什么？宣告语法在整个 `switch` 块都可见，但是只在我们定义的地方才得到了初始值，也就是当进入其所在的 `case` 时才触发。如果不加大括号，可能引起多个 `case` 尝试定义同一事物的情况。
+
 
     ```javascript
     // 差评
@@ -1567,9 +1568,9 @@
     ```
 
   <a name="comparison--nested-ternaries"></a><a name="15.6"></a>
-  - [15.6](#comparison--nested-ternaries) Ternaries should not be nested and generally be single line expressions.
-
-    eslint rules: [`no-nested-ternary`](http://eslint.org/docs/rules/no-nested-ternary.html).
+  - [15.6](#comparison--nested-ternaries) 三元运算符通常应该是简单的单行表达式，而不是嵌套的(nested)
+   
+  eslint rules: [`no-nested-ternary`](http://eslint.org/docs/rules/no-nested-ternary.html).
 
     ```javascript
     // 差评
@@ -1591,9 +1592,9 @@
     ```
 
   <a name="comparison--unneeded-ternary"></a><a name="15.7"></a>
-  - [15.7](#comparison--unneeded-ternary) Avoid unneeded ternary statements.
+  - [15.7](#comparison--unneeded-ternary) 避免不必要的三元运算符
 
-    eslint rules: [`no-unneeded-ternary`](http://eslint.org/docs/rules/no-unneeded-ternary.html).
+  eslint rules: [`no-unneeded-ternary`](http://eslint.org/docs/rules/no-unneeded-ternary.html).
 
     ```javascript
     // 差评
