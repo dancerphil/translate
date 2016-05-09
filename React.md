@@ -6,9 +6,12 @@
 > 
 > 这是一篇在[原文](https://github.com/airbnb/javascript)基础上演绎的译文，与原文的表达会有出入。
 > 
-> 除非另行注明，页面上所有内容采用 MIT 协议共享。
+> 原文在不断的更新，本文基于 2016-04-28 的版本，last commit [ [a71bffa] ](https://github.com/airbnb/javascript/commit/a71bffa5e3515c83023595e2716fee3bc75da7e5)
+> 
+> 除非另行注明，页面上所有内容采用 [MIT](https://opensource.org/licenses/MIT) 协议共享。
 
-## Table of Contents
+<a name="table-of-contents"></a>
+## 目录
 
   1. [Basic Rules](#basic-rules)
   1. [Class vs `React.createClass` vs stateless](#class-vs-reactcreateclass-vs-stateless)
@@ -24,6 +27,7 @@
   1. [Ordering](#ordering)
   1. [`isMounted`](#ismounted)
 
+<a name="basic-rules"></a>
 ## Basic Rules
 
   - Only include one React component per file.
@@ -31,6 +35,7 @@
   - Always use JSX syntax.
   - Do not use `React.createElement` unless you're initializing the app from a file that is not JSX.
 
+<a name="class-vs-reactcreateclass-vs-stateless"></a>
 ## Class vs `React.createClass` vs stateless
 
   - If you have internal state and/or refs, prefer `class extends React.Component` over `React.createClass` unless you have a very good reason to use mixins. eslint: [`react/prefer-es6-class`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-es6-class.md) [`react/prefer-stateless-function`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-stateless-function.md)
@@ -74,6 +79,7 @@
     }
     ```
 
+<a name="naming"></a>
 ## Naming
 
   - **Extensions**: Use `.jsx` extension for React components.
@@ -107,6 +113,7 @@
     import Footer from './Footer';
     ```
 
+<a name="declaration"></a>
 ## Declaration
 
   - Do not use `displayName` for naming components. Instead, name the component by reference.
@@ -123,6 +130,7 @@
     }
     ```
 
+<a name="alignment"></a>
 ## Alignment
 
   - Follow these alignment styles for JSX syntax. eslint: [`react/jsx-closing-bracket-location`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md)
@@ -150,6 +158,7 @@
     </Foo>
     ```
 
+<a name="quotes"></a>
 ## Quotes
 
   - Always use double quotes (`"`) for JSX attributes, but single quotes for all other JS. eslint: [`jsx-quotes`](http://eslint.org/docs/rules/jsx-quotes)
@@ -171,6 +180,7 @@
     <Foo style={{ left: '20px' }} />
     ```
 
+<a name="spacing"></a>
 ## Spacing
 
   - Always include a single space in your self-closing tag.
@@ -200,6 +210,7 @@
     <Foo bar={baz} />
     ```
 
+<a name="props"></a>
 ## Props
 
   - Always use camelCase for prop names.
@@ -285,6 +296,7 @@
   <div />
   ```
 
+<a name="parentheses"></a>
 ## Parentheses
 
   - Wrap JSX tags in parentheses when they span more than one line. eslint: [`react/wrap-multilines`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/wrap-multilines.md)
@@ -313,6 +325,7 @@
     }
     ```
 
+<a name="tags"></a>
 ## Tags
 
   - Always self-close tags that have no children. eslint: [`react/self-closing-comp`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md)
@@ -340,6 +353,7 @@
     />
     ```
 
+<a name="methods"></a>
 ## Methods
 
   - Use arrow functions to close over local variables.
@@ -429,6 +443,7 @@
     }
     ```
 
+<a name="ordering"></a>
 ## Ordering
 
   - Ordering for `class extends React.Component`:
@@ -503,6 +518,7 @@
   1. *Optional render methods* like `renderNavigation()` or `renderProfilePicture()`
   1. `render`
 
+<a name="ismounted"></a>
 ## `isMounted`
 
   - Do not use `isMounted`. eslint: [`react/no-is-mounted`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-is-mounted.md)
@@ -511,4 +527,4 @@
 
   [anti-pattern]: https://facebook.github.io/react/blog/2015/12/16/ismounted-antipattern.html
 
-**[⬆ back to top](#table-of-contents)**
+**[↑ 回到最上方](#目录)**
