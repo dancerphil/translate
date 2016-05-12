@@ -6,7 +6,7 @@
 > 
 > 这是一篇在[原文](https://github.com/airbnb/javascript)基础上演绎的译文，与原文的表达会有出入
 > 
-> 原文在不断的更新，本文基于 2016-04-28 的版本，last commit [ [a71bffa] ](https://github.com/airbnb/javascript/commit/a71bffa5e3515c83023595e2716fee3bc75da7e5)
+> 原文在不断的更新，本文基于 2016-05-12 的版本，last commit [ [b660d4c] ](https://github.com/airbnb/javascript/commit/b660d4cc3f0497b6ffd981857ffef68edec729ee)
 > 
 > 除非另行注明，页面上所有内容采用[MIT](#license)协议共享
 
@@ -373,7 +373,7 @@
     ```
 
   <a name="arrays--push"></a><a name="4.2"></a>
-  - [4.2](#arrays--push) 不要用下标方式直接在数组中加上一个项，使用 Array#push 来代替
+  - [4.2](#arrays--push) 不要用下标方式直接在数组中加上一个项，使用 [Array#push](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/push) 来代替
 
     ```javascript
     const someStack = [];
@@ -403,7 +403,7 @@
     ```
 
   <a name="arrays--from"></a><a name="4.4"></a>
-  - [4.4](#arrays--from) 使用 Array#from 把一个 **类数组对象** 转换成数组[（见：12-javascript-quirks:8）](https://github.com/justjavac/12-javascript-quirks/blob/master/cn/8-array-like-objects.md)
+  - [4.4](#arrays--from) 使用 [Array.from](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from) 把一个 **类数组对象** 转换成数组[（见：12-javascript-quirks:8）](https://github.com/justjavac/12-javascript-quirks/blob/master/cn/8-array-like-objects.md)
 
     ```javascript
     const foo = document.querySelectorAll('.foo');
@@ -944,7 +944,7 @@
     const itemHeight = (item) => item.height > 256 ? item.largeSize : item.smallSize;
 
     // 好评
-    const itemHeight = (item) => { return item.height > 256 ? item.largeSize : item.smallSize; }
+    const itemHeight = (item) => { return item.height > 256 ? item.largeSize : item.smallSize; };
     ```
 
 **[↑ 回到最上方](#table-of-contents)**
@@ -1190,6 +1190,21 @@
       named1,
       named2,
     } from 'foo';
+    ```
+
+  <a name="modules--no-mutable-exports"></a>
+  - [10.5](#modules--no-mutable-exports) 不要 `export` 可变的绑定。
+ eslint: [`import/no-mutable-exports`](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-mutable-exports.md)
+    > 为什么？在特定的情况下也许会导出可变绑定，一般来说我们都要避免异常(mutation)的发生，只使用常数引用。
+
+    ```javascript
+    // 差评
+    let foo = 3;
+    export { foo }
+
+    // 好评
+    const foo = 3;
+    export { foo }
     ```
 
 **[↑ 回到最上方](#table-of-contents)**
