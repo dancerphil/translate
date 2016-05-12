@@ -14,8 +14,8 @@
 ## 目录
 
   1. [基本规则 Basic Rules](#basic-rules)
-  1. [Class vs `React.createClass` vs stateless](#class-vs-reactcreateclass-vs-stateless)
-  1. [Naming](#naming)
+  1. [类， `createClass` 与无状态 Class vs `React.createClass` vs stateless](#class-vs-reactcreateclass-vs-stateless)
+  1. [命名 Naming](#naming)
   1. [Declaration](#declaration)
   1. [Alignment](#alignment)
   1. [Quotes](#quotes)
@@ -36,12 +36,12 @@
   - 不要使用 `React.createElement` ，除非你正在用一个非 JSX 文件初始化你的 app
 
 <a name="class-vs-reactcreateclass-vs-stateless"></a>
-## 类， `React.createClass` 与无状态
+## 类， `createClass` 与无状态
 
-  - If you have internal state and/or refs, prefer `class extends React.Component` over `React.createClass` unless you have a very good reason to use mixins. eslint: [`react/prefer-es6-class`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-es6-class.md) [`react/prefer-stateless-function`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-stateless-function.md)
+  - 如果你有内部的状态或引用(reference)，选择使用 `class extends React.Component` ，而不是 `React.createClass` ，除非你有一个非常好的理由，否则不要使用 mixin。 eslint: [`react/prefer-es6-class`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-es6-class.md) [`react/prefer-stateless-function`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-stateless-function.md)
 
     ```jsx
-    // bad
+    // 差评
     const Listing = React.createClass({
       // ...
       render() {
@@ -49,7 +49,7 @@
       }
     });
 
-    // good
+    // 好评
     class Listing extends React.Component {
       // ...
       render() {
@@ -58,58 +58,57 @@
     }
     ```
 
-    And if you don't have state or refs, prefer normal functions (not arrow functions) over classes:
+    如果你不需要内部状态和引用，选择使用一般的函数，而不是箭头函数，也不是 class：
 
     ```jsx
-    // bad
+    // 差评
     class Listing extends React.Component {
       render() {
         return <div>{this.props.hello}</div>;
       }
     }
 
-    // bad (relying on function name inference is discouraged)
+    // 差评 (relying on function name inference is discouraged)
     const Listing = ({ hello }) => (
       <div>{hello}</div>
     );
 
-    // good
+    // 好评
     function Listing({ hello }) {
       return <div>{hello}</div>;
     }
     ```
 
 <a name="naming"></a>
-## Naming
+## 命名
 
-  - **Extensions**: Use `.jsx` extension for React components.
-  - **Filename**: Use PascalCase for filenames. E.g., `ReservationCard.jsx`.
-  - **Reference Naming**: Use PascalCase for React components and camelCase for their instances. eslint: [`react/jsx-pascal-case`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-pascal-case.md)
+  - **后缀名**： 写 React 组件应当使用后缀名 `.jsx`
+  - **文件名**： 使用帕斯卡命名法，比如 `ReservationCard.jsx`.
+  - **引用命名**： 使用帕斯卡命名法命名组件，用驼峰命名法命名组件的实例。 eslint: [`react/jsx-pascal-case`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-pascal-case.md)
 
     ```jsx
-    // bad
+    // 差评
     import reservationCard from './ReservationCard';
 
-    // good
+    // 好评
     import ReservationCard from './ReservationCard';
 
-    // bad
+    // 差评
     const ReservationItem = <ReservationCard />;
 
-    // good
+    // 好评
     const reservationItem = <ReservationCard />;
     ```
 
-  - **Component Naming**: Use the filename as the component name. For example, `ReservationCard.jsx` should have a reference name of `ReservationCard`. However, for root components of a directory, use `index.jsx` as the filename and use the directory name as the component name:
-
+  - **组件命名**： 文件名和组件名保持相同。比如， `ReservationCard.jsx` 应当有一个名为 `ReservationCard` 的引用。然而对于一个某个目录的根组件来说，使用 `index.jsx` 作为文件名，然后用目录名称作为组件名：
     ```jsx
-    // bad
+    // 差评
     import Footer from './Footer/Footer';
 
-    // bad
+    // 差评
     import Footer from './Footer/index';
 
-    // good
+    // 好评
     import Footer from './Footer';
     ```
 
@@ -119,13 +118,13 @@
   - Do not use `displayName` for naming components. Instead, name the component by reference.
 
     ```jsx
-    // bad
+    // 差评
     export default React.createClass({
       displayName: 'ReservationCard',
       // stuff goes here
     });
 
-    // good
+    // 好评
     export default class ReservationCard extends React.Component {
     }
     ```
@@ -136,11 +135,11 @@
   - Follow these alignment styles for JSX syntax. eslint: [`react/jsx-closing-bracket-location`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md)
 
     ```jsx
-    // bad
+    // 差评
     <Foo superLongParam="bar"
          anotherSuperLongParam="baz" />
 
-    // good
+    // 好评
     <Foo
       superLongParam="bar"
       anotherSuperLongParam="baz"
@@ -167,16 +166,16 @@
   > Regular HTML attributes also typically use double quotes instead of single, so JSX attributes mirror this convention.
 
     ```jsx
-    // bad
+    // 差评
     <Foo bar='bar' />
 
-    // good
+    // 好评
     <Foo bar="bar" />
 
-    // bad
+    // 差评
     <Foo style={{ left: "20px" }} />
 
-    // good
+    // 好评
     <Foo style={{ left: '20px' }} />
     ```
 
@@ -186,27 +185,27 @@
   - Always include a single space in your self-closing tag.
 
     ```jsx
-    // bad
+    // 差评
     <Foo/>
 
     // very bad
     <Foo                 />
 
-    // bad
+    // 差评
     <Foo
      />
 
-    // good
+    // 好评
     <Foo />
     ```
 
   - Do not pad JSX curly braces with spaces. eslint: [`react/jsx-curly-spacing`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-curly-spacing.md)
 
     ```jsx
-    // bad
+    // 差评
     <Foo bar={ baz } />
 
-    // good
+    // 好评
     <Foo bar={baz} />
     ```
 
@@ -216,13 +215,13 @@
   - Always use camelCase for prop names.
 
     ```jsx
-    // bad
+    // 差评
     <Foo
       UserName="hello"
       phone_number={12345678}
     />
 
-    // good
+    // 好评
     <Foo
       userName="hello"
       phoneNumber={12345678}
@@ -232,12 +231,12 @@
   - Omit the value of the prop when it is explicitly `true`. eslint: [`react/jsx-boolean-value`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-boolean-value.md)
 
     ```jsx
-    // bad
+    // 差评
     <Foo
       hidden={true}
     />
 
-    // good
+    // 好评
     <Foo
       hidden
     />
@@ -246,16 +245,16 @@
   - Always include an `alt` prop on `<img>` tags. If the image is presentational, `alt` can be an empty string or the `<img>` must have `role="presentation"`. eslint: [`jsx-a11y/img-has-alt`](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/img-has-alt.md)
 
     ```jsx
-    // bad
+    // 差评
     <img src="hello.jpg" />
 
-    // good
+    // 好评
     <img src="hello.jpg" alt="Me waving hello" />
 
-    // good
+    // 好评
     <img src="hello.jpg" alt="" />
 
-    // good
+    // 好评
     <img src="hello.jpg" role="presentation" />
     ```
 
@@ -264,23 +263,23 @@
   > Why? Screenreaders already announce `img` elements as images, so there is no need to include this information in the alt text.
 
     ```jsx
-    // bad
+    // 差评
     <img src="hello.jpg" alt="Picture of me waving hello" />
 
-    // good
+    // 好评
     <img src="hello.jpg" alt="Me waving hello" />
     ```
 
   - Use only valid, non-abstract [ARIA roles](https://www.w3.org/TR/wai-aria/roles#role_definitions). eslint: [`jsx-a11y/aria-role`](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/aria-role.md)
 
     ```jsx
-    // bad - not an ARIA role
+    // 差评 - not an ARIA role
     <div role="datepicker" />
 
-    // bad - abstract ARIA role
+    // 差评 - abstract ARIA role
     <div role="range" />
 
-    // good
+    // 好评
     <div role="button" />
     ```
 
@@ -289,10 +288,10 @@
   > Why? Inconsistencies between keyboard shortcuts and keyboard commands used by people using screenreaders and keyboards complicate accessibility.
 
   ```jsx
-  // bad
+  // 差评
   <div accessKey="h" />
 
-  // good
+  // 好评
   <div />
   ```
 
@@ -302,14 +301,14 @@
   - Wrap JSX tags in parentheses when they span more than one line. eslint: [`react/wrap-multilines`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/wrap-multilines.md)
 
     ```jsx
-    // bad
+    // 差评
     render() {
       return <MyComponent className="long body" foo="bar">
                <MyChild />
              </MyComponent>;
     }
 
-    // good
+    // 好评
     render() {
       return (
         <MyComponent className="long body" foo="bar">
@@ -318,7 +317,7 @@
       );
     }
 
-    // good, when single line
+    // 好评, when single line
     render() {
       const body = <div>hello</div>;
       return <MyComponent>{body}</MyComponent>;
@@ -331,22 +330,22 @@
   - Always self-close tags that have no children. eslint: [`react/self-closing-comp`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md)
 
     ```jsx
-    // bad
+    // 差评
     <Foo className="stuff"></Foo>
 
-    // good
+    // 好评
     <Foo className="stuff" />
     ```
 
   - If your component has multi-line properties, close its tag on a new line. eslint: [`react/jsx-closing-bracket-location`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md)
 
     ```jsx
-    // bad
+    // 差评
     <Foo
       bar="bar"
       baz="baz" />
 
-    // good
+    // 好评
     <Foo
       bar="bar"
       baz="baz"
@@ -378,7 +377,7 @@
   > Why? A bind call in the render path creates a brand new function on every single render.
 
     ```jsx
-    // bad
+    // 差评
     class extends React.Component {
       onClickDiv() {
         // do stuff
@@ -389,7 +388,7 @@
       }
     }
 
-    // good
+    // 好评
     class extends React.Component {
       constructor(props) {
         super(props);
@@ -410,7 +409,7 @@
   - Do not use underscore prefix for internal methods of a React component.
 
     ```jsx
-    // bad
+    // 差评
     React.createClass({
       _onClickSubmit() {
         // do stuff
@@ -419,7 +418,7 @@
       // other stuff
     });
 
-    // good
+    // 好评
     class extends React.Component {
       onClickSubmit() {
         // do stuff
@@ -432,12 +431,12 @@
   - Be sure to return a value in your `render` methods. eslint: [`require-render-return`](https://github.com/yannickcr/eslint-plugin-react/pull/502)
 
     ```jsx
-    // bad
+    // 差评
     render() {
       (<div />);
     }
 
-    // good
+    // 好评
     render() {
       return (<div />);
     }
