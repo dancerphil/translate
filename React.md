@@ -4,7 +4,7 @@
 
 > BY 张聪([dancerphil@github](https://github.com/dancerphil/trick/))
 > 
-> 这是一篇在[原文](https://github.com/airbnb/javascript)基础上演绎的译文，与原文的表达会有出入。
+> 这是一篇在[原文](https://github.com/airbnb/javascript/tree/master/react)基础上演绎的译文，与原文的表达会有出入。
 > 
 > 原文在不断的更新，本文基于 2016-04-28 的版本，last commit [ [a71bffa] ](https://github.com/airbnb/javascript/commit/a71bffa5e3515c83023595e2716fee3bc75da7e5)
 > 
@@ -13,7 +13,7 @@
 <a name="table-of-contents"></a>
 ## 目录
 
-  1. [Basic Rules](#basic-rules)
+  1. [基本规则 Basic Rules](#basic-rules)
   1. [Class vs `React.createClass` vs stateless](#class-vs-reactcreateclass-vs-stateless)
   1. [Naming](#naming)
   1. [Declaration](#declaration)
@@ -28,15 +28,15 @@
   1. [`isMounted`](#ismounted)
 
 <a name="basic-rules"></a>
-## Basic Rules
+## 基本规则
 
-  - Only include one React component per file.
-    - However, multiple [Stateless, or Pure, Components](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions) are allowed per file. eslint: [`react/no-multi-comp`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-multi-comp.md#ignorestateless).
-  - Always use JSX syntax.
-  - Do not use `React.createElement` unless you're initializing the app from a file that is not JSX.
+  - 每个文件只包含一个 React 组件
+    - 不过一个文件可以包含多个 [无状态(stateless) 组件或纯净(pure) 组件](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions) 。 eslint: [`react/no-multi-comp`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-multi-comp.md#ignorestateless).
+  - 总是使用 JSX 语法
+  - 不要使用 `React.createElement` ，除非你正在用一个非 JSX 文件初始化你的 app
 
 <a name="class-vs-reactcreateclass-vs-stateless"></a>
-## Class vs `React.createClass` vs stateless
+## 类， `React.createClass` 与无状态
 
   - If you have internal state and/or refs, prefer `class extends React.Component` over `React.createClass` unless you have a very good reason to use mixins. eslint: [`react/prefer-es6-class`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-es6-class.md) [`react/prefer-stateless-function`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-stateless-function.md)
 
