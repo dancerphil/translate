@@ -1207,6 +1207,36 @@
     export { foo }
     ```
 
+  <a name="modules--prefer-default-export"></a>
+  - [10.6](#modules--prefer-default-export) 如果模块只有一个简单的 `export`，使用 `default` 模块而不是带名称模块。 
+eslint: [`import/prefer-default-export`](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/prefer-default-export.md)
+
+    ```javascript
+    // 差评
+    export function foo() {}
+
+    // 好评
+    export default function foo() {}
+    ```
+
+  <a name="modules--imports-first"></a>
+  - [10.7](#modules--imports-first) 把所有的 `import` 放在其他的声明之前。
+ eslint: [`import/imports-first`](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/imports-first.md)
+    > 为什么？因为 `import` 是提升的(hoisted)，把它们放在最上方可以避免许多令人惊讶的代码行为
+
+    ```javascript
+    // bad
+    import foo from 'foo';
+    foo.init();
+    import bar from 'bar';
+
+    // good
+    import foo from 'foo';
+    import bar from 'bar';
+
+    foo.init();
+    ```
+
 **[↑ 回到最上方](#table-of-contents)**
 
 <a name="iterators-and-generators"></a>
@@ -1243,10 +1273,54 @@
 
     > 为什么？他们不能很好的被编译到 ES5 
     > 
-    > 注 BY [dancerphil](https://github.com/dancerphil)：不过截至目前，V8 和 Nodejs 已经很好的支持了生成器
+    > 注 BY [dancerphil](https://github.com/dancerphil)：不过截至目前(2016.5)，V8 和 Nodejs 已经很好的支持了生成器
 
 **[↑ 回到最上方](#table-of-contents)**
 
+
+  <a name="generators--spacing"></a>
+  - [11.3](#generators--spacing) 如果你一意孤行，不听[劝告](#generators--nope)，要使用生成器，请先确保他们的函数签名(function signature)是正确的。 eslint: [`generator-star-spacing`](http://eslint.org/docs/rules/generator-star-spacing)
+
+    > 为什么？ `function` 和 `*` 是同一个概念关键字的两个部分 -  `*` 不是 `function`的一个修饰符， `function*` 与 `function` 不同，它是一个独有的关键字
+
+    ```js
+    // 差评
+    function * foo() {
+    }
+
+    const bar = function * () {
+    }
+
+    const baz = function *() {
+    }
+
+    const quux = function*() {
+    }
+
+    function*foo() {
+    }
+
+    function *foo() {
+    }
+
+    // 奇差无比
+    function
+    *
+    foo() {
+    }
+
+    const wat = function
+    *
+    () {
+    }
+
+    // 好评
+    function* foo() {
+    }
+
+    const foo = function* () {
+    }
+    ```
 
 <a name="properties"></a>
 ## 属性
