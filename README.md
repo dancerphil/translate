@@ -324,8 +324,8 @@
     };
     ```
 
-  <a name="objects-quoted-props"></a><a name="3.8"></a>
-  - [3.8](#objects-quoted-props) 只有拥有不合法标识符的属性名才使用引号。 eslint: [`quote-props`](http://eslint.org/docs/rules/quote-props.html) jscs: [`disallowQuotedKeysInObjects`](http://jscs.info/rule/disallowQuotedKeysInObjects)
+  <a name="objects--quoted-props"></a><a name="3.8"></a>
+  - [3.8](#objects--quoted-props) 只有拥有不合法标识符的属性名才使用引号。 eslint: [`quote-props`](http://eslint.org/docs/rules/quote-props.html) jscs: [`disallowQuotedKeysInObjects`](http://jscs.info/rule/disallowQuotedKeysInObjects)
 
   > 为什么？一般的，我们认为这样更易读，这种做法可以改善 IDE 语法高亮，同时帮助很多JS引擎进行优化
   > 
@@ -354,6 +354,26 @@
     bar: 4,
     'data-blah': 5,
   };
+  ```
+
+  <a name="objects--prototype-builtins"></a>
+  - [3.9](#objects--prototype-builtins) 不要直接调用 `Object.prototype` 方法，比如 `hasOwnProperty`， `propertyIsEnumerable` 和 `isPrototypeOf`.
+
+  > 为什么？这些方法可能会被问题对象的属性所覆盖(shadowed) - 考虑 `{ hasOwnProperty: false }` - 或者干脆，这是一个空对象 (`Object.create(null)`).
+
+  ```javascript
+  // 差评
+  console.log(object.hasOwnProperty(key));
+
+  // 好评
+  console.log(Object.prototype.hasOwnProperty.call(object, key));
+
+  // 最佳实现
+  const has = Object.prototype.hasOwnProperty; // 在模块域内缓存一个查找(lookup)
+  /* or */
+  const has = require('has');
+  …
+  console.log(has.call(object, key));
   ```
 
 **[↑ 回到最上方](#table-of-contents)**
@@ -2181,7 +2201,7 @@ eslint: [`import/prefer-default-export`](https://github.com/benmosher/eslint-plu
     ```
 
   <a name="whitespace--in-braces"></a><a name="18.11"></a>
-  - [18.11](#whitespace--in-braces) 不要在花括号内加空格。 eslint: [`object-curly-spacing`](http://eslint.org/docs/rules/object-curly-spacing.html) jscs: [`disallowSpacesInsideObjectBrackets`](http://jscs.info/rule/disallowSpacesInsideObjectBrackets)
+  - [18.11](#whitespace--in-braces) 不要在花括号内加空格。 eslint: [`object-curly-spacing`](http://eslint.org/docs/rules/object-curly-spacing.html) jscs: [`requireSpacesInsideObjectBrackets`](http://jscs.info/rule/requireSpacesInsideObjectBrackets)
 
     ```javascript
     // 差评
@@ -2606,16 +2626,26 @@ eslint: [`import/prefer-default-export`](https://github.com/benmosher/eslint-plu
 
     ```javascript
     // 差评
-    dragon.age();
+    class Dragon {
+      get age() {
+        // ...
+      }
+
+      set age(value) {
+        // ...
+      }
+    }
 
     // 好评
-    dragon.getAge();
+    class Dragon {
+      getAge() {
+        // ...
+      }
 
-    // 差评
-    dragon.age(25);
-
-    // 好评
-    dragon.setAge(25);
+      setAge(value) {
+        // ...
+      }
+    }
     ```
 
   <a name="accessors--boolean-prefix"></a><a name="23.3"></a>
