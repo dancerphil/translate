@@ -6,7 +6,7 @@
 > 
 > 这是一篇在[原文](https://github.com/airbnb/javascript)基础上演绎的译文，与原文的表达会有出入
 > 
-> 原文在不断的更新，本文基于 2016-05-12 的版本，last commit [ [b660d4c] ](https://github.com/airbnb/javascript/commit/b660d4cc3f0497b6ffd981857ffef68edec729ee)
+> 原文在不断的更新，本文基于 2016-06-26 的版本，last commit [ [34a9f07] ](https://github.com/airbnb/javascript/commit/34a9f076df1b57069f235393cd895b2c25cd893f)
 > 
 > 除非另行注明，页面上所有内容采用[MIT](#license)协议共享
 
@@ -964,7 +964,13 @@
     const itemHeight = (item) => item.height > 256 ? item.largeSize : item.smallSize;
 
     // 好评
-    const itemHeight = (item) => { return item.height > 256 ? item.largeSize : item.smallSize; };
+    const itemHeight = item => (item.height > 256 ? item.largeSize : item.smallSize);
+
+    // 好评
+    const itemHeight = (item) => {
+      const { height, largeSize, smallSize } = item;
+      return height > 256 ? largeSize : smallSize;
+    };
     ```
 
 **[↑ 回到最上方](#table-of-contents)**
@@ -2290,7 +2296,7 @@ eslint: [`import/prefer-default-export`](https://github.com/benmosher/eslint-plu
          firstName: 'Florence',
     -    lastName: 'Nightingale'
     +    lastName: 'Nightingale',
-    +    inventorOf: ['coxcomb graph', 'modern nursing']
+    +    inventorOf: ['coxcomb chart', 'modern nursing']
     };
 
     // 好评 - 有行尾逗号时， git diff 是这样的
