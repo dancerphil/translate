@@ -16,15 +16,15 @@
   1. [基本规则 Basic Rules](#basic-rules)
   1. [类， `createClass` 与无状态 Class vs `React.createClass` vs stateless](#class-vs-reactcreateclass-vs-stateless)
   1. [命名 Naming](#naming)
-  1. [Declaration](#declaration)
-  1. [Alignment](#alignment)
-  1. [Quotes](#quotes)
+  1. [声明 Declaration](#declaration)
+  1. [对齐 Alignment](#alignment)
+  1. [引号 Quotes](#quotes)
   1. [Spacing](#spacing)
   1. [Props](#props)
   1. [Parentheses](#parentheses)
-  1. [Tags](#tags)
-  1. [Methods](#methods)
-  1. [Ordering](#ordering)
+  1. [标签 Tags](#tags)
+  1. [方法 Methods](#methods)
+  1. [排序 Ordering](#ordering)
   1. [`isMounted`](#ismounted)
 
 <a name="basic-rules"></a>
@@ -113,9 +113,9 @@
     ```
 
 <a name="declaration"></a>
-## Declaration
+## 声明 Declaration
 
-  - Do not use `displayName` for naming components. Instead, name the component by reference.
+  - 不要使用 `displayName` 来命名组件，而使用参考(reference)命名组件
 
     ```jsx
     // 差评
@@ -130,9 +130,9 @@
     ```
 
 <a name="alignment"></a>
-## Alignment
+## 对齐 Alignment
 
-  - Follow these alignment styles for JSX syntax. eslint: [`react/jsx-closing-bracket-location`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md)
+  - JSX 语法遵循以下对齐风格。 eslint: [`react/jsx-closing-bracket-location`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md)
 
     ```jsx
     // 差评
@@ -145,10 +145,10 @@
       anotherSuperLongParam="baz"
     />
 
-    // if props fit in one line then keep it on the same line
+    // 如果属性(props)适合写在同一行上，就把他们写在一行
     <Foo bar="bar" />
 
-    // children get indented normally
+    // 通常子元素需要缩进
     <Foo
       superLongParam="bar"
       anotherSuperLongParam="baz"
@@ -158,7 +158,7 @@
     ```
 
 <a name="quotes"></a>
-## Quotes
+## 引号 Quotes
 
   - Always use double quotes (`"`) for JSX attributes, but single quotes for all other JS. eslint: [`jsx-quotes`](http://eslint.org/docs/rules/jsx-quotes)
 
