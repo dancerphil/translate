@@ -160,10 +160,10 @@
 <a name="quotes"></a>
 ## 引号 Quotes
 
-  - Always use double quotes (`"`) for JSX attributes, but single quotes for all other JS. eslint: [`jsx-quotes`](http://eslint.org/docs/rules/jsx-quotes)
+  - 书写 JSX 属性值时总是使用双引号(`"`)，但是对于其他所有的 JS 代码都使用单引号。 eslint: [`jsx-quotes`](http://eslint.org/docs/rules/jsx-quotes)
 
-  > Why? JSX attributes [can't contain escaped quotes](http://eslint.org/docs/rules/jsx-quotes), so double quotes make conjunctions like `"don't"` easier to type.
-  > Regular HTML attributes also typically use double quotes instead of single, so JSX attributes mirror this convention.
+  > 为什么？ JSX 属性 [不能包括转译的引号](http://eslint.org/docs/rules/jsx-quotes) ，在双引号里类似 `"don't"` 的属性值更容易输入。
+  > 通常的 HTML 属性使用双引号， JSX 属性遵循了相同的语法
 
     ```jsx
     // 差评
@@ -180,9 +180,9 @@
     ```
 
 <a name="spacing"></a>
-## Spacing
+## 空格 Spacing
 
-  - Always include a single space in your self-closing tag.
+  - 在你的自闭合标签里包含一个空格
 
     ```jsx
     // 差评
@@ -199,7 +199,7 @@
     <Foo />
     ```
 
-  - Do not pad JSX curly braces with spaces. eslint: [`react/jsx-curly-spacing`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-curly-spacing.md)
+  - 不要在 JSX 大括号内垫上空格。 eslint: [`react/jsx-curly-spacing`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-curly-spacing.md)
 
     ```jsx
     // 差评
@@ -210,9 +210,9 @@
     ```
 
 <a name="props"></a>
-## Props
+## 属性 Props
 
-  - Always use camelCase for prop names.
+  - 永远使用驼峰命名法命名属性名
 
     ```jsx
     // 差评
@@ -228,7 +228,7 @@
     />
     ```
 
-  - Omit the value of the prop when it is explicitly `true`. eslint: [`react/jsx-boolean-value`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-boolean-value.md)
+  - 如果一个属性值是明确的 `true` ，把值省略不写。 eslint: [`react/jsx-boolean-value`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-boolean-value.md)
 
     ```jsx
     // 差评
@@ -242,7 +242,7 @@
     />
     ```
 
-  - Always include an `alt` prop on `<img>` tags. If the image is presentational, `alt` can be an empty string or the `<img>` must have `role="presentation"`. eslint: [`jsx-a11y/img-has-alt`](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/img-has-alt.md)
+  - `<img>` 标签应当永远包括 `alt` 属性。除非图片是介绍性的(presentational), `alt` 可以为空字符串或者 `<img>` 必须包含 `role="presentation"` 。 eslint: [`jsx-a11y/img-has-alt`](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/img-has-alt.md)
 
     ```jsx
     // 差评
@@ -258,9 +258,9 @@
     <img src="hello.jpg" role="presentation" />
     ```
 
-  - Do not use words like "image", "photo", or "picture" in `<img>` `alt` props. eslint: [`jsx-a11y/img-redundant-alt`](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/img-redundant-alt.md)
+  - 在 `<img>` `alt` 属性里不要使用类似 "图像 image"， "照片 photo"，或者 "图片 picture" 这样的词语。 eslint: [`jsx-a11y/img-redundant-alt`](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/img-redundant-alt.md)
 
-  > Why? Screenreaders already announce `img` elements as images, so there is no need to include this information in the alt text.
+  > 为什么？屏幕助读器(Screenreaders)已经把 `img` 标签标注为图片了, 所以没有必要再在 alt 里说明这些信息
 
     ```jsx
     // 差评
