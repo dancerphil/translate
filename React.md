@@ -6,7 +6,7 @@
 > 
 > 这是一篇在[原文](https://github.com/airbnb/javascript/tree/master/react)基础上演绎的译文，与原文的表达会有出入。
 > 
-> 原文在不断的更新，本文基于 2016-04-28 的版本，last commit [ [a71bffa] ](https://github.com/airbnb/javascript/commit/a71bffa5e3515c83023595e2716fee3bc75da7e5)
+> 原文在不断的更新，本文基于 2016-07-03 的版本，last commit [ [36d1561] ](https://github.com/airbnb/javascript/commit/36d15615968e267d11f6d2be509e5625900a7e6c)
 > 
 > 除非另行注明，页面上所有内容采用 [MIT](https://opensource.org/licenses/MIT) 协议共享。
 
@@ -19,9 +19,10 @@
   1. [声明 Declaration](#declaration)
   1. [对齐 Alignment](#alignment)
   1. [引号 Quotes](#quotes)
-  1. [Spacing](#spacing)
-  1. [Props](#props)
-  1. [Parentheses](#parentheses)
+  1. [空格 Spacing](#spacing)
+  1. [属性 Props](#props)
+  1. [Refs](#refs)
+  1. [括号 Parentheses](#parentheses)
   1. [标签 Tags](#tags)
   1. [方法 Methods](#methods)
   1. [排序 Ordering](#ordering)
@@ -294,6 +295,42 @@
   // 好评
   <div />
   ```
+
+  - Avoid using an array index as `key` prop, prefer a unique ID. ([why?](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318))
+
+  ```jsx
+  // bad
+  {todos.map((todo, index) =>
+    <Todo
+      {...todo}
+      key={index}
+    />
+  )}
+
+  // good
+  {todos.map(todo => (
+    <Todo
+      {...todo}
+      key={todo.id}
+    />
+  ))}
+  ```
+
+## Refs
+
+  - Always use ref callbacks. eslint: [`react/no-string-refs`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-string-refs.md)
+
+    ```jsx
+    // bad
+    <Foo
+      ref="myRef"
+    />
+
+    // good
+    <Foo
+      ref={(ref) => this.myRef = ref}
+    />
+    ```
 
 <a name="parentheses"></a>
 ## 括号 Parentheses
