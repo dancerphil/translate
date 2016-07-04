@@ -260,7 +260,7 @@
 
   - 在 `<img>` `alt` 属性里不要使用类似 "图像 image"， "照片 photo"，或者 "图片 picture" 这样的词语。 eslint: [`jsx-a11y/img-redundant-alt`](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/img-redundant-alt.md)
 
-  > 为什么？屏幕助读器(Screenreaders)已经把 `img` 标签标注为图片了, 所以没有必要再在 alt 里说明这些信息
+  > 为什么？屏幕(Screenreaders)已经把 `img` 标签标注为图片了, 所以没有必要再在 alt 里说明这些信息
 
     ```jsx
     // 差评
@@ -270,7 +270,7 @@
     <img src="hello.jpg" alt="Me waving hello" />
     ```
 
-  - Use only valid, non-abstract [ARIA roles](https://www.w3.org/TR/wai-aria/roles#role_definitions). eslint: [`jsx-a11y/aria-role`](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/aria-role.md)
+  - 使用有效的，非抽象的 [ARIA roles](https://www.w3.org/TR/wai-aria/roles#role_definitions) 属性值。 eslint: [`jsx-a11y/aria-role`](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/aria-role.md)
 
     ```jsx
     // 差评 - not an ARIA role
@@ -283,9 +283,9 @@
     <div role="button" />
     ```
 
-  - Do not use `accessKey` on elements. eslint: [`jsx-a11y/no-access-key`](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/no-access-key.md)
+  - 不要在元素上添加使用 `accessKey` 属性。 eslint: [`jsx-a11y/no-access-key`](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/no-access-key.md)
 
-  > Why? Inconsistencies between keyboard shortcuts and keyboard commands used by people using screenreaders and keyboards complicate accessibility.
+  > 为什么？如果使用屏幕和键盘的人所用的键盘命令与键盘快捷键不相符合，会引起访问不一致性。
 
   ```jsx
   // 差评
@@ -296,9 +296,9 @@
   ```
 
 <a name="parentheses"></a>
-## Parentheses
+## 括号 Parentheses
 
-  - Wrap JSX tags in parentheses when they span more than one line. eslint: [`react/wrap-multilines`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/wrap-multilines.md)
+  - 把 JSX 标签写在括号 `()` 里，如果他们超过一行。 eslint: [`react/wrap-multilines`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/wrap-multilines.md)
 
     ```jsx
     // 差评
@@ -325,9 +325,9 @@
     ```
 
 <a name="tags"></a>
-## Tags
+## 标签 Tags
 
-  - Always self-close tags that have no children. eslint: [`react/self-closing-comp`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md)
+  - 总是自闭合(self-close)那些没有子元素的标签。 eslint: [`react/self-closing-comp`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md)
 
     ```jsx
     // 差评
@@ -337,7 +337,7 @@
     <Foo className="stuff" />
     ```
 
-  - If your component has multi-line properties, close its tag on a new line. eslint: [`react/jsx-closing-bracket-location`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md)
+  - 如果你的组件有多行属性，新起一行关闭标签。 eslint: [`react/jsx-closing-bracket-location`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md)
 
     ```jsx
     // 差评
@@ -353,9 +353,9 @@
     ```
 
 <a name="methods"></a>
-## Methods
+## 方法 Methods
 
-  - Use arrow functions to close over local variables.
+  - 使用箭头函数获取本地变量。
 
     ```jsx
     function ItemList(props) {
@@ -372,9 +372,9 @@
     }
     ```
 
-  - Bind event handlers for the render method in the constructor. eslint: [`react/jsx-no-bind`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md)
+  - 在构造函数中就把 render 方法中需要的事件手柄绑定。 eslint: [`react/jsx-no-bind`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md)
 
-  > Why? A bind call in the render path creates a brand new function on every single render.
+  > 为什么？每一次 render 过程中，bind 调用都会创建一个全新的函数
 
     ```jsx
     // 差评
@@ -406,7 +406,7 @@
     }
     ```
 
-  - Do not use underscore prefix for internal methods of a React component.
+  - 不要给内部函数使用下划线前缀 `_` ，他们实际上并不是私有的
 
     ```jsx
     // 差评
@@ -428,7 +428,7 @@
     }
     ```
 
-  - Be sure to return a value in your `render` methods. eslint: [`require-render-return`](https://github.com/yannickcr/eslint-plugin-react/pull/502)
+  - 保证在你的 `render` 方法中返回值。 eslint: [`require-render-return`](https://github.com/yannickcr/eslint-plugin-react/pull/502)
 
     ```jsx
     // 差评
