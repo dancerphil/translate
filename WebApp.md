@@ -143,7 +143,7 @@ export default function thunkMiddleware({ dispatch, getState }) {
 }
 ```
 
-# ~~react-saga~~
+# ~~redux-saga~~
 
 ~~[Redux-saga 中文文档](http://leonshi.com/redux-saga-in-chinese/)~~
 
