@@ -132,7 +132,7 @@ getTableHeader(devices, indicatorTypes) {
 
 [异步 Action | Redux 中文文档](http://cn.redux.js.org/docs/advanced/AsyncActions.html)
 
-redux-trunk 源码解析：
+redux-thunk 源码解析：
 
 ```
 export default function thunkMiddleware({ dispatch, getState }) {
