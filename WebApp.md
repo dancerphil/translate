@@ -130,7 +130,7 @@ getTableHeader(devices, indicatorTypes) {
 
 # redux middleware
 
-[Middleware | Redux 中文文档](http://cn.redux.js.org/docs/advanced/Middleware.html)
+[异步 Action | Redux 中文文档](http://cn.redux.js.org/docs/advanced/AsyncActions.html)
 
 # ~~react-saga~~
 
