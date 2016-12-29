@@ -145,9 +145,9 @@ getTableHeader(devices, indicatorTypes) {
 
 [Middleware | Redux 中文文档](http://cn.redux.js.org/docs/advanced/Middleware.html)
 
-# react-saga
+~~# react-saga~~
 
-[Redux-saga 中文文档](http://leonshi.com/redux-saga-in-chinese/)
+~~[Redux-saga 中文文档](http://leonshi.com/redux-saga-in-chinese/)~~
 
 ![](https://raw.githubusercontent.com/dancerphil/dancerphil.github.com/master/cat.gif)
 
