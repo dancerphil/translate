@@ -139,7 +139,7 @@ getTableHeader(devices, indicatorTypes) {
 
 # 单向数据流
 
-![](http://image99.360doc.com/DownloadImg/2016/08/1612/78081988_13)
+![](https://raw.githubusercontent.com/dancerphil/dancerphil.github.com/master/img/redux-react.jpg)
 
 # redux middleware
 
