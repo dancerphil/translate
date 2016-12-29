@@ -58,19 +58,6 @@ export default muiThemeable()(myComponent);
 this.props.location.query
 > {siteID: '60'}
 ```
-# position: relative | absolute
-
-```
-function getElementAbsPos(e) {
-  var t = e.offsetTop;
-  var l = e.offsetLeft;
-  while(e = e.offsetParent) {
-    t += e.offsetTop;
-    l += e.offsetLeft;
-  }
-  return {left:l,top:t};
-}
-```
 
 # 函数式
 
@@ -145,7 +132,7 @@ getTableHeader(devices, indicatorTypes) {
 
 [Middleware | Redux 中文文档](http://cn.redux.js.org/docs/advanced/Middleware.html)
 
-~~# react-saga~~
+# ~~react-saga~~
 
 ~~[Redux-saga 中文文档](http://leonshi.com/redux-saga-in-chinese/)~~
 
