@@ -58,6 +58,19 @@ export default muiThemeable()(myComponent);
 this.props.location.query
 > {siteID: '60'}
 ```
+# position: relative | absolute
+
+```
+function getElementAbsPos(e) {
+  var t = e.offsetTop;
+  var l = e.offsetLeft;
+  while(e = e.offsetParent) {
+    t += e.offsetTop;
+    l += e.offsetLeft;
+  }
+  return {left:l,top:t};
+}
+```
 
 # 函数式
 
@@ -98,6 +111,9 @@ camera = transform(dots)
 副作用（side effect），指的是函数内部与外部互动（最典型的情况，就是修改全局变量的值），产生运算以外的其他结果。函数式编程强调没有"副作用"，意味着函数要保持独立，所有功能就是返回一个新的值，没有其他行为，尤其是不得修改外部变量的值。
 
 所以第一，我们不应该的函数中依赖 `this.props` 或 `this.state`，this 是一个对象，我们拒绝，我们唯一接受的输入是函数参数。第二我们不应该在函数内修改任何值，我们唯一接受的输出是 return 值。
+
+以 WebApp 中遇到的一个需求为例，在一个配电柜中有数个 device ，每个 device 有数个 realtimeData ，希望合并 realtimeData 的名称并去重，得到一个数组作为表格的标题栏。
+
 ```
 getTableHeader(devices, indicatorTypes) {
   return _.uniqWith(
@@ -109,7 +125,7 @@ getTableHeader(devices, indicatorTypes) {
           name: indicatorTypes[dataItem.code - 1].name
         }))))), _.isEqual);
 }
-```.
+```
 
 # js, react 代码规范
 
@@ -123,6 +139,8 @@ getTableHeader(devices, indicatorTypes) {
 
 # 单向数据流
 
+![](http://image99.360doc.com/DownloadImg/2016/08/1612/78081988_13)
+
 # redux middleware
 
 [Middleware | Redux 中文文档](http://cn.redux.js.org/docs/advanced/Middleware.html)
@@ -130,5 +148,7 @@ getTableHeader(devices, indicatorTypes) {
 # react-saga
 
 [Redux-saga 中文文档](http://leonshi.com/redux-saga-in-chinese/)
+
+![](https://raw.githubusercontent.com/dancerphil/dancerphil.github.com/master/cat.gif)
 
 [.](https://www.zhihu.com/question/22689579/answer/22318058)
