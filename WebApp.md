@@ -147,6 +147,8 @@ export default function thunkMiddleware({ dispatch, getState }) {
 
 ~~[Redux-saga 中文文档](http://leonshi.com/redux-saga-in-chinese/)~~
 
+~~[tj/co](https://github.com/tj/co/blob/master/index.js)~~
+
 ![](https://raw.githubusercontent.com/dancerphil/dancerphil.github.com/master/cat.gif)
 
 [.](https://www.zhihu.com/question/22689579/answer/22318058)
