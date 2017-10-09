@@ -1,21 +1,22 @@
-https://codeburst.io/react-router-v4-unofficial-migration-guide-5a370b8905a
-https://medium.com/ottofellercom/to-migrate-or-not-to-migrate-react-router-v4-fdaabb09e538
+# React Router v4 非官方迁移指南
 
-# React Router v4 Unofficial Migration Guide
+> 这是一篇译文，BY 张振衣([dancerphil@github](https://github.com/dancerphil/trick/))，[原文](https://codeburst.io/react-router-v4-unofficial-迁移-guide-5a370b8905a)，2017-10-09
+>
+> 除非另行注明，页面上所有内容采用[MIT](#license)协议共享
 
 ![](https://cdn-images-1.medium.com/max/2000/1*5XL_I8smdz2JylMeDOO3Xg.jpeg)
 
-> React-router v4 offer simple, faster routing. But can you upgrade?
+> React-router v4 提供了更简单快速的的路由，但是你是不是有能力升级呢？
 
-[React-Router v4](https://reacttraining.com/react-router/web/guides/quick-start) introduces a radical change over version 3: now, `<Route>` components are _real_ React components. That’s a huge achievement, and it simplifies routing in React applications a lot.
+[React-Router v4](https://reacttraining.com/react-router/web/guides/quick-start) 在 v3 版本的基础上引入了一系列激进的改动：现在，`<Route>` components 是 _real_ React components。只是一个巨大的成果，让 React 应用的路由变得十分简单。
 
-Unfortunately, react-router v4 changes the way to create and nest routes. An existing react-router v3 application __will not work__ out of the box with v4. Upgrading an existing app is possible, but not straightforward. I discovered this hard truth by upgrading [admin-on-rest](https://github.com/marmelab/admin-on-rest), the React admin framework for REST services, to react-router v4. Since there is no official migration guide (update: [there is an incomplete guide](https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/guides/migrating.md), but it’s hidden), I decided to share my experience, the migration path I found, and practical advice.
+不幸的是，react-router v4 改变了创建和嵌套路由的方式，现有的 react-router v3 应用在 v4 的框架下是 __不能工作__ 的。你当然可以升级现有的 app，但是并不能做到 straightforward。我发现. I discovered this hard truth by upgrading [admin-on-rest](https://github.com/marmelab/admin-on-rest), the React admin framework for REST services, to react-router v4. 由于没有官方的迁移指南（更新： [有一个不完整的指南](https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/guides/migrating.md)，但它被隐藏了），我决定分享我个人的经验，我的迁移路径和一些实际建议。
 
-__Note__: For a medium-size react application, you will need at least a day to migrate.
+__Note__: 对于一个中等规模的 react 应用程序，你需要至少一天的时间来进行迁移。
 
-Here is a list of the things you’ll need to do to migrate:
+下面的列表列出了你所需要完成的工作：
 
-- [Change `react-router` to `react-router-dom`](#1)
+- [把 `react-router` 改为 `react-router-dom`](#1)
 
 - [Use Specialized Router Components](#2)
 
@@ -42,7 +43,7 @@ As a bonus:
 - [Custom Route Components Are Now A Piece Of Cake](#12)
 
 <a name="1"></a>
-## The react-router package is now react-router-dom
+## react-router package 现在改名为 react-router-dom
 
 The main module name has changed. So uninstall the previous package and install the new one:
 
@@ -421,7 +422,7 @@ const FooPage = () => { ... };
 
 If your app uses Redux, you probably used [reactjs/react-router-redux](https://github.com/reactjs/react-router-redux). This library is no longer maintained, and [the react-training organization has taken over the maintenance](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-redux) of the Redux binding for react-router v4.
 
-So upgrade your `package.json` to use `react-router-redux~5.0.0` (currently in alpha, but don’t worry), and update your code from:
+So升级 your `package.json` to use `react-router-redux~5.0.0` (currently in alpha, but don’t worry), and update your code from:
 
 ```
 import { combineReducers, createStore, compose, applyMiddleware } from 'redux';
@@ -572,6 +573,6 @@ export default CrudRoute;
 
 React-router v4 dramatically reduced the size of the router API, and that’s a great idea. By doing less things, the library does it better, and is easier to understand.
 
-But that’s not a small change. Migrating an existing app to v4 will take at least a couple hours, up to a couple days. For instance, the admin-on-rest migration took about 2 days ([not a small diff](https://github.com/marmelab/admin-on-rest/pull/513) for a library of about 8,000 loc). But once it’s done, the routing logic is much simpler, and the library allows for future improvements that weren’t possible with v2/v3.
+But that’s not a small change. Migrating an existing app to v4 will take at least a couple hours, up to a couple days. For instance, the admin-on-rest 迁移 took about 2 days ([not a small diff](https://github.com/marmelab/admin-on-rest/pull/513) for a library of about 8,000 loc). But once it’s done, the routing logic is much simpler, and the library allows for future improvements that weren’t possible with v2/v3.
 
 I definitely recommend migrating to react-router v4. Kudos to [the react-training team](https://github.com/ReactTraining) for this great piece of software!
