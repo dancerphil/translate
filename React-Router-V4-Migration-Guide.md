@@ -18,11 +18,11 @@ __Note__: 对于一个中等规模的 react 应用程序，你需要至少一天
 
 - [把 `react-router` 改为 `react-router-dom`](#1)
 
-- [Use Specialized Router Components](#2)
+- [使用特殊化的 Router 组件](#2)
 
 - [Add `<Switch>` to List of Routes](#3)
 
-- [Add `exact` to Routes](#4)
+- [在 Routes 上添加 `exact` 属性](#4)
 
 - [Replace Nested Routes By Routes In Child Components](#5)
 
@@ -43,16 +43,16 @@ As a bonus:
 - [Custom Route Components Are Now A Piece Of Cake](#12)
 
 <a name="1"></a>
-## react-router package 现在改名为 react-router-dom
+## react-router 包现在改名为 react-router-dom
 
-The main module name has changed. So uninstall the previous package and install the new one:
+主模块已经改名了，所以你需要卸载以前的包，并安装新包：
 
 ```
 npm uninstall react-router --save
 npm install react-router-dom --save
 ```
 
-Use `git grep react-router` to find all the scripts depending on that package, and replace the `import` statements (or `require()`) as follows:
+使用 `git grep react-router` 找到所有引用了旧包的代码，然后按照下面的格式替换 `import` 语句（或者`require()`）：
 
 ```
 // from
@@ -62,9 +62,9 @@ import { Route, Redirect } from 'react-router-dom';
 ```
 
 <a name="2"></a>
-## Use Specialized Router Components
+## 使用特殊化的 Router 组件
 
-`<Router>` used to require a `history` prop. With v4, specialized router components take this step out:
+`<Router>` 过去需要一个 `history` prop。而在 v4，你可以使用特殊化的 router 组件来代替，采取以下的步骤：
 
 ```
 // v3
@@ -83,7 +83,7 @@ const MyApp = () => (
 );
 ```
 
-However, if you need to synchronize the history with a state management lib like Redux (more on that later), you have to keep using the `<Router>` component, and pass a `history` object coming, this time, from the `history` package:
+然而，如果你需要将你的 history 和一个状态管理库进行同步，比如 Redux（过后会有更多的讨论），那么你就必须要继续使用 `<Router>` 组件，并且传递一个 `history` 对象，但这一次，是从 `history` 库得到这个对象：
 
 ```
 // v4
@@ -100,8 +100,9 @@ const MyApp = () => (
 <a name="3"></a>
 ## Add <Switch> to List of Routes
 
-`<Route>` components are no longer exclusive. That means that even if one route matches the current url, nothing prevents a sibling route component from matching, too.
-Let’s suppose you defined the following routes, v3-style:
+`<Route>` 组件不再具有排他性。这意味着即使有一个 route 符合当前的 url，也不会阻止它和其他的 route 组件进行匹配。
+
+我们假设你定义了以下路由，v3 风格：
 
 ```
 import { Router, Route } from 'react-router-dom';
@@ -115,7 +116,7 @@ const MyApp = () => (
 )
 ```
 
-With v4, a path like `/posts/12/show` will trigger the first three routes! You need to add a `<Switch>` component around the list of `<Routes>` to avoid multiple route matches in a set:
+在 v4，类似 `/posts/12/show` 的路径会同时触发前三个 route ！你需要用一个 `<Switch>` 组件包裹住 `<Routes>` 列表，来防止一个集合中的多个路由匹配：
 
 ```
 import { Router, Route, Switch } from 'react-router-dom';
@@ -132,9 +133,9 @@ const MyApp = () => (
 ```
 
 <a name="4"></a>
-## Add the exact prop to Routes
+## 在 Routes 上添加 exact 属性
 
-But this is not enough: in that order, the route rendered for the `/posts/12/show` path will be the first one (because the url matches the `/posts` pattern). To get a v3-like behavior, you must add the `exact` prop to your routes:
+但这还不够：按照这个顺序，对于路径 `/posts/12/show` 来说，被渲染的 route 会是第一个（因为 url 匹配了 `/posts` 的形式）。为了获得与 v3 相类似的行为，你需要在你的 route 上添加 exact 属性：
 
 ```
 import { Router, Route, Switch } from 'react-router-dom';
