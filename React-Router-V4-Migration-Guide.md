@@ -20,11 +20,11 @@ __Note__: 对于一个中等规模的 react 应用程序，你需要至少一天
 
 - [使用特殊化的 Router 组件](#2)
 
-- [Add `<Switch>` to List of Routes](#3)
+- [为 Routes 列表添加 `<Switch>`](#3)
 
 - [在 Routes 上添加 `exact` 属性](#4)
 
-- [Replace Nested Routes By Routes In Child Components](#5)
+- [不再使用嵌套路由Replace Nested Routes By Routes In Child Components](#5)
 
 - [Replace `<IndexRoute>` by a regular `<Route>`](#6)
 
@@ -98,7 +98,7 @@ const MyApp = () => (
 ```
 
 <a name="3"></a>
-## Add <Switch> to List of Routes
+## 为 Routes 列表添加 <Switch>
 
 `<Route>` 组件不再具有排他性。这意味着即使有一个 route 符合当前的 url，也不会阻止它和其他的 route 组件进行匹配。
 
@@ -152,9 +152,9 @@ const MyApp = () => (
 ```
 
 <a name="5"></a>
-## No More Nested Routes
+## 不再使用嵌套路由
 
-React-router v3 used to support nested routes:
+React-router v3 曾经支持嵌套路由：
 
 ```
 // in src/MyApp.js
@@ -177,9 +177,9 @@ const Layout = ({ children }) => (
 )
 ```
 
-In the `Layout` component, `{children}` would be replaced by the child route component (`Foo` or `Bar`).
+在 `Layout` 组件中，`{children}` 将被子路由组件（`Foo` 或 `Bar`）所取代。
 
-React-router v4 doesn’t support nested routes anymore. You must now put nested routes inside child components:
+React-router v4 不再支持嵌套路由。你现在必须将嵌套路由放在子组件中：
 
 ```
 // in src/MyApp.js
