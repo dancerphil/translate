@@ -98,7 +98,7 @@ const MyApp = () => (
 ```
 
 <a name="3"></a>
-## 为 Routes 列表添加 <Switch>
+## 为 Routes 列表添加 \<Switch\>
 
 `<Route>` 组件不再具有排他性。这意味着即使有一个 route 符合当前的 url，也不会阻止它和其他的 route 组件进行匹配。
 
@@ -202,9 +202,9 @@ const Layout = () => (
 );
 ```
 
-This is the greatest new feature of react-router v4: you can put `<Route>` components everywhere!
+这是 react-router v4 最大的新特性：你可以把 `<Route>` 放在任何地方！
 
-Notice that the `path` must always be absolute, even in `<Route>` components descendants of other routes. If you don’t want to repeat the top-level path, use the `match` prop (injected by react-router on routed components) to compose the path, as follows:
+请注意，即使在其他的路由的`<Route>` 后代组件中， `path` 也必须是一个绝对路径。如果你不想重复的书写 top-level 路径，你可以使用 `match` 属性（由 react-router 向组件注入）来组合一个路径，如下所示：
 
 ```
 // in src/Layout.js
@@ -221,7 +221,7 @@ const Layout = ({ match }) => (
 );
 ```
 
-Support for relative routes is [in the works](https://github.com/ReactTraining/react-router/pull/4539).
+对相对路由的支持[正在进行中](https://github.com/ReactTraining/react-router/pull/4539).
 
 <a name="6"></a>
 ## No More <IndexRoute>
