@@ -224,9 +224,9 @@ const Layout = ({ match }) => (
 对相对路由的支持[正在进行中](https://github.com/ReactTraining/react-router/pull/4539).
 
 <a name="6"></a>
-## No More <IndexRoute>
+## 不再有 \<IndexRoute\>
 
-The `<IndexRoute>` component allowed to route to a certain component on a top-level path in v3:
+在 v3 中，`<IndexRoute>` 组件可以允许路由在 top-level 路径时，路由至某个确定的组件上：
 
 ```
 // in src/MyApp.js
@@ -241,7 +241,7 @@ const MyApp = () => (
 )
 ```
 
-This component doesn’t exist anymore in v4. To replace it, use a combination of `<Switch>`, `exact`, and route ordering (placing the index route last):
+这个组件在 v4 中不再存在。 你可以使用 `<Switch>`，`exact` 和路由排序（把 index route 放在最后）的组合来替换它：
 
 ```
 // in src/MyApp.js
@@ -266,9 +266,9 @@ const Layout = () => (
 ```
 
 <a name="7"></a>
-## Use match.params Instead Of params
+## 使用 match.params 来代替 params
 
-You probably used the `params` prop in routed components to grab path parameters in v3:
+在 v3 中，你可能会使用 `params` 属性来获取路径参数：
 
 ```
 // in src/MyApp.js
@@ -286,7 +286,7 @@ const PostEdit = ({ params }) => (
 )
 ```
 
-This prop isn’t injected anymore in v4. You will find the same data in `match.params`.
+这个属性在 v4 中不再注入了，你可以在 `match.params` 找到相同的数据。
 
 ```
 // v4
@@ -298,7 +298,7 @@ const PostEdit = ({ match }) => (
 )
 ```
 
-Oh, and `params` aren’t decode by default in v4. Always use `decodeURIComponent` to handle special characters correctly.
+对了，`params` 在 v4 不再是默认解码的。你总是可以使用 `decodeURIComponent` 来正确地处理特殊字符。
 
 <a name="8"></a>
 ## Parse The Query String Yourself
