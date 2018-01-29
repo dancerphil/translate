@@ -1917,13 +1917,7 @@ eslint: [`import/prefer-default-export`](https://github.com/benmosher/eslint-plu
   <a name="whitespace--spaces"></a><a name="18.1"></a>
   - [18.1](#whitespace--spaces) ~~使用两个空格作为缩进~~。 eslint: [`indent`](http://eslint.org/docs/rules/indent.html) jscs: [`validateIndentation`](http://jscs.info/rule/validateIndentation)
 
-  > BY [dancerphil](https://github.com/dancerphil)：不！！！使用 Tab 作为缩进，并在 IDE 设置 Tab 为 4 空格宽，如果你选择此文作为某个组织的代码风格文档，则你应当认同此点
-  >
-  > 选择两个空格作为缩进的理由是：JS 是一个充满了回调函数的语言，如果使用过长的缩进，会使一部分深处的代码左侧悬空，对此，我建议使用一个大的显示屏，并调整 IDE 的字体大小
-  >
-  > 你知道我很刻薄的，4 空格宽意味着缩进是一个视觉上的长方形，我总是在这些“美学”的问题上计较，可你不也是如此吗？
-  >
-  > 作为译者，坚持与原文的不同的地方有两处，这里是第一处
+  > BY [dancerphil](https://github.com/dancerphil)：曾经我坚持用 4 空格缩进，现在我认为 2 空格缩进也许更好，这样可以保证与 html, css 和 jsx 之间的一致性。这已经不是基于回调地狱的讨论，而是另外的原因。
 
     ```javascript
     // 差评
@@ -2340,11 +2334,9 @@ eslint: [`import/prefer-default-export`](https://github.com/benmosher/eslint-plu
   <a name="semicolons--required"></a><a name="20.1"></a>
   - [20.1](#20.1) **要** 。 eslint: [`semi`](http://eslint.org/docs/rules/semi.html) jscs: [`requireSemicolons`](http://jscs.info/rule/requireSemicolons)
 
-    > BY [dancerphil](https://github.com/dancerphil)：首先，我是不写的，一是受 Python 的影响，二是我司规定。[（知乎的相关讨论）](https://www.zhihu.com/question/20298345)
+    > BY [dancerphil](https://github.com/dancerphil)：我之前所在百姓网规定是不写的。[（知乎的相关讨论）](https://www.zhihu.com/question/20298345)
     >
-    > 至于 eslint，配置一下就好
-    >
-    > 作为译者，坚持与原文的不同的地方有两处，这里是第二处
+    > 对我而言，无所谓，这是一个 eslint 自动 fix 的规则，在 AST 树的层面完全没有区别
 
     ```javascript
     // 差评
