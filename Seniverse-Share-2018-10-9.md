@@ -176,7 +176,7 @@
 
 （编辑中）
 
-# react 这几年比较大的变化，以及可能的未来
+# react 这几年比较大的变化
 
 1. mixin => hoc
 
@@ -198,13 +198,19 @@
 
 1. Fiber
 
+    介绍视频：[Intro to Fiber](https://www.youtube.com/watch?v=ZCuYPiUIONs)
+
+    如果你需要更深的技术细节，查看[acdlite 2016/10/19 的文章](https://github.com/acdlite/react-fiber-architecture)。（Fiber 写了两年）
+
     react 核心团队认为，react 的未来在 async rendering，而为了支持这个未来，它们使用 Fiber 代替了原来的 vdom。
 
     考虑原来的 render 流程，是一整个 vdom 到一整个真实 dom 的对应。
 
-    简述它的好处，每个组件在这一次 flush 中，从 parent 得到控制，交给 children，随后从 children 得到控制，再交还 parent，它仅仅考虑自身变化的部分，调用自身的生命周期方法，而不需要考虑其他的组件。
+    它的好处有两点。第一，你不再需要操作 dom，你只需要告诉 react ViewModel 是怎样的，react 自动的操作 dom。第二是组件化，每个组件在一次 flush 中，从 parent 得到控制，交给 children，随后从 children 得到控制，再交还 parent，它仅仅考虑自身变化的部分，调用自身的生命周期方法，而不需要考虑其他的组件。
 
-    它的坏处，每一次 flush，当中不能中断，parent 触发 render 到 children 的 render，它一直会等待控制回来，还要 componentDidUpdate 呢，这个流程是无法被打破的。整个刷新就是 vdom 树的一次递归遍历。
+    它的坏处，每一次 flush，当中不能中断，parent 触发 render 到 children 的 render，它一直会等待控制回来，至少它还需要触发 componentDidXXX 的钩子，这个流程是无法被打破的。整个刷新就是 vdom 树的一次递归遍历。
+
+    react 本身也许可以足够快，但是生命周期方法，用户的代码，是不可预测的，并会造成阻塞。所以，需要使 Reconcile 过程可分解。
 
     在算法里，所有的递归都可以改循环，Fiber 做的就是这个事，准确地说，Fiber 是一系列任务的链表，在任何时候都可以跳出去，把控制交还给浏览器，来处理用户操作，如果对接下来的任务没有影响，则可以继续工作。
 
@@ -212,17 +218,17 @@
 
     由于 Fiber 不再是一棵树，而是链表，那么 Fragment 就是最简单且显然的结果，把组件连在上一个组件的 siblings 就行了。Fiber 也引出了一系列其他新特性以及未来的 async rendering。
 
-1. new api in react@16
+1. react@16 的新接口
 
-    1. 废弃了 createClass, propTypes 等多个 api，以减小包体积。
+    1. 移出了 createClass, propTypes 等多个接口，以减小包体积。
 
-        其中 createClass 是不再提倡使用了，而 propTypes 可以支持其他类 react 框架。
+        其中 createClass 是不再提倡使用了，而 propTypes 独立后，可以支持其他类 react 框架。同时在推的 flow，有一部分和 prop-types 重合了。
 
     1. render return types: Fragment, string, array
 
         如上文所述的 Fiber 顺便带来的新特性
 
-    1. createPortal, componentDidCatch, getSnapshotBeforeUpdate
+    1. createPortal, componentDidCatch
 
         createPortal 提供了一个"传送"到已经存在的 dom 上的能力。
 
@@ -232,18 +238,62 @@
 
         使用 componentDidCatch 实现 Suspense，[详见](https://codesandbox.io/s/18r32mov6j)
 
-        getSnapshotBeforeUpdate 是一个比较边缘的生命周期方法，把它们放在一起是因为我认为它们都是为了某类特定组件的抽象而提供功能，可以在特殊的封装组件中用到，平常开发中不应该用到。
+        我认为它们都是为了某类特定组件的抽象而提供功能，可以在特殊的封装组件中用到，平常开发中不应该用到。
 
-    1. static getDerivedStateFromProps
+    1. 废弃 componentWillMount, componentWillReceiveProps, componentWillUpdate
 
-        （以下均编辑中）
+        废弃它们的原因是在新的 Fiber 架构中，Reconcile 是不确定被调用的次数的，所以三个生命周期方法都可能被多次调用引起不安全。
+
+        而事实上很多人在使用这三个生命周期方法时，确实会引入副作用，违反了函数式编程的理念。由于 react 无法强制用户的不安全行为，所以把它们标记为 UNSAFE。
+
+        官方提供了一系列 migrate path，大部分情况下，可以将逻辑移入 componentDidMount, static getDerivedStateFromProps, componentDidUpdate 来实现相同的功能。
+
+    1. static getDerivedStateFromProps, getSnapshotBeforeUpdate
+
+        （编辑中，给出 antd 的 migrate 例子）
+
+# react 的未来
+
+1. 并行的 Fiber 的可能性
+
+    相比于原来的架构，Fiber 提供了并行的可能性，一旦有浏览器可以提供并行特性，现有的每一个切片可以并行并且在单独线程运行，重新组合成 dom diff。
+
+1. 从废弃的 Fiber 中找出可重用的部分
+
+    现有的 Fiber，在遭遇高优先级任务时，现有的工作会被插队和放弃，重新 build 高优先级的 Reconcile 过程。有的时候，高优先级任务并不一定破坏了原有的工作，甚至这些工作可以合并（类似 git merge）。
+
+    由于可能的 conflict，现在会直接放弃低优先级任务，但找出重用的部分是可能的。
 
 1. Suspense & TimeSlicing
 
+    Suspense 是一项更偏向业务的功能，其原理是当组件接收到一个 promise，随即报错，被 componentDidCatch 捕获 promise，显示 PlaceHolder（loading 状态），然后等待 promise resolve，重新渲染组件。
+
+    （编辑中，介绍 TimeSlicing）
+
+    这两个功能是现在的 react 团队正在开发的功能。
+
 1. async lifecycle method
 
-# 超越 react
+    （编辑中，介绍 AsyncMode）
+
+    AsyncMode 一度在开发列表里，但随后被延迟了，react 团队需要先处理多个依赖才能重新推进 AsyncMode 的进程，估计要在 react@17 的后期才能实装。
+
+    以上均是 Fiber 带来的新的可能性。
 
 1. no state, no setState
 
-1. no connect, use everywhere connect to mark data
+    mobx 已经在某种程度上证明，没有 state 是完全可行的。思考我们用一个 polyfill 实现 state 以及 setState 的功能，react 本身是可以没有 state 的。为了讨论，把它命名为 mini-redux。（可行性上是 react-redux 和 react-lifecycles-compat 的结合，和 unstated 有部分相像）
+
+    由于 react 在实现 state 和 props 时的内在一致性，这样做的唯一的变化是把从 state 读数据改成了从 props 读数据，而好处是把函数的引用透明提升到组件级别的引用透明。
+
+    这样，一部分生命周期会被提升到组件 Reconcile 之外的 mini-redux，作为高阶组件的 implement 的一部分而存在，最显然能够想到的是通过 static getDerivedStateFromProps 实现的部分完全可控组件的 migrate path。由于 getDerivedStateFromProps 强行隔开了 this， 这一步会比较简单。
+
+    ```
+    （编辑中，以 antd 的 migrate 例子描述进一步的改动）
+    ```
+
+1. 整个 Reconcile 过程的函数式
+
+    如果可以把 state 完全移除，由 Component 或 PureComponent 完全控制组件树的剪枝，会发现整个 Reconcile 过程只剩下一个生命周期函数，即 render。那么 render 可以成为一个 static 函数了。static render 接收 props，返回 reactElement，并且不依赖 this。
+
+    这当然是非常理想化的，ref, context 的问题怎么解决，都是需要考虑的问题。而且作为一个第三方，只是使用 react 而不能修改 react 的源码（也不想自己造一个轮子），后续的优化就谈不上了。从历史进程来看，首先要做的也是挖掘 Fiber 带来的更多可能性，这样的优化暂时不可能成为开发的痛点。
