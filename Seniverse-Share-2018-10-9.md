@@ -172,7 +172,118 @@
 
 # fetchXXX 有没有一个终极解决方案
 
-（编辑中）
+react 解决了如何从 ViewModel 到 View 到问题，redux 解决了如何存 ViewModel 的问题，它们都只做自己的部分，并且做到最好，在这之外，写代码时，特别是写业务代码时，依然有一部分是缺失最佳实践的。
+
+接下来讨论的是如何在 fetchXXX 的基础上，打通 action 到 store 的整个异步流程。使其开发更有效率。
+
+1. 逻辑应该拓展于 reducer 之前，而不是 reducer 之内
+
+    数据通过 payload 进入 reducer，再进行计算，不如先计算好，然后直接存入 store。这样，reducer 是代码的原子，在上游可以进行封装，这样我们就脱离了 redux 架构，可以自由地使用 js 特性，比如异步。
+
+    ```
+    const handler = async () => {
+      dispatch(...);
+      const result = await fetchXXX();
+      const data = func(result);
+      dispatch(...)
+      dispatch(...)
+    }
+    ```
+
+    大部分请求都有类似的模式，后文对此进行了抽象。
+
+1. 直接 import 并 handler
+
+    如上文所说，注意到 redux 的 store.dispatch，我们可以移除 mapDispatchToProps。
+
+    此时，组件并不会感知 dispatch 的存在，同时，组件不需要从 props 读取 handler。而是直接 import handler。handler 并不是组件需要拉取判断和重新渲染的部分，所以应该以不可变的方式 import。
+
+1. fetchXXX 的上下文
+
+    假设我们已经实现了所有的 fetchXXX 接口，并返回一个 Promise。用法为 `const result = await fetchXXX(params);`。会发现所有的 fetchXXX 都是有上下文的。
+
+    大多数情况下，每一个 fetchXXX 对应了一两种用法。几乎所有的用法里，都会有一系列过程，发起请求，loading，请求返回，存到 redux 的某个地方。
+
+    如果我们把 fetchXXX 和 redux 连起来，并且提取出其中共用的部分，就得到了 loadXXX，loadXXX 的基本用法如下：
+
+    ```
+    import { load } from 'redux-loadings';
+
+    const loadXXX = (params) => {
+      load('xxx', fetchXXX, { params }); // xxx 称为 key
+    }
+    ```
+
+    当 loadXXX 被调用时，会开始 loading，发起请求，等待返回，存到 redux，最后 connect 至组件。
+
+    同时，loadXXX 可以作为 handler 直接 import 并调用。
+
+    这样，在 fetchXXX 和 react 组件树之间，我们有一层 loadXXX 的接口。这一层的接口包含了 fetchXXX 的使用上下文，可重用性高。直接调用，并且直接和 redux 连接，内聚性高。
+
+    有时，同一接口有不同的使用方式，此时可以 export 多个 loadXXX 包含不同的上下文。
+
+1. 处理数据
+
+    1. 接口调用有节流的需求，同一个 loadXXX，或许短时间内并不会改变，在后端难以支持的情况，前端多次发起是没有必要的，此时可以在 load 的实现内部进行节流，外部无需感知。同时有部分接口时效性强，需要反复发出，也可以用一字段表示。
+
+    1. 需求在接口返回后，进行数据处理，举例接口返回一个 arr 求和：
+
+        ```
+        const loadXXX = () => {
+          load('xxx', fetchXXX, {
+            format: result => result.reduce((a, b) => a + b, 0)
+          })
+        }
+        ```
+
+        如果实现了标准 restful 接口，那么在创建修改删除时，可以在原来的 result 的基础上修改：
+
+        ```
+        const insertXXX = () => {
+          load('xxx', postXXX, {
+            format: (result, snapshot) => {
+              snapshot.push(result);
+              return snapshot;
+            },
+            forceUpdate: true,
+          })
+        }
+        ```
+
+    1. 需求在 load 完成后处理其他副作用：
+
+        ```
+        const loadXXX = (params, callback) => {
+          const xxx = await load('xxx', fetchXXX);
+          callback(xxx);
+        }
+        ```
+
+    1. 更多的 case 可以在 [github](https://github.com/dancerphil/redux-loadings/blob/develop/Document.md) 查看
+
+1. connect 到组件
+
+    ```
+    import { connect } from 'redux-loadings';
+
+    const Component = ({ loading, xxx }) => <div />;
+
+    export default connect('xxx')(Component);
+    ```
+
+1. silentConnect 和 PlaceHolder
+
+    ```
+    import { silentConnect } from 'redux-loadings';
+
+    const Component = ({ xxx }) => <div />;
+
+    export default silentConnect('xxx', <LoadingComponent>)(Component);
+    ```
+
+    silentConnect 和 react Suspense 有相像之处，它同时做到了 Suspense 和与 redux 连接。
+
+至此，几乎所有有关异步请求的部分都被合理的 handle，使程序员可以更多的聚焦于代码逻辑上。
 
 # react 这几年比较大的变化
 
@@ -224,11 +335,11 @@
 
     1. render return types: Fragment, string, array
 
-        如上文所述的 Fiber 顺便带来的新特性
+        如上文所述的 Fiber 顺便带来的新特性。
 
-    1. createPortal, componentDidCatch
+    1. createPortal, context, ref, componentDidCatch
 
-        createPortal 提供了一个"传送"到已经存在的 dom 上的能力。
+        createPortal, context, ref 都不在本文讨论范围内，可自行了解。
 
         在 react@15，组件渲染过程中的报错会引起一整棵错误的树，并且无法从错误中恢复。在 react@16 推出了新的 componentDidCatch 生命周期方法。
 
@@ -248,7 +359,35 @@
 
     1. static getDerivedStateFromProps, getSnapshotBeforeUpdate
 
-        （编辑中，给出 antd 的 migrate 例子）
+        static getDerivedStateFromProps 用来在 props 里同步 state。
+
+        antd 中一个常见的例子，一个组件可以是被 value 完全控制，或者只是接受 defaultValue 并完全不受控制。即如果 props 有 value，则同步至 state，并且用户的操作只发出 callback 但不改变 state，而如果 props 没有 value，则由 state 控制组件。
+
+        ```
+        componentWillReceiveProps(nextProps) {
+          if ('value' in nextProps) {
+            this.setState({
+              value: nextProps.value || [],
+            });
+          }
+        }
+        ```
+
+        改为
+        ```
+        static getDerivedStateFromProps(nextProps) {
+          if ('value' in nextProps) {
+            return {
+              value: nextProps.value || [],
+            };
+          }
+          return null;
+        }
+        ```
+
+        至于这个 static，是因为 react 团队认为人们在 componentWillReceiveProps 中写了太多的副作用，随着 Fiber，componentWillReceiveProps 变得不安全，通过 static 可以限制用户对于 this 的访问，使 getDerivedStateFromProps 是幂等的（虽然可以强行不幂等）。
+
+        getSnapshotBeforeUpdate 的应用场景比较局限，基本需要配合 ref 得到 dom 的数据，然后在 componentDidUpdate 中处理。有两点注意，第一有 getSnapshotBeforeUpdate 必须要有 componentDidUpdate，第二 getSnapshotBeforeUpdate 是 commit 阶段的生命周期方法，仅当 update 前调用。
 
 # react 的未来
 
@@ -334,11 +473,11 @@
 
     由于 react 在实现 state 和 props 时的内在一致性，这样做的唯一的变化是把从 state 读数据改成了从 props 读数据，而好处是把函数的引用透明提升到组件级别的引用透明。
 
-    这样，一部分生命周期会被提升到组件 Reconcile 之外的 mini-redux，作为高阶组件的 implement 的一部分而存在。最显然的例子是通过 static getDerivedStateFromProps 实现的完全可控/完全不受控组件的 migrate path。由于 getDerivedStateFromProps 强行隔开了 this， 这一步会比较简单。
+    这样，一部分生命周期会被提升到组件 Reconcile 之外的 mini-redux，作为高阶组件的 implement 的一部分而存在。最容易想到的例子是 static getDerivedStateFromProps 的 migrate path。
 
-    ```
-    （编辑中，以 antd 的 migrate 例子描述进一步的改动）
-    ```
+    mini-redux 连接 Parent 并提供 state，如果有 props.value 和 state.value 则调用类似 getDerivedStateFromProps 的钩子，在上文 antd 的例子，只需要判断 `if('value' in props)` 来决定传入 props.value 或 state.value
+
+    由于 getDerivedStateFromProps 强行隔开了 this， 这一步会比较简单。
 
 1. 整个 Reconcile 过程的函数式
 
