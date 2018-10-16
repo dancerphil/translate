@@ -1,6 +1,10 @@
-# 函数式编程
+# 函数式 & react
 
-1. 函数不是一个过程，而是一个合约
+> 此文约 7000 字，阅读时间大约很长，如有不严谨的地方还请指出。 BY [dancerphil](https://github.com/dancerphil/trick/blob/master/Seniverse-Share-2018-10-9.md)
+
+## 函数式编程
+
+1. 函数不视为过程，而视为一个合约
 
     `arr.sort(func)` 会因为 `func` 的不同而有不同的表现，此时，传入的函数是一个合约。
 
@@ -10,7 +14,7 @@
     arr.sort(() => 0.5 - Math.random())
     ```
 
-    （这个例子有一个不符合函数式编程的地方）
+    （注：这个例子有一个不符合函数式编程的地方）
 
     > 合约这个词有点像区块链中可以将一块代码作为区块保存并使其不可变的概念。同样在冯诺伊曼体系中，一个很重要的理念就是代码和数据共同储存。函数式编程在某种程度上是在更小的问题范围内实现这个思路。
     >
@@ -40,7 +44,7 @@
 
     [lodash](https://lodash.com/docs/4.17.10)
 
-# 函数式的生命周期方法带来的好处
+## 函数式的生命周期方法带来的好处
 
 1. 在 react 中使用函数式编程
 
@@ -86,7 +90,7 @@
 
     当然，除了这两类，组件可能还包含一些特殊类型。比如交互增强型（antd 的表单增强）和功能型（Router, transition），这些没有太多需要讨论的地方。
 
-# 哪些 props 是不需要层层传递的
+## 哪些 props 是不需要层层传递的
 
 现在我们只考虑容器类组件，它们通常是 view 层的逻辑的部分，是视图的骨架，容器类组件的最佳实践是一个尚未有定论的问题，尝试讨论它。
 
@@ -110,7 +114,7 @@
 
     经过这样的分割，容器组件也许只是简单的调用另一个展示组件，是一个简单的 wrap，但是好处是提供了可以为这个容器组件定制逻辑的可能性。而展示组件也因为被调用而拥有可复用能力。
 
-# 如何移除 redux 全家桶
+## 如何移除 redux 全家桶
 
 随着 js, react, redux 本身的发展，全家桶所 handle 的很多情况都逐渐有了更优更一致的写法。
 
@@ -170,7 +174,7 @@
     export { dispatch, getState };
     ```
 
-# fetchXXX 有没有一个终极解决方案
+## fetchXXX 有没有一个终极解决方案
 
 react 解决了如何从 ViewModel 到 View 到问题，redux 解决了如何存 ViewModel 的问题，它们都只做自己的部分，并且做到最好，在这之外，写代码时，特别是写业务代码时，依然有一部分是缺失最佳实践的。
 
@@ -285,7 +289,7 @@ react 解决了如何从 ViewModel 到 View 到问题，redux 解决了如何存
 
 至此，几乎所有有关异步请求的部分都被合理的 handle，使程序员可以更多的聚焦于代码逻辑上。
 
-# react 这几年比较大的变化
+## react 这几年比较大的变化
 
 1. mixin => hoc
 
@@ -389,7 +393,7 @@ react 解决了如何从 ViewModel 到 View 到问题，redux 解决了如何存
 
         getSnapshotBeforeUpdate 的应用场景比较局限，基本需要配合 ref 得到 dom 的数据，然后在 componentDidUpdate 中处理。有两点注意，第一有 getSnapshotBeforeUpdate 必须要有 componentDidUpdate，第二 getSnapshotBeforeUpdate 是 commit 阶段的生命周期方法，仅当 update 前调用。
 
-# react 的未来
+## react 的未来
 
 1. React Fire
 
