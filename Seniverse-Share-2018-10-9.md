@@ -52,7 +52,7 @@
 
 1. 提升 state
 
-    props 和 state 引起的组件行为是一致的，这是 react 核心团队[仔细考虑](./React-Issues#11527.md)后的结果，这使得提升 state 是简单的。
+    props 和 state 引起的组件行为是一致的，这是 react 核心团队[仔细考虑](./React-Issues-11527.md)后的结果，这使得提升 state 是简单的。
 
     当 state 是组件本身独有的，并且组件是为了重用而存在的，我们应当使用 state。
 
