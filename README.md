@@ -560,6 +560,8 @@
 
   - [6.2](#strings--line-length) 字符串超过 100 个字节时，**不要** 使用字符串连接号换行。
 
+    > 为什么？分离的字符串难以阅读修改和搜索
+
     ```javascript
     // 差评
     const errorMessage = 'This is a super long error that was thrown because \
@@ -625,7 +627,7 @@
 
   - [7.1](#functions--declarations) 使用函数表达式，不要使用函数声明。
 
-    > 为什么？函数声明是可命名的，他们在调用栈中更容易被识别。另外，函数声明会把整个函数提升（hoisted），而函数表达式只会把函数的引用变量名提升。所以[箭头函数](#arrow-functions)可以完全取代函数表达式。。函数声明会把整个函数提升（Hoisted），这使得函数太容易在定义之前被引用，破坏了可读性。如果一个函数定义复杂到影响到理解文件其余的内容，此时这个文件应当被提取到它自己的模块中。无论是什么情况，不要忘了显式的命名你的函数表达式（有的时候 浏览器或 babel 会推断一个命名，但你仍然应该自己命名），这有助于优化错误堆栈。 ([相关讨论](https://github.com/airbnb/javascript/issues/794))
+    > 为什么？函数声明会把整个函数提升（Hoist），这使得函数太容易在定义之前被引用，破坏了可读性。如果一个函数定义复杂到影响到理解文件其余的内容，此时这个文件应当被提取到它自己的模块中。无论是什么情况，不要忘了显式的命名你的函数表达式（有的时候 浏览器或 babel 会推断一个命名，但你仍然应该自己命名），这有助于优化错误堆栈。 ([相关讨论](https://github.com/airbnb/javascript/issues/794))
 
     ```javascript
     // 差评
@@ -1853,7 +1855,7 @@ eslint: [`import/prefer-default-export`](https://github.com/benmosher/eslint-plu
 
   - [15.1](#comparison--eqeqeq) 尽量使用 `===` 和 `!==` ，而不是 `==` 和 `!=` 。 eslint: [`eqeqeq`](https://eslint.org/docs/rules/eqeqeq.html)
 
-  - [15.2](#comparison--if) 条件声明如 `if` 会把表达式的值转化为 `Boolean`，依据以下的规则：
+  - [15.2](#comparison--if) 条件声明如 `if` 会把表达式的值转换为 `Boolean`，依据以下的规则：
 
     - **Objects** 被视为 **true**
     - **Undefined** 被视为 **false**
@@ -3419,7 +3421,7 @@ eslint: [`import/prefer-default-export`](https://github.com/benmosher/eslint-plu
 
   - [29.1](#standard-library--isnan) 使用 `Number.isNaN` 代替 `isNaN`。 eslint: [`no-restricted-globals`](https://eslint.org/docs/rules/no-restricted-globals)
 
-    > 为什么？`isNaN` 会强制转化非数字类型，然后对于被转化为 `NaN` 的任何值返回 `true`。
+    > 为什么？`isNaN` 会强制转换非数字类型，然后对于被转换为 `NaN` 的任何值返回 `true`。
     > 
     > 如果这是期望的行为，显式声明它。
 
@@ -3435,7 +3437,7 @@ eslint: [`import/prefer-default-export`](https://github.com/benmosher/eslint-plu
 
   - [29.2](#standard-library--isfinite) 使用 `Number.isFinite` 代替 `isFinite`。 eslint: [`no-restricted-globals`](https://eslint.org/docs/rules/no-restricted-globals)
     
-    > 为什么？`isFinite` 会强制转化非数字类型，然后对于被转化为有限值的任何值返回 `true`。
+    > 为什么？`isFinite` 会强制转换非数字类型，然后对于被转换为有限值的任何值返回 `true`。
     > 
     > 如果这是期望的行为，显式声明它。
 
