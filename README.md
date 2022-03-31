@@ -2,11 +2,11 @@
 
 *如何用最合理的方式写你的 JavaScript 代码*
 
-> BY 张聪([dancerphil@github](https://github.com/dancerphil/trick/))
+> BY 张聪([dancerphil@github](https://github.com/dancerphil/translate/))
 >
 > 这是一篇在[原文](https://github.com/airbnb/javascript)基础上演绎的译文，与原文的表达会有出入
 >
-> 原文在不断的更新，本文基于 2021-03-24 的版本，last commit [ [0cf78ac] ](https://github.com/airbnb/javascript/commit/0cf78acab0fff90e9591dedd8783b62a72ffc118)
+> 原文在不断的更新，本文基于 2022-01-12 的版本，last commit [ [b4377fb] ](https://github.com/airbnb/javascript/commit/b4377fb03089dd7f08955242695860d47f9caab4)
 >
 > 除非另行注明，页面上所有内容采用[MIT](#许可)协议共享
 
@@ -139,17 +139,21 @@
     }
     ```
 
-  - [2.3](#references--block-scope) 注意 `let` 和 `const` 都是块级作用域。
+  - [2.3](#references--block-scope) 注意 `let` 和 `const` 都是块级作用域，而 `var` 是函数级作用域。
 
     ```javascript
     // const 和 let 只在它们定义的代码块里才存在
     {
       let a = 1;
       const b = 1;
+      var c = 1;
     }
     console.log(a); // 抛出 ReferenceError
     console.log(b); // 抛出 ReferenceError
+    console.log(c); // 打印 1
     ```
+
+    在以上代码中，你可以看到引用 `a` 和 `b` 会引起 ReferenceError，而 `c` 引用了一个数字。这是因为 `a` 和 `b` 是块级作用域，而 `c` 的作用域范围是它所在的函数。
 
 **[↑ 回到最上方](#目录)**
 
@@ -301,7 +305,7 @@
     console.log(has.call(object, key));
     ```
 
-  - [3.8](#objects--rest-spread) 浅拷贝时，使用 Spread 运算符 `...` 代替 [`Object.assign`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)。 忽略某些属性得到一个新对象时，使用 Rest 运算符 `...`。 eslint: [`prefer-object-spread`](https://eslint.org/docs/rules/prefer-object-spread)
+  - [3.8](#objects--rest-spread) 浅拷贝时，使用 Spread 语法 `...` 代替 [`Object.assign`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)。 忽略某些属性得到一个新对象时，使用 Rest 语法 `...`。 eslint: [`prefer-object-spread`](https://eslint.org/docs/rules/prefer-object-spread)
 
     ```javascript
     // 非常差
@@ -837,7 +841,7 @@
     }
     ```
 
-  - [7.14](#functions--spread-vs-apply) 使用 Spread 操作符 `...` 调用可变函数。 eslint: [`prefer-spread`](https://eslint.org/docs/rules/prefer-spread)
+  - [7.14](#functions--spread-vs-apply) 使用 Spread 语法 `...` 调用可变函数。 eslint: [`prefer-spread`](https://eslint.org/docs/rules/prefer-spread)
 
     > 为什么？这样清晰，不需要提供一个上下文，且可以简单的组合 `new` 和 `apply`。
 
@@ -1761,7 +1765,7 @@ eslint: [`import/prefer-default-export`](https://github.com/benmosher/eslint-plu
 
 ## 提升
 
-  - [14.1](#hoisting--about) `var` 声明会被提升至最近的函数作用域的顶部，但其赋值不会提升。 `let` 和 `const` 被赋予了一种新概念，称为暂时性死区[(Temporal Dead Zones)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#Temporal_dead_zone)。这对于了解为什么 [typeof 不再安全](https://web.archive.org/web/20200121061528/http://es-discourse.com/t/why-typeof-is-no-longer-safe/15)相当重要
+  - [14.1](#hoisting--about) `var` 声明会被提升至最近的函数作用域的顶部，但其赋值不会提升。 `let` 和 `const` 被赋予了一种新概念，称为暂时性死区[(Temporal Dead Zones)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#temporal_dead_zone_tdz)。这对于了解为什么 [typeof 不再安全](https://web.archive.org/web/20200121061528/http://es-discourse.com/t/why-typeof-is-no-longer-safe/15)相当重要
 
     ```javascript
     // 这样是运行不了的
@@ -1845,7 +1849,7 @@ eslint: [`import/prefer-default-export`](https://github.com/benmosher/eslint-plu
     }
     ```
 
-  - 想了解更多信息，参考 [Scoping & Hoisting](http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting/) 来自 [Ben Cherry](http://www.adequatelygood.com/)
+  - 想了解更多信息，参考 [Scoping & Hoisting](https://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting/) 来自 [Ben Cherry](https://www.adequatelygood.com/)
 
   > 注 BY [dancerphil](https://github.com/dancerphil)：没有特殊需要的时候，把定义放在使用之前就可以了。
 
@@ -3361,7 +3365,7 @@ eslint: [`import/prefer-default-export`](https://github.com/benmosher/eslint-plu
     }
     ```
 
-  - [26.3](#jquery--queries) 查询 DOM 时，使用层叠 `$('.sidebar ul')` 或 parent > child 的模式 `$('.sidebar > ul')`。 [jsPerf](http://jsperf.com/jquery-find-vs-context-sel/16)
+  - [26.3](#jquery--queries) 查询 DOM 时，使用层叠 `$('.sidebar ul')` 或 parent > child 的模式 `$('.sidebar > ul')`。 [jsPerf](https://jsperf.com/jquery-find-vs-context-sel/16)
 
   - [26.4](#jquery--find) 查询有作用域的 jQuery 对象时，使用 `find`。
 
