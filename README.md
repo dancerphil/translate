@@ -67,7 +67,7 @@
 
 ## 类型
 
-  - [1.1](#types--primitives) **基本类型**：访问到基本类型时，直接得到的值。
+  - [1.1](#types--primitives) **基本类型**：访问到基本类型时，直接得到值。
 
     - `string`
     - `number`
@@ -351,7 +351,7 @@
     ```
 
   <a name="拓展运算符"></a>
-  - [4.3](#es6-array-spreads) 使用数组的拓展运算符 `...` 来复制数组。
+  - [4.3](#es6-array-spreads) 使用数组 Spread `...` 来复制数组。
 
     ```javascript
     // 差评
@@ -367,7 +367,7 @@
     const itemsCopy = [...items];
     ```
 
-  - [4.4](#arrays--from-iterable) 使用 Spread 运算符 `...` 把一个 **可迭代对象** 转换成数组，而非 [Array.from](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from)
+  - [4.4](#arrays--from-iterable) 使用 Spread `...` 把一个 **可迭代对象** 转换成数组，而非 [Array.from](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from)
 
     ```javascript
     const foo = document.querySelectorAll('.foo');
@@ -2351,8 +2351,6 @@ eslint: [`import/prefer-default-export`](https://github.com/benmosher/eslint-plu
 
   - [19.1](#whitespace--spaces) 使用两个空格作为缩进。 eslint: [`indent`](https://eslint.org/docs/rules/indent.html)
 
-  > 注 BY [dancerphil](https://github.com/dancerphil)：四空格缩进也可以，统一即可。
-
     ```javascript
     // 差评
     function foo() {
@@ -2421,8 +2419,6 @@ eslint: [`import/prefer-default-export`](https://github.com/benmosher/eslint-plu
     ```
 
   - [19.4](#whitespace--infix-ops) 使用空格隔开运算符。 eslint: [`space-infix-ops`](https://eslint.org/docs/rules/space-infix-ops.html)
-
-    >  注 BY [dancerphil](https://github.com/dancerphil)：不要用空格分开一元运算符，比如 `let dog = isHuman && !hasGirl()`，也不要在逗号 `,` 分号 `;` 的左侧加空格
 
     ```javascript
     // 差评
@@ -3478,7 +3474,7 @@ eslint: [`import/prefer-default-export`](https://github.com/benmosher/eslint-plu
 
 ## 性能
 
-[前往原文](https://github.com/airbnb/javascript#resources)
+以下一些章节均为链接，[前往原文](https://github.com/airbnb/javascript#resources)
 
 **[↑ 回到最上方](#目录)**
 
